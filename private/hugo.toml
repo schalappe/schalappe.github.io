@@ -7,13 +7,16 @@ title = 'Abdallah Hakim Kone'
     name = 'Home'
     pageRef = '/'
     weight = 10
+    [menus.main.params]
+      class = 'fa-solid fa-house'
 
   [[menus.main]]
     name = 'Photos'
     url = 'https://photos.schalappe.page/'
     weight = 50
-    [menus.main.params]
     rel = 'external'
+    [menus.main.params]
+      class = 'fa-solid fa-camera'
 
 [params]
   [params.contact]

@@ -15,6 +15,7 @@ Renders a menu for the given menu ID.
     <ul class="nav__list grid">
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
     </ul>
+    <i class="fa-regular fa-circle-xmark nav__close" id="nav-close"></i>
   </div>
 {{- end }}
 
@@ -30,6 +31,7 @@ Renders a menu for the given menu ID.
       {{- $attrs = merge $attrs (dict "class" "nav__link") }}
     {{- end }}
     {{- $name := .Name }}
+    {{- $class := .Params.class }}
     {{- with .Identifier }}
       {{- with T . }}
         {{- $name = . }}
@@ -42,7 +44,7 @@ Renders a menu for the given menu ID.
             {{- printf " %s=%q" $k $v | safeHTMLAttr }}
           {{- end }}
         {{- end -}}
-      >{{ $name }}</a>
+      ><i class="{{ $class }} nav__icon"></i> {{ $name }}</a>
       {{- with .Children }}
         <ul>
           {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
