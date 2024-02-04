@@ -1,2 +1,7 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<nav class="nav container">
+    <a href="#" class="nav__logo">
+        {{ site.Title }}
+    </a>
+
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</nav>

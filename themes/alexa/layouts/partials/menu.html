@@ -11,11 +11,11 @@ Renders a menu for the given menu ID.
 {{- $menuID := .menuID }}
 
 {{- with index site.Menus $menuID }}
-  <nav>
-    <ul>
+  <div class="nav__menu" id="nav-menu">
+    <ul class="nav__list grid">
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
     </ul>
-  </nav>
+  </div>
 {{- end }}
 
 {{- define "partials/inline/menu/walk.html" }}
@@ -23,9 +23,11 @@ Renders a menu for the given menu ID.
   {{- range .menuEntries }}
     {{- $attrs := dict "href" .URL }}
     {{- if $page.IsMenuCurrent .Menu . }}
-      {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
+      {{- $attrs = merge $attrs (dict "class" "nav__link active-link" "aria-current" "page") }}
     {{- else if $page.HasMenuCurrent .Menu .}}
       {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
+    {{- else }}
+      {{- $attrs = merge $attrs (dict "class" "nav__link") }}
     {{- end }}
     {{- $name := .Name }}
     {{- with .Identifier }}
@@ -33,7 +35,7 @@ Renders a menu for the given menu ID.
         {{- $name = . }}
       {{- end }}
     {{- end }}
-    <li>
+    <li class="nav__item">
       <a
         {{- range $k, $v := $attrs }}
           {{- with $v }}
