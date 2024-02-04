@@ -1,7 +1,6 @@
 baseURL = 'https://.schalappe.page/'
 languageCode = 'fr-fr'
 title = 'Abdallah Hakim Kone'
-theme = "alexa"
 
 [menus]
   [[menus.main]]
@@ -25,3 +24,8 @@ theme = "alexa"
   [params.contact]
     email = 'konehakim@gmail.com'
     phone = '+33 6 67 63 93 99'
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    smin = "0.116.0"

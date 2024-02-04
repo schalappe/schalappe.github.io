@@ -1,8 +1,0 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
-
-[module]
-  [module.hugoVersion]
-  extended = false
-  smin = "0.116.0"
