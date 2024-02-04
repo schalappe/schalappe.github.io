@@ -1,0 +1,49 @@
+<!-- Portfolio -->
+<section class="portfolio section" id="portfolio">
+    <h2 class="section__title">Projets</h2>
+    <span class="section__subtitle">Mes récents projets ...</span>
+
+    <div class="portfolio__container container swiper">
+        <div class="swiper-wrapper">
+            <!-- Project -->
+            {{ range $item := .Site.Data.schalappe.projects }}
+            <div class="portfolio__content grid swiper-slide">
+                {{ $illustration := resources.Get $item.img}}
+                <img src="{{ $illustration.RelPermalink }}" alt="" class="portfolio__img">
+
+                <div class="portfolio__data">
+                    <h3 class="portfolio__title">{{ $item.title }}</h3>
+                    <p class="portfolio__badges">
+                        {{ range $tag := $item.tags }}
+                        <span class="portfolio__pill">{{ $tag }}</span>
+                        {{ end }}
+                    </p>
+                    <p class="portfolio__description">{{ $item.subtitle }}</p>
+                    <div class="portfolio__actions">
+                        {{ if not $item.link }}
+                        <a href="{{ $item.link }}" class="button button--flex button--small portfolio__button">
+                            Demo
+                            <i class="fas fa-arrow-right button__icon-right"></i>
+                        </a>
+                        {{ end }}
+                        {{ if not $item.github }}
+                        <a href="{{ $item.github }}" class="button button--flex button--small portfolio__button">
+                            Code
+                            <i class="fab fa-github-alt button__icon-right"></i>
+                        </a>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+
+        <div class="swiper-button-next">
+            <i class="fas fa-angle-right swiper-portfolio-icon"></i>
+        </div>
+        <div class="swiper-button-prev">
+            <i class="fas fa-angle-left swiper-portfolio-icon"></i>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>

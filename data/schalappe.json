@@ -1,0 +1,159 @@
+{
+  "profile": {
+    "first_name": "Abdallah Hakim",
+    "self_name": "Hakim",
+    "last_name": "KONE",
+    "role": "AI Unicorn",
+    "picture": "images/kah.jpg",
+    "description": {
+      "goal": "Hakim, résidant à Rennes, est un passionné d'intelligence artificielle spécialisé dans la création de systèmes intégrant des modèles d'apprentissage automatique. En plus de son expertise en IA, il a un intérêt marqué pour l'histoire, la lecture, le basketball et le café de spécialité ...\n"
+    }
+  },
+  "social": {
+    "github": "https://github.com/schalappe",
+    "linkedin": "https://www.linkedin.com/in/abdallah-hakim-kone/",
+    "medium": "https://medium.com/@konehakim"
+  },
+  "languages": {
+    "Python": "simple-icons--python",
+    "TypeScript": "simple-icons--typescript",
+    "Markdown": "simple-icons--markdown"
+  },
+  "tools": {
+    "Tensorflow": "simple-icons--tensorflow",
+    "Pytorch": "simple-icons--pytorch",
+    "Scikit-Learn": "simple-icons--scikitlearn",
+    "Jupyter": "simple-icons--jupyter",
+    "Polars": "simple-icons--polars",
+    "Pandas": "simple-icons--pandas",
+    "NumPy": "simple-icons--numpy",
+    "Git": "simple-icons--git",
+    "MongoDB": "simple-icons--mongodb",
+    "RabbitMQ": "simple-icons--rabbitmq",
+    "Docker": "simple-icons--docker",
+    "Linux": "simple-icons--linux",
+    "Flask": "simple-icons--flask",
+    "FastAPI": "simple-icons--fastapi",
+    "BentoML": "simple-icons--bentoml"
+  },
+  "extra_skills": [
+    "Machine Learning & Deep Learning",
+    "Traitement d'images & Computer Vision",
+    "Reinforcement Learning",
+    "API & Web développement (Back-End) – Flask, FastAPI, BentoML, MySQL, MongoDB",
+    "Framework Deep Learning – Tensorflow, Keras, Pytorch",
+    "Des packages Machine Learning – OpenCV, Scikit-Learn, Optuna, XGBoost, etc.",
+    "Des packages Python – Polars, Pandas, NumPy, Matplotlib, Seaborn, etc"
+  ],
+  "experience": [
+    {
+      "position": "Support IT",
+      "company": "Veone",
+      "city": "Abidjan",
+      "from": "Avril 2017",
+      "to": "Sept. 2017",
+      "current": false,
+      "description": [
+        "Déploiement de systèmes de supervision et services infogérés par VEONE (Centreon)",
+        "Assistant support IT"
+      ]
+    },
+    {
+      "position": "Développeur IA",
+      "company": "Compagnie Ivoirienne d'électricité",
+      "city": "Abidjan",
+      "from": "Avril 2018",
+      "to": "Août 2018",
+      "current": false,
+      "description": [
+        "Benchmark de modèles de détection d’objets (Yolo, SSD, Faster RCNN, ...) pour la détection d’incidents sur des réseaux électriques",
+        "Développement d’une application mobile multi-plateforme pour la gestion de sinistres sur les réseaux électriques"
+      ]
+    },
+    {
+      "position": "Data Scientist",
+      "company": "Orange Business Services",
+      "city": "Rennes",
+      "from": "Sept. 2019",
+      "to": "Sept. 2020",
+      "current": false,
+      "description": [
+        "Benchmark de modèles de tracking de multiples objets (Deep Sort, Yolo, SSD) pour la production de KPI orienté retail",
+        "Programmation et déploiement d’une application de reconnaissance de visages similaires",
+        "PoC d’une simulation de comportements humains via du reinforcement learning multi-agents"
+      ]
+    },
+    {
+      "position": "Ingénieur d'études et développement",
+      "company": "Softeam",
+      "city": "Rennes",
+      "from": "Jan. 2021",
+      "to": "Aujourd'hui",
+      "current": true,
+      "description": [
+        "Étude de nouvelles solutions d'apprentissage automatique",
+        "Développement et déploiement de systèmes d'apprentissage automatique",
+        "Suivi et amélioration des systèmes d'apprentissage automatique déployés"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "E.S.A.T.I.C",
+      "program": "Systèmes Réseaux Informatiques",
+      "level": "Licence",
+      "city": "Abidjan",
+      "description": "Formation axée sur deux points: les réseaux informatiques et les mathématiques. Elle couvre l'algèbre linéaire et bilinéaire, le traitement du signal, les statistiques, les réseaux informatiques, l'administration des réseaux, ...\n",
+      "from": "Sept. 2014",
+      "to": "Sept. 2017",
+      "current": false
+    },
+    {
+      "institution": "E.S.A.T.I.C",
+      "program": "Sécurité Informatique",
+      "level": "Master",
+      "city": "Abidjan",
+      "description": "Formation axée sur la sécurité des systèmes d'information et les technologies du web. Elle couvre la programmation système et réseaux, le Big Data et le Cloud Computing, la sécurité des systèmes d'informations, la cryptographie, ...\n",
+      "from": "Sept. 2017",
+      "to": "Sept. 2019",
+      "current": false
+    },
+    {
+      "institution": "IMT Atlantique",
+      "program": "Généraliste",
+      "level": "Ingénieur",
+      "city": "Brest",
+      "description": "Formation axée sur la transformation digitale par les données. Elle couvre le traitement du signal, l'ingénierie logicielle, le Machine Learning, le Deep Learning, l'aide à la décision, la théorie des jeux, ...\n",
+      "from": "Sept. 2018",
+      "to": "Sept. 2020",
+      "current": true
+    }
+  ],
+  "projects": [
+    {
+      "title": 2048,
+      "subtitle": "Peux tu gagner au 2048 ?",
+      "description": "Le but était d'entraîner un agent à jouer au jeu 2048.\n",
+      "link": null,
+      "github": "https://github.com/schalappe/simulate_2048",
+      "img": "images/2048.gif",
+      "tags": [
+        "Reinforcement Learning",
+        "Tensorflow",
+        "Muzero"
+      ]
+    },
+    {
+      "title": "Mini-monde d'agents",
+      "subtitle": "Trouve la sortie !",
+      "description": "Minigrid est une simulation du monde sous forme de grille. L'objectif est d'entraîner un agent à comprendre les instructions textuelles.\n",
+      "link": null,
+      "github": "https://github.com/schalappe/reinforce_minigrid",
+      "img": "images/visualize-keycorridor.gif",
+      "tags": [
+        "Reinforcement Learning",
+        "Tensorflow"
+      ]
+    }
+  ]
+}

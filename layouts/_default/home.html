@@ -1,14 +1,15 @@
 {{ define "main" }}
 
 <!-- About me-->
-<section class="home section" id="home">
-    <div class="home__container container grid">
-        {{ .Content }}
-    </div>
-</section>
+{{ partial "home/about.html" . }}
 
-<!--{{ range site.RegularPages }}
-  <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ .Summary }}
-{{ end }}-->
+<!-- Journey -->
+{{ partial "home/journey.html" . }}
+
+<!-- Skill -->
+{{ partial "home/skill.html" . }}
+
+<!-- Portfolio -->
+{{ partial "home/projects.html" . }}
+
 {{ end }}
