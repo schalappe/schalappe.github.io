@@ -9,11 +9,6 @@ title = 'Abdallah Hakim Kone'
     weight = 10
 
   [[menus.main]]
-    name = 'Posts'
-    pageRef = '/posts'
-    weight = 20
-
-  [[menus.main]]
     name = 'Photos'
     url = 'https://photos.schalappe.page/'
     weight = 50
