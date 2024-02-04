@@ -1,6 +1,7 @@
 baseURL = 'https://.schalappe.page/'
 languageCode = 'fr-fr'
 title = 'Abdallah Hakim Kone'
+theme = "alexa"
 [params]
   [params.contact]
     email = 'konehakim@gmail.com'
