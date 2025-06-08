@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://.schalappe.page/</loc>
+    <loc>https://schalappe.page/</loc>
   </url><url>
-    <loc>https://.schalappe.page/archives/</loc>
+    <loc>https://schalappe.page/archives/</loc>
   </url><url>
-    <loc>https://.schalappe.page/categories/</loc>
+    <loc>https://schalappe.page/categories/</loc>
   </url><url>
-    <loc>https://.schalappe.page/tags/</loc>
+    <loc>https://schalappe.page/tags/</loc>
   </url><url>
-    <loc>https://.schalappe.page/blog/</loc>
+    <loc>https://schalappe.page/blog/</loc>
   </url>
 </urlset>
