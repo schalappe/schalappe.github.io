@@ -47,27 +47,16 @@
   ],
   "experience": [
     {
-      "position": "Support IT",
-      "company": "Veone",
-      "city": "Abidjan",
-      "from": "Avril 2017",
-      "to": "Sept. 2017",
-      "current": false,
+      "position": "Ingénieur d'études et développement",
+      "company": "Softeam",
+      "city": "Rennes",
+      "from": "Jan. 2021",
+      "to": "Aujourd'hui",
+      "first": false,
       "description": [
-        "Déploiement de systèmes de supervision et services infogérés par VEONE (Centreon)",
-        "Assistant support IT"
-      ]
-    },
-    {
-      "position": "Développeur IA",
-      "company": "Compagnie Ivoirienne d'électricité",
-      "city": "Abidjan",
-      "from": "Avril 2018",
-      "to": "Août 2018",
-      "current": false,
-      "description": [
-        "Benchmark de modèles de détection d’objets (Yolo, SSD, Faster RCNN, ...) pour la détection d’incidents sur des réseaux électriques",
-        "Développement d’une application mobile multi-plateforme pour la gestion de sinistres sur les réseaux électriques"
+        "Étude de nouvelles solutions d'apprentissage automatique",
+        "Développement et déploiement de systèmes d'apprentissage automatique",
+        "Suivi et amélioration des systèmes d'apprentissage automatique déployés"
       ]
     },
     {
@@ -76,7 +65,7 @@
       "city": "Rennes",
       "from": "Sept. 2019",
       "to": "Sept. 2020",
-      "current": false,
+      "first": false,
       "description": [
         "Benchmark de modèles de tracking de multiples objets (Deep Sort, Yolo, SSD) pour la production de KPI orienté retail",
         "Programmation et déploiement d’une application de reconnaissance de visages similaires",
@@ -84,40 +73,31 @@
       ]
     },
     {
-      "position": "Ingénieur d'études et développement",
-      "company": "Softeam",
-      "city": "Rennes",
-      "from": "Jan. 2021",
-      "to": "Aujourd'hui",
-      "current": true,
+      "position": "Développeur IA",
+      "company": "Compagnie Ivoirienne d'électricité",
+      "city": "Abidjan",
+      "from": "Avril 2018",
+      "to": "Août 2018",
+      "first": false,
       "description": [
-        "Étude de nouvelles solutions d'apprentissage automatique",
-        "Développement et déploiement de systèmes d'apprentissage automatique",
-        "Suivi et amélioration des systèmes d'apprentissage automatique déployés"
+        "Benchmark de modèles de détection d’objets (Yolo, SSD, Faster RCNN, ...) pour la détection d’incidents sur des réseaux électriques",
+        "Développement d’une application mobile multi-plateforme pour la gestion de sinistres sur les réseaux électriques"
+      ]
+    },
+    {
+      "position": "Support IT",
+      "company": "Veone",
+      "city": "Abidjan",
+      "from": "Avril 2017",
+      "to": "Sept. 2017",
+      "first": true,
+      "description": [
+        "Déploiement de systèmes de supervision et services infogérés par VEONE (Centreon)",
+        "Assistant support IT"
       ]
     }
   ],
   "education": [
-    {
-      "institution": "E.S.A.T.I.C",
-      "program": "Systèmes Réseaux Informatiques",
-      "level": "Licence",
-      "city": "Abidjan",
-      "description": "Formation axée sur deux points: les réseaux informatiques et les mathématiques. Elle couvre l'algèbre linéaire et bilinéaire, le traitement du signal, les statistiques, les réseaux informatiques, l'administration des réseaux, ...\n",
-      "from": "Sept. 2014",
-      "to": "Sept. 2017",
-      "current": false
-    },
-    {
-      "institution": "E.S.A.T.I.C",
-      "program": "Sécurité Informatique",
-      "level": "Master",
-      "city": "Abidjan",
-      "description": "Formation axée sur la sécurité des systèmes d'information et les technologies du web. Elle couvre la programmation système et réseaux, le Big Data et le Cloud Computing, la sécurité des systèmes d'informations, la cryptographie, ...\n",
-      "from": "Sept. 2017",
-      "to": "Sept. 2019",
-      "current": false
-    },
     {
       "institution": "IMT Atlantique",
       "program": "Généraliste",
@@ -126,7 +106,17 @@
       "description": "Formation axée sur la transformation digitale par les données. Elle couvre le traitement du signal, l'ingénierie logicielle, le Machine Learning, le Deep Learning, l'aide à la décision, la théorie des jeux, ...\n",
       "from": "Sept. 2018",
       "to": "Sept. 2020",
-      "current": true
+      "first": false
+    },
+    {
+      "institution": "E.S.A.T.I.C",
+      "program": "Systèmes Réseaux Informatiques",
+      "level": "Licence",
+      "city": "Abidjan",
+      "description": "Formation axée sur deux points: les réseaux informatiques et les mathématiques. Elle couvre l'algèbre linéaire et bilinéaire, le traitement du signal, les statistiques, les réseaux informatiques, l'administration des réseaux, ...\n",
+      "from": "Sept. 2014",
+      "to": "Sept. 2017",
+      "first": true
     }
   ],
   "projects": [
