@@ -1,9 +1,9 @@
 ### Hugo template
 # Generated files by hugo
-private
-private/resources/_gen/
-private/assets/jsconfig.json
-hugo_stats.json
+./private
+./private/resources/_gen/
+./private/assets/jsconfig.json
+./hugo_stats.json
 
 # Executable may be added to repository
 hugo.exe
