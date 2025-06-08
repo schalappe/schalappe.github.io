@@ -20,13 +20,13 @@
                     </p>
                     <p class="portfolio__description">{{ $item.subtitle }}</p>
                     <div class="portfolio__actions">
-                        {{ if not $item.link }}
+                        {{ if $item.link }}
                         <a href="{{ $item.link }}" class="button button--flex button--small portfolio__button">
                             Demo
                             <i class="fas fa-arrow-right button__icon-right"></i>
                         </a>
                         {{ end }}
-                        {{ if not $item.github }}
+                        {{ if $item.github }}
                         <a href="{{ $item.github }}" class="button button--flex button--small portfolio__button">
                             Code
                             <i class="fab fa-github-alt button__icon-right"></i>
