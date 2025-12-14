@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ or site.Language.LanguageCode site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+<body>
+    <header id="header" class="header">
+        {{ partial "home/header.html" . }}
+    </header>
+
+    <main class="main">
+        <!-- About me-->
+        {{ partial "home/about.html" . }}
+
+        <!-- Journey -->
+        {{ partial "home/journey.html" . }}
+
+        <!-- Skill -->
+        {{ partial "home/skill.html" . }}
+
+        <!-- Portfolio -->
+        {{ partial "home/projects.html" . }}
+    </main>
+
+    <footer class="footer">
+        {{ partial "home/footer.html" . }}
+    </footer>
+</body>
+
+</html>

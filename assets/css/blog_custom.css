@@ -1,0 +1,111 @@
+/* Import Polices from main.css */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
+:root {
+    /* Font overrides */
+    --font-family: 'Zen Maru Gothic', sans-serif; /* Main font for PaperMod */
+    --article-font-family: 'Zen Maru Gothic', sans-serif; /* Article font if different */
+
+    /* Color overrides for dark theme */
+    --theme: #202023;                         /* Page background */
+    --entry: #28282b;                         /* Background for posts, cards */
+    --primary: hsl(142, 8%, 95%);             /* Main text color */
+    --secondary: hsl(142, 8%, 75%);           /* Secondary text (dates, meta) */
+    --tertiary: hsl(142, 8%, 55%);            /* Tertiary text or borders */
+    --content: hsl(142, 8%, 95%);             /* Article content text color */
+    
+    --link-color: #90ccca;                    /* Link color */
+    --link-hover-color: #a0dedb;              /* Link hover color */
+    
+    --code-block-bg: #28282b;                 /* Background for code blocks */
+    --code-bg: #333336;                       /* Inline code background */
+    --border-color: hsl(142, 8%, 40%);        /* Borders */
+
+    /* Header colors */
+    --header-bg: #202023;
+    --header-border-color: hsl(142, 8%, 40%);
+
+    /* Button colors */
+    --button-bg: #90ccca;
+    --button-hover-bg: #a0dedb;
+    --button-text-color: #202023;
+
+    /* Sizes from main.css */
+    --big-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+}
+
+/* Specific global overrides */
+body {
+    font-family: var(--font-family);
+    background-color: var(--theme);
+    font-size: var(--normal-font-size);
+    color: var(--primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: var(--font-semi-bold);
+    color: var(--primary);
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Ensure that the dark theme is applied if PaperMod relies on this attribute */
+html[data-theme="dark"] {
+    --theme: #202023;
+    --entry: #28282b;
+    --primary: hsl(142, 8%, 95%);
+    --secondary: hsl(142, 8%, 75%);
+    --tertiary: hsl(142, 8%, 55%);
+    --content: hsl(142, 8%, 95%);
+    --link-color: #90ccca;
+    --link-hover-color: #a0dedb;
+    --code-block-bg: #28282b;
+    --code-bg: #333336;
+    --border-color: hsl(142, 8%, 40%);
+    --header-bg: #202023;
+    --header-border-color: hsl(142, 8%, 40%);
+    --button-bg: #90ccca;
+    --button-hover-bg: #a0dedb;
+    --button-text-color: #202023;
+    --small-font-size: .875rem;
+}
+
+/* Navbar specific styles */
+.header .nav .logo a {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    color: var(--primary);
+    font-size: var(--small-font-size);
+    font-weight: 500;
+}
+
+.header .nav .logo a:hover {
+    color: var(--link-color);
+}
+
+/* PaperMod often wraps menu item text in a span */
+.header .nav ul#menu li a span {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    color: var(--primary);
+    font-size: var(--small-font-size);
+    font-weight: 500;
+}
+
+.header .nav ul#menu li a:hover span {
+    color: var(--link-hover-color);
+}

@@ -1,0 +1,41 @@
+<section class="home section" id="home">
+    <div class="home__container container grid">
+        {{ .Content }}
+
+        <div class="home__content grid">
+            <div class="home__social">
+                <a href="{{ .Site.Data.schalappe.social.linkedin }}" target="_blank" class="home__social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="{{ .Site.Data.schalappe.social.github }}" target="_blank" class="home__social-icon">
+                    <i class="fab fa-github-alt"></i>
+                </a>
+                <a href="{{ .Site.Data.schalappe.social.medium }}" target="_blank" class="home__social-icon">
+                    <i class="fab fa-medium-m"></i>
+                </a>
+            </div>
+
+            <div class="home__img">
+                {{ $profile := resources.Get .Site.Data.schalappe.profile.picture }}
+                <img src="{{ $profile.RelPermalink }}" class="home-img" alt="">
+            </div>
+
+            <div class="home__data">
+                {{ $cv := resources.Get "file/curriculum_vitae.pdf" }}
+                <h1 class="home__title">Hi, Je suis {{ .Site.Data.schalappe.profile.self_name }}</h1>
+                <h3 class="home__subtitle">{{ .Site.Data.schalappe.profile.role }}</h3>
+                <p class="home__description">{{ .Site.Data.schalappe.profile.description.goal }}</p>
+                <a href="{{ $cv.RelPermalink }}" class="button button--flex">
+                    <i class="fas fa-download button__icon-left"></i> Curriculum Vitae
+                </a>
+            </div>
+        </div>
+
+        <div class="home__scroll">
+            <a href="#journey" class="home__scroll-button button--flex">
+                <i class="fas fa-arrow-circle-down button__icon-left home__scroll-arrow"></i>
+                <span class="hom__scroll-name">Vers le bas</span>
+            </a>
+        </div>
+    </div>
+</section>
