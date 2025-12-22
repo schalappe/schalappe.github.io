@@ -47,11 +47,24 @@
   ],
   "experience": [
     {
+      "position": "Machine Learning Engineer",
+      "company": "BNP Paribas",
+      "city": "Nantes",
+      "from": "Juin 2025",
+      "to": "Aujourd'hui",
+      "first": false,
+      "description": [
+        "Étude de nouvelles solutions d'apprentissage automatique",
+        "Développement et déploiement de systèmes d'apprentissage automatique",
+        "Suivi et amélioration des systèmes d'apprentissage automatique déployés"
+      ]
+    },
+    {
       "position": "Ingénieur d'études et développement",
       "company": "Softeam",
       "city": "Rennes",
       "from": "Jan. 2021",
-      "to": "Aujourd'hui",
+      "to": "Juin 2025",
       "first": false,
       "description": [
         "Étude de nouvelles solutions d'apprentissage automatique",
