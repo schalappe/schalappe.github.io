@@ -1,10 +1,8 @@
 /* Skin for portfolio */
 
 /* Import Polices */
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
 
 /* -------------------------------------------------------------------------- */
 
@@ -29,7 +27,8 @@
     --text-color-lighter: #99ccca;
 
     /* Font */
-    --body-font: 'Zen Maru Gothic', sans-serif;
+    --body-font: 'Google Sans Code', sans-serif;
+    --header-font: 'Delius', cursive;
 
     /* Typography */
     --big-font-size: 2rem;
@@ -116,6 +115,7 @@ body {
 }
 
 h1, h2, h3, h4 {
+    font-family: var(--header-font);
     color: var(--title-color);
     font-weight: var(--font-semi-bold);
 }
