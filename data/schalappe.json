@@ -15,26 +15,23 @@
     "medium": "https://medium.com/@konehakim"
   },
   "languages": {
-    "Python": "simple-icons--python",
-    "TypeScript": "simple-icons--typescript",
-    "Markdown": "simple-icons--markdown"
+    "Python": "simple-icons:python",
+    "Rust": "simple-icons:rust",
+    "TypeScript": "simple-icons:typescript"
   },
   "tools": {
-    "Tensorflow": "simple-icons--tensorflow",
-    "Pytorch": "simple-icons--pytorch",
-    "Scikit-Learn": "simple-icons--scikitlearn",
-    "Jupyter": "simple-icons--jupyter",
-    "Polars": "simple-icons--polars",
-    "Pandas": "simple-icons--pandas",
-    "NumPy": "simple-icons--numpy",
-    "Git": "simple-icons--git",
-    "MongoDB": "simple-icons--mongodb",
-    "RabbitMQ": "simple-icons--rabbitmq",
-    "Docker": "simple-icons--docker",
-    "Linux": "simple-icons--linux",
-    "Flask": "simple-icons--flask",
-    "FastAPI": "simple-icons--fastapi",
-    "BentoML": "simple-icons--bentoml"
+    "Tensorflow": "simple-icons:tensorflow",
+    "Pytorch": "simple-icons:pytorch",
+    "Scikit-Learn": "simple-icons:scikitlearn",
+    "Polars": "simple-icons:polars",
+    "Pandas": "simple-icons:pandas",
+    "NumPy": "simple-icons:numpy",
+    "Git": "simple-icons:git",
+    "MongoDB": "simple-icons:mongodb",
+    "RabbitMQ": "simple-icons:rabbitmq",
+    "Docker": "simple-icons:docker",
+    "Linux": "simple-icons:linux",
+    "FastAPI": "simple-icons:fastapi"
   },
   "extra_skills": [
     "Machine Learning & Deep Learning",
