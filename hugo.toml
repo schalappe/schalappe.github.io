@@ -1,6 +1,6 @@
 baseURL = "https://info.schalappe.page/"
 theme = "PaperMod"
-languageCode = "en-us"
+languageCode = "fr-fr"
 title = "Abdallah Hakim Kone"
 
 [menus]
@@ -13,24 +13,11 @@ title = "Abdallah Hakim Kone"
 
   [[menus.main]]
     name = "Blog"
-    pageRef = "/blog"
+    url = "https://schalappe.substack.com/"
     weight = 20
+    rel = "external"
     [menus.main.params]
       class = "fa-solid fa-blog"
-  
-  [[menus.main]]
-    name = "Archives"
-    pageRef = "/archives"
-    weight = 30
-    [menus.main.params]
-      class = "fa-solid fa-clock"
-
-  [[menus.main]]
-    name = "Tags"
-    pageRef = "/tags"
-    weight = 40
-    [menus.main.params]
-      class = "fa-solid fa-tag"
 
   [[menus.main]]
     name = "Photos"

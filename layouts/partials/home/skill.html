@@ -16,7 +16,7 @@
             <div class="skills__list skills__icons grid">
                 {{ range $key, $value := .Site.Data.schalappe.languages }}
                 <div class="skills__data">
-                    <span class="{{ $value }} skills__icon"></span>
+                    <span class="iconify skills__icon" {{ printf "data-icon=%q" $value | safeHTMLAttr }}></span>
                     <h3 class="skills__name">{{ $key }}</h3>
                 </div>
                 {{ end }}
@@ -35,7 +35,7 @@
             <div class="skills__list skills__icons grid">
                 {{ range $key, $value := .Site.Data.schalappe.tools }}
                 <div class="skills__data">
-                    <span class="{{ $value }} skills__icon"></span>
+                    <span class="iconify skills__icon" {{ printf "data-icon=%q" $value | safeHTMLAttr }}></span>
                     <h3 class="skills__name">{{ $key }}</h3>
                 </div>
                 {{ end }}

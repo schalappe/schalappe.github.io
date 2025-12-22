@@ -11,30 +11,26 @@
   },
   "social": {
     "github": "https://github.com/schalappe",
-    "linkedin": "https://www.linkedin.com/in/abdallah-hakim-kone/",
-    "medium": "https://medium.com/@konehakim"
+    "linkedin": "https://www.linkedin.com/in/abdallah-hakim-kone/"
   },
   "languages": {
-    "Python": "simple-icons--python",
-    "TypeScript": "simple-icons--typescript",
-    "Markdown": "simple-icons--markdown"
+    "Python": "simple-icons:python",
+    "Rust": "simple-icons:rust",
+    "TypeScript": "simple-icons:typescript"
   },
   "tools": {
-    "Tensorflow": "simple-icons--tensorflow",
-    "Pytorch": "simple-icons--pytorch",
-    "Scikit-Learn": "simple-icons--scikitlearn",
-    "Jupyter": "simple-icons--jupyter",
-    "Polars": "simple-icons--polars",
-    "Pandas": "simple-icons--pandas",
-    "NumPy": "simple-icons--numpy",
-    "Git": "simple-icons--git",
-    "MongoDB": "simple-icons--mongodb",
-    "RabbitMQ": "simple-icons--rabbitmq",
-    "Docker": "simple-icons--docker",
-    "Linux": "simple-icons--linux",
-    "Flask": "simple-icons--flask",
-    "FastAPI": "simple-icons--fastapi",
-    "BentoML": "simple-icons--bentoml"
+    "Tensorflow": "simple-icons:tensorflow",
+    "Pytorch": "simple-icons:pytorch",
+    "Scikit-Learn": "simple-icons:scikitlearn",
+    "Polars": "simple-icons:polars",
+    "Pandas": "simple-icons:pandas",
+    "NumPy": "simple-icons:numpy",
+    "Git": "simple-icons:git",
+    "MongoDB": "simple-icons:mongodb",
+    "RabbitMQ": "simple-icons:rabbitmq",
+    "Docker": "simple-icons:docker",
+    "Linux": "simple-icons:linux",
+    "FastAPI": "simple-icons:fastapi"
   },
   "extra_skills": [
     "Machine Learning & Deep Learning",
@@ -47,11 +43,24 @@
   ],
   "experience": [
     {
+      "position": "Machine Learning Engineer",
+      "company": "BNP Paribas",
+      "city": "Nantes",
+      "from": "Juin 2025",
+      "to": "Aujourd'hui",
+      "first": false,
+      "description": [
+        "Étude de nouvelles solutions d'apprentissage automatique",
+        "Développement et déploiement de systèmes d'apprentissage automatique",
+        "Suivi et amélioration des systèmes d'apprentissage automatique déployés"
+      ]
+    },
+    {
       "position": "Ingénieur d'études et développement",
       "company": "Softeam",
       "city": "Rennes",
       "from": "Jan. 2021",
-      "to": "Aujourd'hui",
+      "to": "Juin 2025",
       "first": false,
       "description": [
         "Étude de nouvelles solutions d'apprentissage automatique",
