@@ -8,8 +8,10 @@
             <!-- Project -->
             {{ range $item := .Site.Data.schalappe.projects }}
             <div class="portfolio__content grid swiper-slide">
-                {{ $illustration := resources.Get $item.img}}
+                {{ with $item.img }}
+                {{ $illustration := resources.Get . }}
                 <img src="{{ $illustration.RelPermalink }}" alt="" class="portfolio__img">
+                {{ end }}
 
                 <div class="portfolio__data">
                     <h3 class="portfolio__title">{{ $item.title }}</h3>

@@ -153,6 +153,32 @@
         "Reinforcement Learning",
         "Tensorflow"
       ]
+    },
+    {
+      "title": "CBIR",
+      "subtitle": "Recherche d'images par le contenu",
+      "description": "Système de recherche d'images similaires basé sur l'analyse des caractéristiques visuelles. Compare les méthodes traditionnelles (AKAZE, ORB) aux approches deep learning (VGG16, EfficientNet).\n",
+      "link": null,
+      "github": "https://github.com/schalappe/content-based-image-retrieval",
+      "img": "images/cbir.png",
+      "tags": [
+        "Computer Vision",
+        "Deep Learning",
+        "TensorFlow"
+      ]
+    },
+    {
+      "title": "Watermark CNN",
+      "subtitle": "Watermarking invisible par CNN",
+      "description": "Implémentation d'un réseau de neurones convolutif pour le watermarking invisible et robuste d'images numériques, adaptatif à la résolution.\n",
+      "link": null,
+      "github": "https://github.com/schalappe/watermark_resolution",
+      "img": "images/watermark.png",
+      "tags": [
+        "Computer Vision",
+        "Deep Learning",
+        "TensorFlow"
+      ]
     }
   ]
 }
