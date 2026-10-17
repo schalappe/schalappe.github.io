@@ -1,6 +1,27 @@
 {{- $p := hugo.Data.profile -}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{- /* The site's only script. The OS setting is the default; the header button stores an override. Runs before
+first paint so a saved theme never flashes. Without JS the button stays hidden and the OS setting applies. */}}
+<script>
+  (function () {
+    var root = document.documentElement, os = matchMedia("(prefers-color-scheme: dark)");
+    try {var saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved;} catch (e) { }
+    function isDark() {return root.dataset.theme ? root.dataset.theme === "dark" : os.matches;}
+    document.addEventListener("DOMContentLoaded", function () {
+      var button = document.querySelector(".theme");
+      function sync() {button.setAttribute("aria-pressed", isDark());}
+      button.hidden = false;
+      sync();
+      os.addEventListener("change", sync);
+      button.addEventListener("click", function () {
+        root.dataset.theme = isDark() ? "light" : "dark";
+        try {localStorage.setItem("theme", root.dataset.theme);} catch (e) { }
+        sync();
+      });
+    });
+  })();
+</script>
 <meta name="color-scheme" content="light dark">
 {{- if .IsHome }}
 <title>{{ $p.name }}, {{ $p.role }}</title>
@@ -17,7 +38,7 @@
 <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
 {{- end }}{{ end }}
 <link rel="icon" href="{{ `favicon.ico` | relURL }}" sizes="any">
-<link rel="preload" href="{{ `fonts/source-sans-3-latin.woff2` | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ `fonts/geist.woff2` | relURL }}" as="font" type="font/woff2" crossorigin>
 {{- with resources.Get "css/main.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
 {{- end }}

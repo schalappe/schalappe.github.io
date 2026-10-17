@@ -27,7 +27,7 @@ A bilingual personal portfolio (English default at `/`, French at `/fr/`) for an
 
 ## Capabilities and Constraints
 
-- Hugo static site, small custom theme, no JavaScript, no theme dependency. Deployed to GitHub Pages.
+- Hugo static site, small custom theme, no theme dependency. The only JavaScript is a small inline light/dark switch; the site works fully without it. Deployed to GitHub Pages.
 - `data/profile.yaml` is the single source for profile, experience, education, skills; shared by the site and the CV.
 - Every content and interface string exists in English and French.
 - Projects are page bundles with cover image, optional click-to-play demo video and caption.

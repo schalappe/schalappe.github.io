@@ -1,12 +1,6 @@
 {{ define "main" }}
 <article class="case">
-  <header>
-    <p class="back"><a href="{{ site.Home.RelPermalink }}#work">{{ i18n "back_home" }}</a></p>
-    <h1>{{ .Title }}</h1>
-    <p class="lede">{{ .Description }}</p>
-    <p class="stack">{{ .Params.year }}, {{ delimit .Params.stack ", " }}</p>
-    <p class="actions"><a class="button" href="{{ .Params.repo }}">{{ i18n "code" }}</a></p>
-  </header>
+  <p class="back"><a href="{{ site.Home.RelPermalink }}#work">{{ i18n "back_home" }}</a></p>
 
   {{- $cover := .Resources.GetMatch "cover.*" }}
   {{- with .Resources.GetMatch "demo.mp4" }}
@@ -26,6 +20,16 @@
       alt="{{ $.Params.cover_alt | default $.Title }}">
   </figure>
   {{- end }}{{ end }}
+
+  <header>
+    <h1>{{ .Title }}</h1>
+    <p class="lede">{{ .Description }}</p>
+  </header>
+  <p class="meta">
+    <span class="meta-year">{{ .Params.year }}</span>
+    <span class="stack">{{ delimit .Params.stack " · " }}</span>
+    <a class="button" href="{{ .Params.repo }}">{{ i18n "code" }}</a>
+  </p>
 
   <div class="prose">
     {{ .Content }}

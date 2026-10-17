@@ -1,4 +1,0 @@
-{{- /* "YYYY-MM" -> localized "Jan 2021"; null -> "present". */ -}}
-{{- $out := i18n "present" -}}
-{{- with . }}{{ $out = (printf "%s-01" .) | time.AsTime | time.Format "Jan 2006" }}{{ end -}}
-{{- return $out -}}

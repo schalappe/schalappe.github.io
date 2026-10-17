@@ -3,7 +3,8 @@
 ## Project
 
 Bilingual (English default at `/`, French at `/fr/`) portfolio of Abdallah Hakim Kone, ML engineer.
-Audience: employers. Hugo with a small custom theme, no JavaScript, no theme dependency. Writing lives on
+Audience: employers. Hugo with a small custom theme, no theme dependency, and one inline script (the theme switch in
+`layouts/_partials/head.html`); everything else works without JavaScript. Writing lives on
 Substack; there is no local blog.
 
 ## Commands
@@ -38,7 +39,8 @@ deploys `main` to GitHub Pages. `baseURL` comes from `hugo.toml`; never pass `--
 
 `layouts/baseof.html` wraps every page; `home.html` is the portfolio, `page.html` a case study, `404.html`.
 Partials in `layouts/_partials/`. Styles in `assets/css/main.css` (tokens at the top, light/dark from
-`prefers-color-scheme`). Font: Source Sans 3, self-hosted in `static/fonts/` and `cv/fonts/`.
+`prefers-color-scheme`). Fonts: Geist (site and CV) and Geist Mono (site, data only), self-hosted in `static/fonts/`
+and `cv/fonts/`.
 
 ## Gotcha
 

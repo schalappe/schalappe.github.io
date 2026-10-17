@@ -8,12 +8,11 @@ skip: Aller au contenu
 email_me: M'écrire
 download_cv: Télécharger le CV
 portrait_alt: Portrait de Hakim Kone
-work: Projets choisis
-work_intro: Des projets personnels menés de bout en bout. Mon travail en production chez Softeam et BNP Paribas est confidentiel ; il est décrit dans le parcours.
+work: Projets
+work_intro: Des projets personnels menés de bout en bout, du problème aux résultats, limites comprises.
 case_study: Lire l'étude de cas
 code: Code sur GitHub
 experience: Parcours
-present: aujourd'hui
 about: À propos
 skills: Compétences
 education: Formation
@@ -28,3 +27,5 @@ built_with: Réalisé avec Hugo.
 role_at: "{{ .role }} chez {{ .company }}"
 certifications: Certifications
 production: Production
+dark_mode: Mode sombre
+since: depuis

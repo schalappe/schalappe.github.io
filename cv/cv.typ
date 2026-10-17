@@ -4,9 +4,9 @@
 #let lang = sys.inputs.at("lang", default: "en")
 #let p = yaml("/data/profile.yaml")
 
-#let ink = rgb("#18212B")
-#let muted = rgb("#586371")
-#let line-color = rgb("#D8DED3")
+#let ink = rgb("#111214")
+#let muted = rgb("#5C5F66")
+#let line-color = rgb("#E0E0DC")
 #let accent = rgb("#2E6A12")
 #let accent-graphic = rgb("#5DA327")
 
@@ -50,7 +50,7 @@
   author: p.name,
 )
 #set page(paper: "a4", margin: (x: 1.3cm, y: 0.9cm))
-#set text(font: "Source Sans 3", size: 9.5pt, fill: ink, lang: lang)
+#set text(font: "Geist", size: 9pt, fill: ink, lang: lang)
 #set par(leading: 0.42em, spacing: 0.5em)
 #set list(marker: text(fill: accent-graphic)[•], indent: 0.2em, body-indent: 0.5em, spacing: 0.3em)
 // yaml strings bypass smart quotes; typographic apostrophe in print.

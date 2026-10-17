@@ -8,12 +8,11 @@ skip: Skip to content
 email_me: Email me
 download_cv: Download CV
 portrait_alt: Portrait of Hakim Kone
-work: Selected work
-work_intro: Personal projects I built end to end. My production work at Softeam and BNP Paribas is confidential, so it is described under experience.
+work: Projects
+work_intro: Personal projects built end to end, from the problem to the results, limits included.
 case_study: Read the case study
 code: Code on GitHub
 experience: Experience
-present: present
 about: About
 skills: Skills
 education: Education
@@ -28,3 +27,5 @@ built_with: Built with Hugo.
 role_at: "{{ .role }} at {{ .company }}"
 certifications: Certifications
 production: Production
+dark_mode: Dark mode
+since: since
