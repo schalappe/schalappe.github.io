@@ -1,122 +1,121 @@
 /* Source Sans 3 (OFL), self-hosted, shared with the CV (cv/fonts). */
 @font-face {
-  font-family: "Source Sans 3";
-  src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
-  font-weight: 200 900;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ font-family: "Source Sans 3";
+ src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
+ font-weight: 200 900;
+ font-display: swap;
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Source Sans 3";
-  src: url("/fonts/source-sans-3-latin-ext.woff2") format("woff2");
-  font-weight: 200 900;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+ font-family: "Source Sans 3";
+ src: url("/fonts/source-sans-3-latin-ext.woff2") format("woff2");
+ font-weight: 200 900;
+ font-display: swap;
+ unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 :root {
-  --paper: #f5f7f2;
-  --ink: #18212b;
-  --muted: #586371;
-  --line: #d8ded3;
-  --plate: #ffffff;
-  --accent: #5da327;
-  /* graphics: bounding box, focus ring */
-  --accent-ink: #2e6a12;
-  /* text and filled buttons */
-  --on-accent: #ffffff;
-  --label-ink: #0e1a06;
-  --gutter: clamp(1.25rem, 5vw, 3rem);
-  --label-col: 11rem;
+ --paper: #f5f7f2;
+ --ink: #18212b;
+ --muted: #586371;
+ --line: #d8ded3;
+ --plate: #ffffff;
+ --accent: #5da327;
+ /* graphics: bounding box, focus ring */
+ --accent-ink: #2e6a12;
+ /* text and filled buttons */
+ --on-accent: #ffffff;
+ --label-ink: #0e1a06;
+ --gutter: clamp(1.25rem, 5vw, 3rem);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #121714;
-    --ink: #e4e9e1;
-    --muted: #9ca69d;
-    --line: #2a332d;
-    --plate: #f2f4ef;
-    --accent: #7cc94a;
-    --accent-ink: #9bdb6e;
-    --on-accent: #121714;
-  }
+ :root {
+  --paper: #121714;
+  --ink: #e4e9e1;
+  --muted: #9ca69d;
+  --line: #2a332d;
+  --plate: #f2f4ef;
+  --accent: #7cc94a;
+  --accent-ink: #9bdb6e;
+  --on-accent: #121714;
+ }
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+ box-sizing: border-box;
 }
 
 html {
-  -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 1.5rem;
+ -webkit-text-size-adjust: 100%;
+ scroll-padding-top: 1.5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+ html {
+  scroll-behavior: smooth;
+ }
 }
 
 body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 400 1.125rem/1.6 "Source Sans 3", system-ui, sans-serif;
-  font-kerning: normal;
+ margin: 0;
+ background: var(--paper);
+ color: var(--ink);
+ font: 400 1.125rem/1.6 "Source Sans 3", system-ui, sans-serif;
+ font-kerning: normal;
 }
 
 img,
 video {
-  display: block;
-  max-width: 100%;
-  height: auto;
+ display: block;
+ max-width: 100%;
+ height: auto;
 }
 
 h1,
 h2,
 h3 {
-  line-height: 1.15;
-  margin: 0;
+ line-height: 1.15;
+ margin: 0;
 }
 
 p,
 ul,
 ol,
 dl {
-  margin: 0;
+ margin: 0;
 }
 
 a {
-  color: var(--accent-ink);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
+ color: var(--accent-ink);
+ text-decoration-thickness: 1px;
+ text-underline-offset: 0.2em;
 }
 
 a:hover {
-  text-decoration-thickness: 2px;
+ text-decoration-thickness: 2px;
 }
 
 :focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
+ outline: 3px solid var(--accent);
+ outline-offset: 3px;
+ border-radius: 2px;
 }
 
 .skip {
-  position: absolute;
-  left: var(--gutter);
-  top: -4rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--ink);
-  color: var(--paper);
+ position: absolute;
+ left: var(--gutter);
+ top: -4rem;
+ padding: 0.5rem 0.75rem;
+ background: var(--ink);
+ color: var(--paper);
 }
 
 .skip:focus {
-  top: 0.75rem;
+ top: 0.75rem;
 }
 
 /* Page frame */
@@ -124,420 +123,762 @@ a:hover {
 .site-header,
 main,
 .site-footer {
-  max-width: 68rem;
-  margin-inline: auto;
-  padding-inline: var(--gutter);
+ max-width: 68rem;
+ margin-inline: auto;
+ padding-inline: var(--gutter);
 }
 
 .site-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem 2rem;
-  padding-block: 1.5rem;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: baseline;
+ justify-content: space-between;
+ gap: 0.75rem 2rem;
+ padding-block: 1.5rem;
 }
 
 .brand {
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-decoration: none;
+ color: var(--ink);
+ font-weight: 700;
+ font-size: 1.2rem;
+ text-decoration: none;
 }
 
 .site-header nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.5rem;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.25rem 1.5rem;
 }
 
 .site-header nav a {
-  color: var(--ink);
-  text-decoration: none;
-  padding-block: 0.25rem;
+ color: var(--ink);
+ text-decoration: none;
+ padding-block: 0.25rem;
 }
 
 .site-header nav a:hover {
-  color: var(--accent-ink);
+ color: var(--accent-ink);
 }
 
 .site-header .lang {
-  color: var(--muted);
+ color: var(--muted);
 }
 
 .site-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem 2rem;
-  padding-block: 2.5rem 3rem;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 0.95rem;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ gap: 0.5rem 2rem;
+ padding-block: 2.5rem 3rem;
+ border-top: 1px solid var(--line);
+ color: var(--muted);
+ font-size: 0.95rem;
 }
 
 .site-footer p:last-child {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.25rem;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.25rem 1.25rem;
 }
 
 .site-footer a {
-  color: var(--muted);
+ color: var(--muted);
 }
 
 /* Shared pieces */
 
 .button {
-  display: inline-block;
-  padding: 0.6rem 1.15rem;
-  border: 2px solid var(--accent-ink);
-  border-radius: 6px;
-  background: var(--accent-ink);
-  color: var(--on-accent);
-  font-weight: 600;
-  text-decoration: none;
+ display: inline-block;
+ padding: 0.6rem 1.15rem;
+ border: 2px solid var(--accent-ink);
+ border-radius: 6px;
+ background: var(--accent-ink);
+ color: var(--on-accent);
+ font-weight: 600;
+ text-decoration: none;
 }
 
 .button:hover {
-  text-decoration: none;
-  filter: brightness(1.1);
+ text-decoration: none;
+ filter: brightness(1.1);
 }
 
 .button.quiet {
-  background: transparent;
-  color: var(--accent-ink);
+ background: transparent;
+ color: var(--accent-ink);
 }
 
 .profiles {
-  display: inline-flex;
-  gap: 1.25rem;
+ display: inline-flex;
+ gap: 1.25rem;
 }
 
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.25rem;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ gap: 0.75rem 1.25rem;
 }
 
 .lede {
-  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
-  line-height: 1.35;
-  max-width: 34ch;
+ font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+ line-height: 1.35;
+ max-width: 34ch;
 }
 
 .stack,
 .where,
 .when {
-  color: var(--muted);
-  font-size: 0.95rem;
+ color: var(--muted);
+ font-size: 0.95rem;
 }
 
-/* Hero */
+/* Hero: name, role, headline and actions on the left; the bridge diagram on the right */
 
 .hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 2.5rem 4rem;
-  padding-block: clamp(2.5rem, 8vw, 6rem) clamp(3rem, 8vw, 5.5rem);
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) minmax(0, 23rem);
+ align-items: center;
+ gap: 3rem clamp(3rem, 6vw, 5rem);
+ padding-block: clamp(3rem, 7vw, 5rem);
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6.5vw, 4.4rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1;
-  max-width: 12ch;
+ font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+ font-weight: 700;
+ letter-spacing: -0.03em;
+ line-height: 1;
 }
 
 .hero .role {
-  margin-top: 1rem;
-  color: var(--muted);
-  font-size: 1.2rem;
-  font-weight: 600;
+ margin-top: 0.85rem;
+ color: var(--muted);
+ font-size: 1.1rem;
+ font-weight: 600;
 }
 
 .hero .lede {
-  margin-top: 1.5rem;
+ margin-top: 1.25rem;
 }
 
 .hero .actions {
-  margin-top: 2rem;
+ margin-top: 1.75rem;
+}
+
+/* Bridge: the positioning as a diagram. The portrait on top, a 1px stem down to a T that splits into
+   infrastructure and modeling, then the green production box. */
+
+.bridge {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ grid-template-areas: "core core" "infra models" "out out";
+ margin: 0;
+}
+
+.bridge-core {
+ grid-area: core;
+ justify-self: center;
+ position: relative;
+ padding-bottom: 1.75rem;
+}
+
+/* The stem starts at the detector box's bottom edge (portrait margin minus the 10px bbox inset). */
+.bridge-core::after {
+ content: "";
+ position: absolute;
+ bottom: 0;
+ left: calc(50% - 0.5px);
+ height: calc(1.75rem + 0.75rem - 10px);
+ border-left: 1px solid var(--muted);
+}
+
+.bridge-side {
+ padding-top: 1rem;
+ border-top: 1px solid var(--muted);
+ font-size: 0.95rem;
+}
+
+.bridge-infra {
+ grid-area: infra;
+ padding-right: 1.25rem;
+ text-align: right;
+}
+
+.bridge-models {
+ grid-area: models;
+ padding-left: 1.25rem;
+ border-left: 1px solid var(--line);
+}
+
+.bridge-title {
+ margin-bottom: 0.5rem;
+ font-weight: 600;
+}
+
+.bridge-side ul {
+ list-style: none;
+ padding: 0;
+ color: var(--muted);
+}
+
+.bridge-side li+li {
+ margin-top: 0.2rem;
+}
+
+.bridge-out {
+ grid-area: out;
+ justify-self: center;
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ margin-top: 1.5rem;
+ padding: 0.3rem 0.75rem;
+ border: 1px solid var(--accent);
+ border-radius: 2px;
+ font-size: 0.95rem;
+ font-weight: 600;
+}
+
+.bridge-dot {
+ width: 0.5rem;
+ height: 0.5rem;
+ background: var(--accent);
 }
 
 .portrait {
-  position: relative;
-  margin: 1.5rem 0.75rem 0.75rem;
-  width: 320px;
+ position: relative;
+ width: 200px;
+ margin: 1.6rem 0.75rem 0.75rem;
 }
 
 .portrait img {
-  border-radius: 2px;
+ border-radius: 2px;
 }
 
 .bbox {
-  position: absolute;
-  inset: -10px;
-  border: 2px solid var(--accent);
+ position: absolute;
+ inset: -10px;
+ border: 2px solid var(--accent);
 }
 
 .bbox-label {
-  position: absolute;
-  left: -2px;
-  bottom: 100%;
-  padding: 0.05rem 0.45rem;
-  background: var(--accent);
-  color: var(--label-ink);
-  font-size: 0.8rem;
-  font-weight: 600;
-  white-space: nowrap;
+ position: absolute;
+ left: -2px;
+ bottom: 100%;
+ padding: 0.05rem 0.45rem;
+ background: var(--accent);
+ color: var(--label-ink);
+ font-size: 0.8rem;
+ font-weight: 600;
+ white-space: nowrap;
 }
 
 /* The page's one moment of motion: the box locks onto the face like a detector. */
 @media (prefers-reduced-motion: no-preference) {
-  .bbox {
-    animation: lock 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
-  }
+ .bbox {
+  animation: lock 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
+ }
 
-  @keyframes lock {
-    from {
-      inset: -34px;
-      opacity: 0;
-    }
+ @keyframes lock {
+  from {
+   inset: -34px;
+   opacity: 0;
   }
+ }
 }
 
-/* Sections: name on the left, content on the right */
+/* Sections: large title above the content */
 
 .block {
-  display: grid;
-  grid-template-columns: var(--label-col) minmax(0, 46rem);
-  gap: 1rem 3rem;
-  padding-block: 3rem;
-  border-top: 1px solid var(--line);
+ padding-block: clamp(3rem, 6vw, 4.5rem);
+ border-top: 1px solid var(--ink);
 }
 
-.block h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
+.block>h2 {
+ margin-bottom: 1.75rem;
+ font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+ font-weight: 700;
+ letter-spacing: -0.025em;
+ line-height: 1.05;
+}
+
+.block>.body {
+ max-width: 46rem;
 }
 
 .body>*+* {
-  margin-top: 1rem;
+ margin-top: 1rem;
 }
 
 .intro {
-  color: var(--muted);
+ color: var(--muted);
 }
 
-.timeline {
-  list-style: none;
-  padding: 0;
+.block>.intro {
+ max-width: 46rem;
+ margin-bottom: 1.75rem;
 }
 
-.timeline>li {
-  display: grid;
-  grid-template-columns: 9.5rem minmax(0, 1fr);
-  gap: 0.25rem 1.5rem;
+/* Career chart: one grid column per month; the current role is the only green bar. */
+
+.career {
+ list-style: none;
+ padding: 0;
+ margin-bottom: 2.5rem;
 }
 
-.timeline>li+li {
-  margin-top: 2.25rem;
+.career>li {
+ display: grid;
+ grid-template-columns: 15rem minmax(0, 1fr);
+ gap: 0.25rem 1.5rem;
+ align-items: center;
+ padding-block: 0.4rem;
+ border-bottom: 1px solid var(--line);
 }
 
-.timeline .when {
-  padding-top: 0.15rem;
+.career .who {
+ font-size: 0.95rem;
+ line-height: 1.3;
 }
 
-.timeline h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
+.career .who b {
+ font-weight: 600;
 }
 
-.timeline li>div>*+* {
-  margin-top: 0.5rem;
+.career .who span {
+ color: var(--muted);
 }
 
-.timeline ul {
-  padding-left: 1.1rem;
+.career-track {
+ display: grid;
+ grid-template-columns: repeat(var(--months), minmax(0, 1fr));
+ height: 1.25rem;
+ align-items: center;
 }
 
-.timeline ul li+li {
-  margin-top: 0.3rem;
+.career-bar {
+ height: 0.5rem;
+ background: var(--ink);
+ border-radius: 1px;
 }
+
+.career-bar.now {
+ background: var(--accent);
+}
+
+.career>.career-axis {
+ border-bottom: 0;
+}
+
+.career-axis .career-track {
+ height: auto;
+}
+
+.career-axis span {
+ padding-left: 0.3rem;
+ border-left: 1px solid var(--muted);
+ color: var(--muted);
+ font-size: 0.8rem;
+ font-variant-numeric: tabular-nums;
+}
+
+/* Learning chart: the career chart with thinner bars and a tick per certification. */
+
+.learning .career-bar {
+ height: 6px;
+}
+
+/* A tick fills its month column minus 1px, so certificates in adjacent months stay separate at any width
+   (same-month certificates share one tick). */
+.career-mark {
+ justify-self: start;
+ width: calc(100% - 1px);
+ min-width: 1px;
+ height: 0.9rem;
+ background: var(--ink);
+}
+
+/* Cells: a ruled grid (1px gap over the line colour) of plain paper cells. Two columns by default. */
+
+.cells {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 1px;
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ background: var(--line);
+ border: 1px solid var(--line);
+}
+
+.cells>* {
+ padding: 1.25rem 1.5rem;
+ background: var(--paper);
+}
+
+.cells>*>*+* {
+ margin-top: 0.35rem;
+}
+
+/* Two entry-title levels across the page: 1.3rem/700 for primary entries (projects, degrees),
+   1.15rem/600 for items (roles, certificates, skill groups). */
+.cells h3 {
+ font-size: 1.15rem;
+ font-weight: 600;
+ line-height: 1.3;
+}
+
+.cells .degree h3 {
+ font-size: 1.3rem;
+ font-weight: 700;
+ letter-spacing: -0.01em;
+}
+
+.cell-year {
+ font-size: clamp(1.75rem, 3vw, 2.25rem);
+ font-weight: 700;
+ letter-spacing: -0.03em;
+ line-height: 1;
+ font-variant-numeric: tabular-nums;
+}
+
+.skill-cells,
+.cert-cells {
+ grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.skill-cells dt {
+ font-size: 1.15rem;
+ font-weight: 600;
+}
+
+.skill-cells dd {
+ margin: 0.4rem 0 0;
+ color: var(--muted);
+}
+
+/* Certificates sit directly under the degrees; -1px merges the two outer borders into one line. */
+.cert-cells {
+ margin-top: -1px;
+}
+
+/* The last certificate stretches to close its row, so no empty line-coloured cell shows. */
+.cert-cells>:last-child:nth-child(4n+2) {
+ grid-column: span 3;
+}
+
+.cert-cells>:last-child:nth-child(4n+3) {
+ grid-column: span 2;
+}
+
+@media (max-width: 64rem) {
+
+ .skill-cells,
+ .cert-cells {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+ }
+
+ .cert-cells>:last-child:nth-child(n) {
+  grid-column: auto;
+ }
+
+ .cert-cells>:last-child:nth-child(odd) {
+  grid-column: span 2;
+ }
+}
+
+@media (max-width: 40rem) {
+
+ .cells,
+ .skill-cells,
+ .cert-cells {
+  grid-template-columns: minmax(0, 1fr);
+ }
+
+ .cert-cells>:last-child:nth-child(n) {
+  grid-column: auto;
+ }
+
+ .career-axis span:nth-child(even) {
+  visibility: hidden;
+ }
+}
+
+/* Roles: one native <details> per role; the summary row is a 9.5rem date column, the text, and a chevron. */
+
+.roles {
+ list-style: none;
+ padding: 0;
+}
+
+/* The list spans the section so chevrons line up with the chart's right edge; text keeps the prose measure. */
+.roles summary>div,
+.role-detail>* {
+ max-width: 46rem;
+}
+
+.roles>li {
+ border-top: 1px solid var(--line);
+}
+
+.roles>li:last-child {
+ border-bottom: 1px solid var(--line);
+}
+
+.roles summary {
+ display: grid;
+ grid-template-columns: 9.5rem minmax(0, 1fr) 1rem;
+ gap: 0.25rem 1.5rem;
+ padding-block: 1rem;
+ cursor: pointer;
+ list-style: none;
+}
+
+.roles summary::-webkit-details-marker {
+ display: none;
+}
+
+.roles summary::after {
+ content: "";
+ width: 0.45rem;
+ height: 0.45rem;
+ margin-top: 0.5rem;
+ border-right: 1.5px solid var(--muted);
+ border-bottom: 1.5px solid var(--muted);
+ transform: rotate(45deg);
+ justify-self: end;
+}
+
+.roles details[open]>summary::after {
+ margin-top: 0.75rem;
+ transform: rotate(-135deg);
+}
+
+.roles summary:hover h3 {
+ color: var(--accent-ink);
+}
+
+.roles .when {
+ padding-top: 0.15rem;
+ font-variant-numeric: tabular-nums;
+}
+
+.roles h3 {
+ font-size: 1.15rem;
+ font-weight: 600;
+}
+
+.roles summary div>*+* {
+ margin-top: 0.3rem;
+}
+
+/* Indented to the text column: 9.5rem date column + 1.5rem gap. */
+.role-detail {
+ padding: 0 2.5rem 1.5rem 11rem;
+}
+
+.role-detail>*+* {
+ margin-top: 0.6rem;
+}
+
+.role-detail ul {
+ padding-left: 1.1rem;
+}
+
+.role-detail li+li {
+ margin-top: 0.3rem;
+}
+
+/* Projects: a ruled 2×2 grid; the 1px gap shows the line colour between cells. */
 
 .projects {
-  list-style: none;
-  padding: 0;
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 1px;
+ list-style: none;
+ padding: 0;
+ background: var(--line);
+ border: 1px solid var(--line);
 }
 
 .projects>li {
-  display: grid;
-  grid-template-columns: 13rem minmax(0, 1fr);
-  gap: 1rem 1.75rem;
-  align-items: start;
+ display: flex;
+ flex-direction: column;
+ background: var(--paper);
 }
 
-.projects>li+li {
-  margin-top: 2.5rem;
+/* The cover runs edge to edge in its cell; a hairline separates it from the text. */
+.projects .thumb {
+ padding: 1rem;
+ border: 0;
+ border-bottom: 1px solid var(--line);
+ border-radius: 0;
+}
+
+.project-body {
+ display: flex;
+ flex: 1;
+ flex-direction: column;
+ gap: 0.5rem;
+ padding: 1.25rem 1.5rem 1.5rem;
 }
 
 .projects h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
+ font-size: 1.3rem;
+ font-weight: 700;
+ letter-spacing: -0.015em;
+ line-height: 1.15;
 }
 
 .projects h3 a {
-  color: var(--ink);
+ color: var(--ink);
+ text-decoration: none;
 }
 
-.projects li>div>*+* {
-  margin-top: 0.4rem;
+.projects h3 a:hover {
+ color: var(--accent-ink);
+ text-decoration: underline;
+}
+
+/* Links sit at the bottom so they line up across a row. */
+.projects .links {
+ margin-top: auto;
+ padding-top: 0.75rem;
+}
+
+@media (max-width: 40rem) {
+ .projects {
+  grid-template-columns: minmax(0, 1fr);
+ }
 }
 
 .thumb,
 .media img,
 .media video {
-  background: var(--plate);
-  border: 1px solid var(--line);
-  border-radius: 4px;
+ background: var(--plate);
+ border: 1px solid var(--line);
+ border-radius: 4px;
 }
 
 .thumb {
-  width: 100%;
-  aspect-ratio: 14 / 9;
-  object-fit: contain;
-  padding: 0.4rem;
+ width: 100%;
+ aspect-ratio: 14 / 9;
+ object-fit: contain;
+ padding: 0.4rem;
 }
 
 .links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.25rem;
-}
-
-.skills>div {
-  display: grid;
-  grid-template-columns: 9.5rem minmax(0, 1fr);
-  gap: 0.25rem 1.5rem;
-}
-
-.skills dt {
-  font-weight: 600;
-}
-
-.skills dd {
-  margin: 0;
-}
-
-.contact .email {
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
-  font-weight: 600;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.25rem 1.25rem;
 }
 
 /* Case study pages */
 
 .case {
-  max-width: 46rem;
-  padding-block: 2rem 4rem;
+ max-width: 46rem;
+ padding-block: 2rem 4rem;
 }
 
 .case>header>*+* {
-  margin-top: 1rem;
+ margin-top: 1rem;
 }
 
 .case h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+ font-size: clamp(2rem, 5vw, 3rem);
+ font-weight: 700;
+ letter-spacing: -0.02em;
 }
 
 .case .lede {
-  max-width: 40ch;
+ max-width: 40ch;
 }
 
 .case .actions {
-  margin-top: 1.5rem;
+ margin-top: 1.5rem;
 }
 
 .back {
-  font-size: 0.95rem;
+ font-size: 0.95rem;
 }
 
 .media {
-  margin: 2.5rem 0;
+ margin: 2.5rem 0;
 }
 
 .media video,
 .media img {
-  width: 100%;
-  max-height: 32rem;
-  object-fit: contain;
+ width: 100%;
+ max-height: 32rem;
+ object-fit: contain;
 }
 
 .prose {
-  max-width: 68ch;
+ max-width: 68ch;
 }
 
 .prose>*+* {
-  margin-top: 1rem;
+ margin-top: 1rem;
 }
 
 .prose h2 {
-  margin-top: 2.25rem;
-  font-size: 1.35rem;
-  font-weight: 600;
+ margin-top: 2.25rem;
+ font-size: 1.35rem;
+ font-weight: 600;
 }
 
 .prose ul,
 .prose ol {
-  padding-left: 1.25rem;
+ padding-left: 1.25rem;
 }
 
 .prose code {
-  font-size: 0.9em;
-  padding: 0.05em 0.3em;
-  border-radius: 3px;
-  background: var(--line);
+ font-size: 0.9em;
+ padding: 0.05em 0.3em;
+ border-radius: 3px;
+ background: var(--line);
 }
 
 /* Narrow screens: stack everything in one column */
 
 @media (max-width: 52rem) {
-  .site-header nav {
-    gap: 0.25rem 1rem;
-    font-size: 1rem;
-  }
+ .site-header nav {
+  gap: 0.25rem 1rem;
+  font-size: 1rem;
+ }
 
-  .hero {
-    grid-template-columns: 1fr;
-  }
+ .hero {
+  grid-template-columns: 1fr;
+ }
 
-  .portrait {
-    width: 200px;
-    order: 2;
-  }
+ .bridge {
+  justify-self: center;
+  max-width: 23rem;
+ }
 
-  .block {
-    grid-template-columns: 1fr;
-    padding-block: 2.5rem;
-  }
+ .career>li {
+  grid-template-columns: minmax(0, 1fr);
+ }
 
-  .timeline>li,
-  .projects>li,
-  .skills>div {
-    grid-template-columns: 1fr;
-  }
+ .career-axis .who {
+  display: none;
+ }
 
-  .projects .thumb {
-    max-width: 22rem;
-  }
+ .roles summary {
+  grid-template-columns: minmax(0, 1fr) 1rem;
+ }
+
+ .roles .when {
+  grid-column: 1 / -1;
+ }
+
+ .role-detail {
+  padding-inline: 0;
+ }
 }
 
 figcaption {
-  margin-top: 0.6rem;
-  color: var(--muted);
-  font-size: 0.95rem;
+ margin-top: 0.6rem;
+ color: var(--muted);
+ font-size: 0.95rem;
 }

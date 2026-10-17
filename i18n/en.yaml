@@ -18,10 +18,6 @@ about: About
 skills: Skills
 education: Education
 languages: Languages
-contact: Contact
-contact_text: Email is the fastest way to reach me. I usually reply within a few days.
-writing_text: I publish what I learn about building ML systems on Substack.
-read_writing: Read my writing
 back_home: Back to all projects
 demo_label: Demo recording
 photos: Photography
@@ -31,3 +27,4 @@ go_home: Go to the homepage
 built_with: Built with Hugo.
 role_at: "{{ .role }} at {{ .company }}"
 certifications: Certifications
+production: Production

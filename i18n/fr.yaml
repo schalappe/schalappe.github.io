@@ -18,10 +18,6 @@ about: À propos
 skills: Compétences
 education: Formation
 languages: Langues
-contact: Contact
-contact_text: Le plus simple pour me joindre est l'e-mail. Je réponds en général sous quelques jours.
-writing_text: Je publie sur Substack ce que j'apprends en construisant des systèmes de ML.
-read_writing: Lire mes articles
 back_home: Retour aux projets
 demo_label: Enregistrement de démonstration
 photos: Photographie
@@ -31,3 +27,4 @@ go_home: Aller à l'accueil
 built_with: Réalisé avec Hugo.
 role_at: "{{ .role }} chez {{ .company }}"
 certifications: Certifications
+production: Production
