@@ -1,5 +1,7 @@
 # Builds the CV (Typst) and the site (Hugo); deploys to GitHub Pages from main.
 # Pull requests run the build only, so template or CV errors fail before merge.
+# A monthly scheduled build keeps date-driven content current between pushes: the career chart, the current role's
+# duration, the chart axes and the footer year all come from the build date.
 name: Build and deploy
 
 on:
@@ -7,6 +9,8 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: "0 5 1 * *"
 
 permissions:
   contents: read
