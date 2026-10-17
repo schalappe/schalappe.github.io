@@ -47,6 +47,7 @@ jobs:
 
       - name: Build CV
         run: |
+          mkdir -p static/cv
           for lang in en fr; do
             typst compile --root . --font-path cv/fonts --input lang=$lang cv/cv.typ static/cv/abdallah-hakim-kone-cv-$lang.pdf
           done
