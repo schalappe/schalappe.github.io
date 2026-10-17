@@ -24,6 +24,10 @@
       poster="{{ $poster.RelPermalink }}" aria-label="{{ i18n `demo_label` }}">
       <source src="{{ .RelPermalink }}" type="video/mp4">
     </video>
+    {{- /* Marks the still as a video on desktop (see .play-hint). Text only, no play glyph: a click on the video body
+    does not start it in Chrome, only the controls do. Hidden from assistive technology: the video's own label and
+    controls carry it. */}}
+    <span class="play-hint" aria-hidden="true">{{ i18n "demo_label" }}</span>
     {{- with $.Params.demo_caption }}<figcaption>{{ . }}</figcaption>{{ end }}
   </figure>
   {{- else }}
@@ -33,10 +37,11 @@
   {{- with $results }}{{ $media = . }}{{ $alt = $.Params.results_alt }}{{ end }}
   {{- with $media }}
   {{- $img := .Fit "1200x900 webp q82" }}
-  {{- /* The image links to its full-size file, so phone readers can zoom into small labels and figures. */}}
+  {{- /* The image links to its full-size file, so phone readers can zoom into small labels and figures. The link is
+  named by that action; the image keeps its long description as alt text. */}}
   <figure class="media{{ if $results }} results{{ end }}">
-    <a href="{{ .RelPermalink }}"><img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}"
-        alt="{{ $alt | default $.Title }}"></a>
+    <a href="{{ .RelPermalink }}" aria-label="{{ i18n `open_full_size` }}"><img src="{{ $img.RelPermalink }}"
+        width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $alt | default $.Title }}"></a>
     {{- with and $results $.Params.results_caption }}<figcaption>{{ . }}</figcaption>{{ end }}
   </figure>
   {{- end }}{{ end }}

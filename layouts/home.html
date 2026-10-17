@@ -73,9 +73,13 @@
         {{- partial "result.html" . }}
         <p class="stack">{{ .Params.year }} · {{ delimit .Params.stack ", " }}</p>
         <p>{{ .Description }}</p>
+        {{- /* Each link names its project, so a screen reader's link list tells the four cards apart; the label starts
+        with the visible text so voice control still matches it. */}}
         <p class="links">
-          <a href="{{ .RelPermalink }}">{{ i18n "case_study" }}{{ partial "arrow.html" }}</a>
-          <a href="{{ .Params.repo }}">{{ i18n "code" }}{{ partial "external.html" }}</a>
+          <a href="{{ .RelPermalink }}" aria-label="{{ printf `%s, %s` (i18n `case_study`) .Title }}">{{ i18n
+            "case_study" }}{{ partial "arrow.html" }}</a>
+          <a href="{{ .Params.repo }}" aria-label="{{ printf `%s, %s` (i18n `code`) .Title }}">{{ i18n "code" }}{{
+            partial "external.html" }}</a>
         </p>
       </div>
     </li>
@@ -126,7 +130,9 @@
       {{- range $i, $r := $p.experience }}
       <li>
         <details{{ if lt $i 2 }} open{{ end }}>
-          <summary>
+          {{- /* Named by the title alone: the summary sentence and city would otherwise make a 200-character button
+          name. */}}
+          <summary aria-labelledby="role-{{ $i }}">
             {{- /* MM/YYYY so every range fits one line; the current role reads "since MM/YYYY". */}}
             {{- $s := split .start "-" }}
             <span class="when">
@@ -135,7 +141,7 @@
               {{- else }}{{ i18n "since" }} {{ index $s 1 }}/{{ index $s 0 }}{{ end -}}
             </span>
             <div>
-              <h3>{{ partial "t.html" .role }}, {{ .company }}</h3>
+              <h3 id="role-{{ $i }}">{{ partial "t.html" .role }}, {{ .company }}</h3>
               {{- with .summary }}<p>{{ partial "t.html" . }}</p>{{ end }}
             </div>
             <p class="where">{{ .city }}</p>

@@ -53,12 +53,54 @@ typography:
     fontSize: "0.9rem"
     fontWeight: 400
     lineHeight: 1.6
+  small:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "0.95rem"
+    fontWeight: 400
+    lineHeight: 1.6
+  role:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "1.1rem"
+    fontWeight: 600
+    lineHeight: 1.6
+  brand:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "1.2rem"
+    fontWeight: 700
+    lineHeight: 1.6
+  item:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "1.15rem"
+    fontWeight: 600
+    lineHeight: 1.3
+  certificate:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 500
+    lineHeight: 1.3
+  lede-compact:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "clamp(1.2rem, 1.9vw, 1.4rem)"
+    fontWeight: 400
+    lineHeight: 1.35
+  cell-year:
+    fontFamily: "Geist Mono, ui-monospace, monospace"
+    fontSize: "clamp(1.6rem, 2.8vw, 2rem)"
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: "-0.03em"
+  axis:
+    fontFamily: "Geist Mono, ui-monospace, monospace"
+    fontSize: "0.75rem"
+    fontWeight: 400
+    lineHeight: 1.6
   data:
     fontFamily: "Geist Mono, ui-monospace, monospace"
     fontSize: "0.9rem"
     fontWeight: 400
     lineHeight: 1.6
 rounded:
+  bar: "1px"
   hairline: "2px"
   code: "3px"
   plate: "4px"
@@ -149,6 +191,7 @@ CSS variables in `assets/css/main.css` keep short names: `--accent` is Detection
 
 **Text Font:** Geist (with system-ui, sans-serif), self-hosted variable font (100 to 900), shared with the CV.
 **Data Font:** Geist Mono, self-hosted variable font, web only.
+The web copies of both are subset to Latin and general punctuation (about 30 KB each); a character outside that set falls back to the system font. The re-subset command is in the comment at the top of `assets/css/main.css`.
 
 **Character:** A precise, neutral grotesk: Swiss-clean, modern, never decorative. Emphasis comes from weight and size. Geist Mono is the measurement voice, used only where the text is data: role dates, cell years, chart axis years, inline code, and the detector label `ml_engineer 0.98`.
 
@@ -159,6 +202,8 @@ CSS variables in `assets/css/main.css` keep short names: `--accent` is Detection
 - **Title** (700, clamp 1.75 to 2.4rem, line-height 1.05, -0.025em): home section titles. Entry titles use two main levels: 1.3rem 700 for primary entries (project names, degrees) and 1.15rem 600 for items (roles, skill groups); certificate names sit lower at 1rem 500. Case-study section heads are 1.05rem 600 in the left rail.
 - **Body** (400, 1.0625rem, line-height 1.6): all running text; capped at the 38rem measure (`--measure`, about 75 characters) on the home page and in case studies, except the About text, which runs full width by choice. Geist runs wide, so body stays under 1.125rem.
 - **Label** (400, 0.9rem, Pencil Grey): dates, places, tech stacks, captions, footer, back link, chart company names. Role dates are in Geist Mono. The chart axis drops to 0.75rem Geist Mono with tabular numerals.
+- **Small** (0.95rem): one step above Label for short text that is read rather than scanned: the footer, the result line, bridge items, chart labels, the back link, and figure captions.
+- **Role** (600, 1.1rem, Pencil Grey): the role line under the hero name. **Brand** (700, 1.2rem, Slate Ink): the name in the header.
 
 ### Named Rules
 **The Weight-Not-Font Rule.** Hierarchy is built from 400, 600, and 700 in Geist, and from size. Geist Mono is for data, never for headings, emphasis, or "technical" flavor. Do not introduce another typeface, italics for emphasis, or uppercase tracking.
@@ -173,7 +218,7 @@ Inside sections: the role list uses a 9.5rem date column, both charts a 15rem la
 
 Vertical rhythm uses owl spacing (`* + *`): 1rem between prose blocks, 0.35rem inside a cell.
 
-Two breakpoints. At 52rem and below, the hero stacks (the bridge drops below the text, keeps its own layout, capped at 23rem, and is centered), the charts stack labels above bars, and the role list moves dates above titles. At 40rem and below, every remaining grid (projects, cells) goes to one column, both chart axes hide every other year, the bridge drops its item lists and its portrait shrinks to 150px, and a results figure keeps a 40rem width and scrolls sideways. Four-column cells first drop to two at 64rem.
+Two breakpoints. At 52rem and below, the hero stacks (the bridge drops below the text, keeps its own layout, capped at 23rem, and is centered), the charts stack labels above bars, and the role list moves dates above titles. At 40rem and below, every remaining grid (projects, cells) goes to one column, both chart axes hide every other year and the current year (its column is too narrow for the label), the bridge drops its item lists and its portrait shrinks to 150px, and a results figure keeps a 40rem width and scrolls sideways. Four-column cells first drop to two at 64rem.
 
 ## Elevation & Depth
 
@@ -200,14 +245,14 @@ Restrained and exact: small radii, thin lines, no shadows; weight and the single
 ### Links
 - Annotation Ink, 1px underline offset 0.2em; underline thickens to 2px on hover. Footer and nav links use Pencil Grey or Slate Ink instead and turn Annotation Ink on hover (nav only).
 - Links that leave the site (Writing, GitHub, LinkedIn, Substack, Photography, a project's code) end with the drawn ↗ (`_partials/external.html`, 0.7em); internal moves use →.
-- Small text links (nav, back link, hero profiles, footer, card titles) get a hit area of about 40px or more through vertical padding cancelled by negative margins, so the line does not move.
+- Small text links (nav, language switch, back link, hero profiles, footer) get a hit area of 44px or more through vertical padding cancelled by negative margins, so the line does not move. A nav link narrower than 44px (CV) gets a centred 44px-wide transparent `::before`, so the row keeps its spacing.
 
 ### Projects grid
 - **Layout:** 2×2 grid separated by 1px Ruled Line (one column at 40rem and below); each cell is plain paper.
 - **Cover:** runs edge to edge across the top of the cell: Plate White with 1rem inner padding, `object-fit: contain` at a 14:9 ratio, square corners, and a single 1px Ruled Line underneath (no outer border, the grid lines frame it). A cover is either a real output of the project (an environment render) or a pipeline diagram drawn in Slate Ink and Pencil Grey on a transparent background, so the plate shows through in both modes. Diagram sources live in `assets/covers/` (980×630, Geist and Geist Mono); never use third-party slides or paper figures.
-- **Cell body (1.25rem top, 1.5rem sides and bottom):** title (1.3rem 700, Slate Ink, plain text: "Read the case study" is the card's one link to the study), then the result line, year · stack (Label), description, then an action bar pinned to the cell's bottom edge so bars line up across a row: a full-width strip on a 1px Ruled Line, split into two equal halves by a 1px line, each a 600 link with 0.75rem by 1.5rem padding and a drawn 14px arrow on the right ("Read the case study" in Annotation Ink with →, "Code on GitHub" in Slate Ink with ↗). Hover tints the half with 8% Slate Ink over paper and underlines the label (2px); the text keeps its colour, so the hover reads in both modes. In-progress result lines lead with what exists, then the gap.
+- **Cell body (1.25rem top, 1.5rem sides and bottom):** title (1.3rem 700, Slate Ink, plain text: "Read the case study" is the card's one link to the study), then the result line, year · stack (Label), description, then an action bar pinned to the cell's bottom edge so bars line up across a row: a full-width strip on a 1px Ruled Line, split into two equal halves by a 1px line, each a 600 link with 0.75rem by 1.5rem padding and a drawn 14px arrow on the right ("Read the case study" in Annotation Ink with →, "Code on GitHub" in Slate Ink with ↗). When the card is narrower than 30rem (a container query), the halves stack so neither label wraps. Each link's `aria-label` is its visible text plus the project title ("Read the case study, Content-based image retrieval"), so a screen reader's link list tells the four cards apart and voice control still matches the visible words. Hover tints the half with 8% Slate Ink over paper and underlines the label (2px); the text keeps its colour, so the hover reads in both modes. In-progress result lines lead with what exists, then the gap.
 - **Result line:** the project's outcome in one line (front matter `result`), at 0.95rem with tabular numerals and a hanging 0.55rem square marker. A measured result is 600 Slate Ink with a filled ink square ("Best MAP 0.73…"). A project without measured results (`in_progress: true`) gets a hollow square, "In progress" in 600 Slate Ink, then what exists so far in Pencil Grey. The marker is ink, never green: a result is not live. It sits right under the card title, so the outcome is the second thing read, and in the case study's meta strip.
-- **Case study page:** back link (44px tall hit area), then the title (left) beside the lede (right), their last lines on one baseline, then a meta strip between two Ruled Lines: year in Geist Mono, stack joined by " · ", and the primary Code button (with ↗) pushed right, with the result line on its own row below. Then the media across the full 68rem frame, flush with it (capped at 36rem tall; images get 1rem of Plate White padding like the home thumbnails; Pencil Grey caption below): the demo recording if there is one (its still is `poster.*` if present, else the cover), else a `results.*` figure (front matter `results_alt`, `results_caption`), else the cover. An image links to its full-size file. The write-up follows as a two-column grid: each section head sits in a 12rem left rail on a 1px Slate Ink rule, level with its first block of text, which starts on a 1px Ruled Line; text runs at the 38rem measure and links every file, paper and dataset it names (external prose links get ↗ from `layouts/_markup/render-link.html`). It closes on a 1px Slate Ink rule with a page link to the next project (by weight, the last wrapping to the first) and a "Questions about this project?" line in Pencil Grey that shows the email address as the link. At 52rem and below, everything stacks into one column.
+- **Case study page:** back link (44px tall hit area), then the title (left) beside the lede (right), their last lines on one baseline, then a meta strip between two Ruled Lines: year in Geist Mono, stack joined by " · ", and the primary Code button (with ↗) pushed right, with the result line on its own row below. Then the media across the full 68rem frame, flush with it (capped at 36rem tall; images get 1rem of Plate White padding like the home thumbnails; Pencil Grey caption below): the demo recording if there is one (its still is `poster.*` if present, else the cover), else a `results.*` figure (front matter `results_alt`, `results_caption`), else the cover. On mouse-driven screens a demo carries a text-only "Demo recording" label (paper fill, Slate Ink 600 at 0.9rem, 1px Ruled Line border, 2px corners) 1rem inside its top-left corner, so the still reads as a video even when its controls fall below the first screen. No play glyph: in Chrome a click on the video body does not start it, only the controls do. The label ignores clicks; browsers that support `:paused` hide it during playback, and touch screens skip it because their players draw a play button. An image links to its full-size file; the link is named by that action ("Open the image full size"), and the image keeps its long description as alt text. The write-up follows as a two-column grid: each section head sits in a 12rem left rail on a 1px Slate Ink rule, level with its first block of text, which starts on a 1px Ruled Line; text runs at the 38rem measure and links every file, paper and dataset it names (external prose links get ↗ from `layouts/_markup/render-link.html`). It closes on a 1px Slate Ink rule with a page link to the next project (by weight, the last wrapping to the first) and a "Questions about this project?" line in Pencil Grey that shows the email address as the link. At 52rem and below, everything stacks into one column.
 - **Results figure:** the measured outcome drawn as a table in the cover style (980×630, `assets/covers/<slug>-results.svg`): rows and columns in Geist, values in Geist Mono with Slate Ink fill proportional to the score, the best value outlined; valid columns come first and invalid runs last, dashed and footnoted, so a phone's first view shows the result, not the bug.
 - **Page link:** a ruled row (1px Ruled Line below) with an optional Label above a 1.3rem 700 Slate Ink title, and the drawn → arrow on the right; Annotation Ink on hover. Used for the next project and for the case-study list on the 404.
 
@@ -221,20 +266,20 @@ A vertical schematic inside the hero, at most 23rem wide. The portrait (200px, 1
 One row per role: the company and start year on the left, a track with one grid column per month from the earliest start to the build date on the right. Past roles are Slate Ink bars (0.5rem tall); the current role is the only Detection Green bar. A final axis row marks each year. The chart is hidden from assistive technology because the role list below it carries the same facts.
 
 ### Role list
-One native `<details>` per role (no JavaScript), spanning the section so the chevrons line up with the chart's right edge, separated by 1px Ruled Line rules. The summary row is always visible: dates (Label in Geist Mono, tabular numerals, one line: `01/2021 – 06/2025`, or `since 06/2025` / `depuis 06/2025` for the current role) in the 9.5rem column, then the title (1.15rem 600, Annotation Ink on hover) and summary (text capped at the 38rem measure), the city (Label) flush right on the title line just before a small Pencil Grey chevron that flips when open. Highlights and stack open below, indented to the text column. The two most recent roles start open: they carry the production evidence. On narrow screens the dates move above the title, the city drops under the summary, and the detail loses its indent.
+One native `<details>` per role (no JavaScript), spanning the section so the chevrons line up with the chart's right edge, separated by 1px Ruled Line rules. The summary row is always visible: dates (Label in Geist Mono, tabular numerals, one line: `01/2021 – 06/2025`, or `since 06/2025` / `depuis 06/2025` for the current role) in the 9.5rem column, then the title (1.15rem 600, Annotation Ink on hover) and summary (text capped at the 38rem measure), the city (Label) flush right on the title line just before a small Pencil Grey chevron that flips when open. The summary is named by the role title alone (`aria-labelledby`), so a screen reader does not read the whole row as the control's name. Highlights and stack open below, indented to the text column. The two most recent roles start open: they carry the production evidence. On narrow screens the dates move above the title, the city drops under the summary, and the detail loses its indent.
 
 ### Learning chart
 The career chart's sibling in Education · Certifications, same component and label column: one row per degree (school name, 6px Slate Ink bar from start to end) and the year axis from the first degree to the build date. Certifications have no row: unlabelled ticks said nothing the cells don't. No green: nothing here is live. Hidden from assistive technology; the cells below carry the facts.
 
 ### Cells
 A ruled grid: a 1px gap over Ruled Line with a 1px outer border, each cell plain paper with 1.25rem by 1.5rem padding. Used three ways:
-- **Skills:** four cells (three skill groups and Languages), group name at 1.15rem 600, items in Pencil Grey.
+- **Skills:** four cells (three skill groups and Spoken languages), group name at 1.15rem 600, items in Pencil Grey.
 - **Degrees:** two cells, years at cell-year size (Geist Mono 500, clamp 1.6 to 2rem, -0.03em, tabular numerals), degree at 1.3rem 700, school and city, focus in Label.
 - **Certifications:** directly under the degrees (the shared border merges), four columns, year as a Label in Geist Mono (quieter than degree years: short courses should not outrank degrees), name at 1rem 500, issuer in Label.
 Four-column grids drop to two at 64rem and to one at 40rem; degrees go to one column at 40rem. The last certificate stretches to close its row, so no empty cell ever shows.
 
 ### Navigation
-- Brand name at 700 and 1.2rem in Slate Ink on the left, the icon-only theme switch on the right, and the nav links centered in the space between, 2.5rem apart, at body size in Slate Ink, no underline, Annotation Ink on hover. The language switch sits last in Pencil Grey. At 52rem and below, brand and switch share the first row and the links take a centered row below.
+- Brand name at 700 and 1.2rem in Slate Ink on the left, then the nav links centered in the free space, 2.5rem apart, at body size in Slate Ink, no underline, Annotation Ink on hover. The language switch sits outside the nav, in Pencil Grey, just before the icon-only theme switch (44px hit area) on the right. At 52rem and below, brand, language switch and theme switch share the first row and the links take a centered row below.
 
 ### Detector Box (signature)
 A 2px Detection Green rectangle 10px outside the portrait, with a label tab above its top-left corner (Detection Green fill, Label Ink text, Geist Mono 0.75rem, weight 500) reading `ml_engineer 0.98`. On load it contracts from 34px out to 10px and fades in over 0.7s (`cubic-bezier(0.2, 0.8, 0.2, 1)`, 0.3s delay), only when the reader allows motion. It is decorative and hidden from assistive technology.

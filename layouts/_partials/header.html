@@ -10,9 +10,10 @@
     <a href="{{ $home }}#experience">{{ i18n "nav_experience" }}</a>
     <a href="{{ $p.contact.substack }}">{{ i18n "nav_writing" }}{{ partial "external.html" }}</a>
     <a href="{{ $cv }}" type="application/pdf">{{ i18n "nav_cv" }}</a>
-    <a class="lang" href="{{ $other.RelPermalink }}" hreflang="{{ $other.Language.Locale }}"
-      lang="{{ $other.Language.Locale }}">{{ i18n "switch_language" }}</a>
   </nav>
+  {{- /* Outside the nav so it can share the brand row on phones, where the links take their own row. */}}
+  <a class="lang" href="{{ $other.RelPermalink }}" hreflang="{{ $other.Language.Locale }}"
+    lang="{{ $other.Language.Locale }}">{{ i18n "switch_language" }}</a>
   <button class="theme" type="button" aria-pressed="false" aria-label="{{ i18n `dark_mode` }}"
     title="{{ i18n `dark_mode` }}" hidden>
     <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16">

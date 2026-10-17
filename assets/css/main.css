@@ -1,5 +1,9 @@
 /* Geist and Geist Mono (OFL), self-hosted variable fonts; Geist is shared with the CV (cv/fonts).
-   Mono is for data only: dates, years, chart axis, code, the detector label. */
+   Mono is for data only: dates, years, chart axis, code, the detector label.
+   Both files are subset to Latin (U+0000-024F, combining marks, general punctuation, arrows, €, ™), which halves
+   their weight; a character outside that set falls back to the system font. To add one, re-subset the upstream
+   variable fonts (github.com/vercel/geist-font) with fonttools:
+   pyftsubset Geist[wght].woff2 --unicodes="U+0000-024F,U+0300-036F,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+FEFF,U+FFFD" --layout-features+=tnum,case --flavor=woff2 */
 @font-face {
  font-family: "Geist";
  src: url("/fonts/geist.woff2") format("woff2");
@@ -189,7 +193,9 @@ main,
  gap: 0.25rem 2.5rem;
 }
 
-.site-header nav a {
+.site-header nav a,
+.site-header .lang {
+ position: relative;
  color: var(--ink);
  text-decoration: none;
  /* Taller hit area without moving the row: padding out, margins back in. */
@@ -197,7 +203,18 @@ main,
  margin: -0.35rem -0.3rem;
 }
 
-.site-header nav a:hover {
+/* A short label (CV) still gets a 44px-wide hit area, centred on it, so the row does not move. */
+.site-header nav a::before {
+ content: "";
+ position: absolute;
+ inset-block: 0;
+ left: 50%;
+ width: max(100%, 2.75rem);
+ transform: translateX(-50%);
+}
+
+.site-header nav a:hover,
+.site-header .lang:hover {
  color: var(--accent-ink);
 }
 
@@ -205,15 +222,15 @@ main,
  color: var(--muted);
 }
 
-/* Theme switch: icon-only, 2.5rem hit area; the filled half turns with the state. */
+/* Theme switch: icon-only, 44px hit area; the filled half turns with the state. */
 .theme {
  display: inline-grid;
  place-items: center;
  align-self: center;
- width: 2.5rem;
- height: 2.5rem;
- /* Negative margins keep the 2.5rem hit area while the icon's right edge aligns with the frame. */
- margin: -0.5rem -0.75rem -0.5rem 0;
+ width: 2.75rem;
+ height: 2.75rem;
+ /* Negative margins keep the 44px hit area while the icon's right edge aligns with the frame. */
+ margin: -0.625rem -0.875rem -0.625rem 0;
  padding: 0;
  border: 0;
  border-radius: 6px;
@@ -253,19 +270,19 @@ main,
 .site-footer p:last-child {
  display: flex;
  flex-wrap: wrap;
- gap: 1rem 1.25rem;
+ gap: 1.25rem;
 }
 
 .site-footer a {
  color: var(--muted);
 }
 
-/* Small text links get a taller hit area without moving the line: padding out, margins back in. */
+/* Small text links get a 44px hit area without moving the line: padding out, margins back in. */
 .site-footer a,
 .profiles a {
  display: inline-block;
- padding-block: 0.5rem;
- margin-block: -0.5rem;
+ padding-block: 0.625rem;
+ margin-block: -0.625rem;
 }
 
 /* ↗ on links that leave the site. */
@@ -622,7 +639,7 @@ main,
  font-variant-numeric: tabular-nums;
 }
 
-/* Learning chart: the career chart with thinner bars and a tick per certification. */
+/* Learning chart: the career chart with thinner bars. */
 
 .learning .career-bar {
  height: 6px;
@@ -747,6 +764,11 @@ main,
   visibility: hidden;
  }
 
+ /* The current year's column holds only the months elapsed: too narrow for its label on a phone. */
+ .career-axis span:last-child {
+  visibility: hidden;
+ }
+
  /* Phones: the bridge keeps the portrait, a single stem and the production box; the two columns' items live in
    Skills, so the split would only spend a screen's third on two titles. */
  .bridge-side {
@@ -867,6 +889,7 @@ main,
  display: flex;
  flex-direction: column;
  background: var(--paper);
+ container-type: inline-size;
 }
 
 /* The cover runs edge to edge in its cell; a hairline separates it from the text. */
@@ -948,6 +971,13 @@ main,
  }
 }
 
+/* A narrow card would wrap both labels onto two lines: stack the halves instead. */
+@container (max-width: 30rem) {
+ .projects .links {
+  grid-template-columns: minmax(0, 1fr);
+ }
+}
+
 .thumb,
 .media img,
 .media video {
@@ -984,6 +1014,40 @@ main,
 
 .media>a {
  display: block;
+}
+
+/* Desktop players can show a paused demo as a bare still, its controls below the first screen: a label marks it as a
+   video. Phones skip it (their players draw a play button). Where :paused is supported it hides during playback;
+   elsewhere it stays, a noun that is still true while the video plays. */
+.media {
+ position: relative;
+}
+
+.play-hint {
+ display: none;
+ position: absolute;
+ top: 1rem;
+ left: 1rem;
+ padding: 0.3rem 0.75rem;
+ border: 1px solid var(--line);
+ border-radius: 2px;
+ background: var(--paper);
+ color: var(--ink);
+ font-size: 0.9rem;
+ font-weight: 600;
+ pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+ .play-hint {
+  display: block;
+ }
+}
+
+@supports selector(:paused) {
+ .media:has(> video:not(:paused)) .play-hint {
+  display: none;
+ }
 }
 
 /* Phones: the results figure keeps a readable width and scrolls sideways; the link opens it full size. */
@@ -1219,7 +1283,16 @@ main,
   font-size: 1rem;
  }
 
- /* Brand and theme switch share the first row; the nav takes its own full row below. */
+ /* Brand, language switch and theme switch share the first row; the nav takes its own full row below. */
+ .site-header {
+  column-gap: 1.25rem;
+ }
+
+ .site-header .lang {
+  order: 1;
+  margin-left: auto;
+ }
+
  .theme {
   order: 1;
   margin-left: 0;
