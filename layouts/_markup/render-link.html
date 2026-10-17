@@ -1,0 +1,5 @@
+{{- /* Prose links: links that leave the site end with the same ↗ as the rest of the interface. */ -}}
+{{- $u := urls.Parse .Destination -}}
+<a href="{{ .Destination | safeURL }}" {{ with .Title }} title="{{ . }}" {{ end }}>{{ .Text }}{{ if $u.IsAbs }}{{
+  partial "external.html" }}{{ end }}</a>
+{{- /**/ -}}

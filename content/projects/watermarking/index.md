@@ -5,11 +5,14 @@ weight: 4
 year: 2023
 repo: "https://github.com/schalappe/watermark_resolution"
 stack: ["TensorFlow", "Keras", "Optuna", "imgaug"]
+in_progress: true
+result: "Reproducible training and per-attack evaluation; mark recovery unverified until the BER fix"
+cover_alt: "Watermarking pipeline: an embedding network hides an 8×8 mark in a 128×128 image, a random attack alters it, and an extraction network tries to recover the mark."
 ---
 
 ## Problem
 
-A digital watermark hides an owner's mark inside an image. It has to be invisible, and it has to survive common edits such as compression, blur, noise, cropping or rotation. A blind scheme must also recover the mark without access to the original image. I implemented the paper "Convolutional Neural Network-Based Digital Image Watermarking Adaptive to the Resolution of Image and Watermark" (Lee, Seo and Kim, Applied Sciences, 2020) and focused on finding the training settings that make it work.
+A digital watermark hides an owner's mark inside an image. It has to be invisible, and it has to survive common edits such as compression, blur, noise, cropping or rotation. A blind scheme must also recover the mark without access to the original image. I implemented the paper ["Convolutional Neural Network-Based Digital Image Watermarking Adaptive to the Resolution of Image and Watermark"](https://www.mdpi.com/2076-3417/10/19/6854) (Lee, Seo and Kim, Applied Sciences, 2020) and focused on finding the training settings that make it work.
 
 ## Approach
 
@@ -26,11 +29,11 @@ Between the two, every training batch goes through a random attack. The embeddin
 - A `WatermarkModel` with its own `train_step`: one `GradientTape`, two losses and two Adam optimizers.
 - Ten attacks built on imgaug and TensorFlow: crop, dropout, rotation, salt and pepper, median, average and Gaussian blur, JPEG quality, Gaussian noise, and no attack.
 - PSNR and bit error ratio (BER) metrics.
-- A two-stage Optuna search, first on learning rates, batch size and epochs, then on the loss weights. The retained values are in `models/best_params.json`.
+- A two-stage Optuna search, first on learning rates, batch size and epochs, then on the loss weights. The retained values are in [`models/best_params.json`](https://github.com/schalappe/watermark_resolution/blob/main/models/best_params.json).
 
 ## Results
 
-The evaluation in `notebooks/0.1-result_learn.ipynb` reports a PSNR of 18.0 dB for the watermarked images, which is a visible change, and a BER around 50% under every attack. That BER uses the raw float output without thresholding (see below), so it can't tell whether the extractor learned the mark. Mark recovery stays unverified until I fix the metric and rerun the evaluation.
+The evaluation in [`notebooks/0.1-result_learn.ipynb`](https://github.com/schalappe/watermark_resolution/blob/main/notebooks/0.1-result_learn.ipynb) reports a PSNR of 18.0 dB for the watermarked images, which is a visible change, and a BER around 50% under every attack. That BER uses the raw float output without thresholding (see below), so it can't tell whether the extractor learned the mark. Mark recovery stays unverified until I fix the metric and rerun the evaluation.
 
 The project does show a complete, reproducible pipeline: data download, augmentation, joint training, hyperparameter search and evaluation per attack.
 

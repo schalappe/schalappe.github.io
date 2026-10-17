@@ -67,7 +67,7 @@ spacing:
   gutter: "clamp(1.25rem, 5vw, 3rem)"
   section: "clamp(3rem, 6vw, 4.5rem)"
   container: "68rem"
-  measure: "46rem"
+  measure: "38rem"
 components:
   button-primary:
     backgroundColor: "{colors.annotation-ink}"
@@ -114,7 +114,7 @@ The system is flat, light by default, and follows the reader's OS into a dark mo
 - Paper and ink, green only as signal.
 - One text family (Geist) with hierarchy by weight and size; the name tops out at 4.25rem. Geist Mono sets data only.
 - One section pattern after the hero: a large title over a 1px ink rule; one column on narrow screens.
-- Diagrams of real facts: the bridge schematic and the career chart.
+- Diagrams of real facts: the bridge schematic, the career chart, and the project covers drawn as ink pipelines.
 - Hairlines instead of surfaces; no shadows.
 - One ornament: the detector bounding box on the portrait.
 
@@ -123,8 +123,8 @@ The system is flat, light by default, and follows the reader's OS into a dark mo
 A neutral, untinted field (no green cast in the greys) with a single detection green split into a graphic tone and a text-safe tone.
 
 ### Primary
-- **Detection Green** (`detection-green`): graphics only. Used for the portrait bounding box and its label background, the focus ring, and live-status graphics: the production box's border and dot, and the current role's bar in the career chart. It is too light for body text on paper.
-- **Annotation Ink** (`annotation-ink`): the text-safe green. Used for links, nav and project-title hover, the filled primary button, and the outline of the quiet button.
+- **Detection Green** (`detection-green`): graphics only. Used for the portrait bounding box and its label background, and live-status graphics: the production box's border and dot, and the current role's bar in the career chart. It is too light for body text on paper, and at 2.9:1 too light for the focus ring.
+- **Annotation Ink** (`annotation-ink`): the text-safe green. Used for links, nav and project-title hover, the filled primary button, the outline of the quiet button, and the focus ring (at least 3:1 on paper in both modes).
 
 ### Neutral
 - **Notebook Paper** (`paper`): page background, a neutral warm-grey off-white.
@@ -138,7 +138,7 @@ CSS variables in `assets/css/main.css` keep short names: `--accent` is Detection
 
 ### Dark mode
 
-`prefers-color-scheme: dark` swaps every role to its `-dark` token, unless the reader chose light. The header theme button sets `data-theme="light|dark"` on `<html>` and stores it in localStorage; an inline head script restores it before first paint. Without JavaScript the button stays hidden and the OS setting applies. The structure is unchanged. Both greens get lighter, and Plate stays near-white so media keeps its light backing.
+`prefers-color-scheme: dark` swaps every role to its `-dark` token, unless the reader chose light. The header theme button sets `data-theme="light|dark"` on `<html>` and stores it in localStorage only while it differs from the OS; toggling back to the OS's choice clears the override, so the site follows the OS again. An inline head script restores it before first paint. Without JavaScript the button stays hidden and the OS setting applies. The structure is unchanged. Both greens get lighter, and Plate stays near-white so media keeps its light backing.
 
 ### Named Rules
 **The One Signal Rule.** Green means "this is interactive", "this is live", or "this is the annotation". Never use it for decoration, section tints, or headings.
@@ -155,9 +155,9 @@ CSS variables in `assets/css/main.css` keep short names: `--accent` is Detection
 ### Hierarchy
 - **Display** (700, clamp 2.75 to 4.25rem, line-height 1, -0.04em): the name in the home hero only.
 - **Headline** (700, clamp 2 to 3rem, -0.02em): case study titles.
-- **Lede** (400, clamp 1.3 to 1.65rem, line-height 1.35, max 34ch): the headline sentence under a title.
-- **Title** (700, clamp 1.75 to 2.4rem, line-height 1.05, -0.025em): home section titles. Entry titles use exactly two levels: 1.3rem 700 for primary entries (project names, degrees) and 1.15rem 600 for items (roles, certificates, skill groups). Case-study section heads are 1.05rem 600 in the left rail.
-- **Body** (400, 1.0625rem, line-height 1.6): all running text; capped at 46rem on the home page and 68ch in case studies. Geist runs wide, so body stays under 1.125rem.
+- **Lede** (400, clamp 1.3 to 1.65rem, line-height 1.35, max 34ch): the headline sentence under a title. Beside a case-study title it steps down to clamp 1.2 to 1.4rem so the two stay close in height.
+- **Title** (700, clamp 1.75 to 2.4rem, line-height 1.05, -0.025em): home section titles. Entry titles use two main levels: 1.3rem 700 for primary entries (project names, degrees) and 1.15rem 600 for items (roles, skill groups); certificate names sit lower at 1rem 500. Case-study section heads are 1.05rem 600 in the left rail.
+- **Body** (400, 1.0625rem, line-height 1.6): all running text; capped at the 38rem measure (`--measure`, about 75 characters) on the home page and in case studies, except the About text, which runs full width by choice. Geist runs wide, so body stays under 1.125rem.
 - **Label** (400, 0.9rem, Pencil Grey): dates, places, tech stacks, captions, footer, back link, chart company names. Role dates are in Geist Mono. The chart axis drops to 0.75rem Geist Mono with tabular numerals.
 
 ### Named Rules
@@ -165,15 +165,15 @@ CSS variables in `assets/css/main.css` keep short names: `--accent` is Detection
 
 ## Layout
 
-A centered 68rem frame with a fluid gutter (clamp 1.25 to 3rem). The page runs top to bottom in this order: hero (with the bridge diagram), About, then the large-title sections (Experience, Projects, Skills, Education · Certifications). There is no contact section: the hero's Email me button and the footer carry contact.
+A centered 68rem frame with a fluid gutter (clamp 1.25 to 3rem). The page runs top to bottom in this order: hero (with the bridge diagram), then the large-title sections (About, Projects, Experience, Skills, Education · Certifications). Projects come before Experience because the case studies are the proof. There is no contact section: the hero's Email me button and the footer carry contact. The nav lists Work before Experience to match.
 
-The hero is two columns centered vertically: text on the left (1fr), the bridge on the right (at most 23rem), with a 3 to 5rem gap and fluid vertical padding (clamp 3 to 5rem). Every section after it, About included, has a 1px ink top rule, fluid vertical padding (clamp 3 to 4.5rem), a large title, then content capped at 46rem. Exceptions are the About text, the two charts, the role list, the project grid, and the cells, which use the full width (the role list keeps its text at 46rem).
+The hero is two columns centered vertically: text on the left (1fr), the bridge on the right (at most 23rem), with a 3 to 5rem gap and fluid vertical padding (clamp 3 to 5rem). Every section after it has a 1px ink top rule, fluid vertical padding (clamp 3 to 4.5rem), a large title, then content capped at the 38rem measure. Exceptions are the About text, the two charts, the role list, the project grid, and the cells, which use the full width (the role list keeps its text at the measure).
 
 Inside sections: the role list uses a 9.5rem date column, both charts a 15rem label column, the projects a 2×2 grid, and Skills, Education and Certifications ruled cells.
 
 Vertical rhythm uses owl spacing (`* + *`): 1rem between prose blocks, 0.35rem inside a cell.
 
-Two breakpoints. At 52rem and below, the hero stacks (the bridge drops below the text, keeps its own layout, capped at 23rem, and is centered), the charts stack labels above bars, and the role list moves dates above titles. At 40rem and below, every remaining grid (projects, cells) goes to one column and both chart axes hide every other year. Four-column cells first drop to two at 64rem.
+Two breakpoints. At 52rem and below, the hero stacks (the bridge drops below the text, keeps its own layout, capped at 23rem, and is centered), the charts stack labels above bars, and the role list moves dates above titles. At 40rem and below, every remaining grid (projects, cells) goes to one column, both chart axes hide every other year, the bridge drops its item lists and its portrait shrinks to 150px, and a results figure keeps a 40rem width and scrolls sideways. Four-column cells first drop to two at 64rem.
 
 ## Elevation & Depth
 
@@ -194,35 +194,43 @@ Restrained and exact: small radii, thin lines, no shadows; weight and the single
 - **Shape:** gently squared (6px), 2px border in Annotation Ink.
 - **Primary:** Annotation Ink fill, On Accent text, weight 600, padding 0.6rem by 1.15rem. Used for the one main action per view (email, code on GitHub, go home).
 - **Quiet:** same shape and border, transparent fill, Annotation Ink text. Used for the secondary action (download CV).
-- **Hover:** brightness lifts by 10%; no movement, no shadow.
-- **Focus:** shared 3px Detection Green outline, 3px offset.
+- **Hover:** the primary button's brightness lifts by 10%; the quiet button gets a 12% Annotation Ink tint (a transparent fill has nothing to brighten). No movement, no shadow.
+- **Focus:** shared 3px Annotation Ink outline, 3px offset.
 
 ### Links
 - Annotation Ink, 1px underline offset 0.2em; underline thickens to 2px on hover. Footer and nav links use Pencil Grey or Slate Ink instead and turn Annotation Ink on hover (nav only).
+- Links that leave the site (Writing, GitHub, LinkedIn, Substack, Photography, a project's code) end with the drawn ↗ (`_partials/external.html`, 0.7em); internal moves use →.
+- Small text links (nav, back link, hero profiles, footer, card titles) get a hit area of about 40px or more through vertical padding cancelled by negative margins, so the line does not move.
 
 ### Projects grid
 - **Layout:** 2×2 grid separated by 1px Ruled Line (one column at 40rem and below); each cell is plain paper.
-- **Cover:** runs edge to edge across the top of the cell: Plate White with 1rem inner padding, `object-fit: contain` at a 14:9 ratio, square corners, and a single 1px Ruled Line underneath (no outer border, the grid lines frame it).
-- **Cell body (1.25rem top, 1.5rem sides and bottom):** title (1.3rem 700, Slate Ink, no underline, Annotation Ink and underlined on hover), then year · stack (Label), description, then an action bar pinned to the cell's bottom edge so bars line up across a row: a full-width strip on a 1px Ruled Line, split into two equal halves by a 1px line, each a 600 link with 0.75rem by 1.5rem padding and a drawn 14px arrow on the right ("Read the case study" in Annotation Ink with →, "Code on GitHub" in Slate Ink with ↗). Hover fills the half with Plate and Label Ink text.
-- **Case study page:** back link, then the media across the full 68rem frame (capped at 36rem tall; images get 1rem of Plate White padding like the home thumbnails; Pencil Grey caption below), then the title (left) beside the lede (right), their last lines on one baseline, then a meta strip between two Ruled Lines: year in Geist Mono, stack joined by " · ", and the primary Code button pushed right. The write-up follows as a two-column grid: each section head sits in a 12rem left rail on a 1px Slate Ink rule, level with its first block of text, which starts on a 1px Ruled Line; text runs at 68ch. At 52rem and below, everything stacks into one column.
+- **Cover:** runs edge to edge across the top of the cell: Plate White with 1rem inner padding, `object-fit: contain` at a 14:9 ratio, square corners, and a single 1px Ruled Line underneath (no outer border, the grid lines frame it). A cover is either a real output of the project (an environment render) or a pipeline diagram drawn in Slate Ink and Pencil Grey on a transparent background, so the plate shows through in both modes. Diagram sources live in `assets/covers/` (980×630, Geist and Geist Mono); never use third-party slides or paper figures.
+- **Cell body (1.25rem top, 1.5rem sides and bottom):** title (1.3rem 700, Slate Ink, plain text: "Read the case study" is the card's one link to the study), then the result line, year · stack (Label), description, then an action bar pinned to the cell's bottom edge so bars line up across a row: a full-width strip on a 1px Ruled Line, split into two equal halves by a 1px line, each a 600 link with 0.75rem by 1.5rem padding and a drawn 14px arrow on the right ("Read the case study" in Annotation Ink with →, "Code on GitHub" in Slate Ink with ↗). Hover tints the half with 8% Slate Ink over paper and underlines the label (2px); the text keeps its colour, so the hover reads in both modes. In-progress result lines lead with what exists, then the gap.
+- **Result line:** the project's outcome in one line (front matter `result`), at 0.95rem with tabular numerals and a hanging 0.55rem square marker. A measured result is 600 Slate Ink with a filled ink square ("Best MAP 0.73…"). A project without measured results (`in_progress: true`) gets a hollow square, "In progress" in 600 Slate Ink, then what exists so far in Pencil Grey. The marker is ink, never green: a result is not live. It sits right under the card title, so the outcome is the second thing read, and in the case study's meta strip.
+- **Case study page:** back link (44px tall hit area), then the title (left) beside the lede (right), their last lines on one baseline, then a meta strip between two Ruled Lines: year in Geist Mono, stack joined by " · ", and the primary Code button (with ↗) pushed right, with the result line on its own row below. Then the media across the full 68rem frame, flush with it (capped at 36rem tall; images get 1rem of Plate White padding like the home thumbnails; Pencil Grey caption below): the demo recording if there is one (its still is `poster.*` if present, else the cover), else a `results.*` figure (front matter `results_alt`, `results_caption`), else the cover. An image links to its full-size file. The write-up follows as a two-column grid: each section head sits in a 12rem left rail on a 1px Slate Ink rule, level with its first block of text, which starts on a 1px Ruled Line; text runs at the 38rem measure and links every file, paper and dataset it names (external prose links get ↗ from `layouts/_markup/render-link.html`). It closes on a 1px Slate Ink rule with a page link to the next project (by weight, the last wrapping to the first) and a "Questions about this project?" line in Pencil Grey that shows the email address as the link. At 52rem and below, everything stacks into one column.
+- **Results figure:** the measured outcome drawn as a table in the cover style (980×630, `assets/covers/<slug>-results.svg`): rows and columns in Geist, values in Geist Mono with Slate Ink fill proportional to the score, the best value outlined; valid columns come first and invalid runs last, dashed and footnoted, so a phone's first view shows the result, not the bug.
+- **Page link:** a ruled row (1px Ruled Line below) with an optional Label above a 1.3rem 700 Slate Ink title, and the drawn → arrow on the right; Annotation Ink on hover. Used for the next project and for the case-study list on the 404.
+
+### 404
+Title and lede like a case study, then the four case studies as page links, then the Go to the homepage button. The `<title>` comes from the translated heading.
 
 ### Bridge (signature diagram)
-A vertical schematic inside the hero, at most 23rem wide. The portrait (200px) with its detector box sits on top. A 1px Pencil Grey stem runs from the box's bottom edge down to a 1px Pencil Grey rule that splits into two columns: the second skill group ("MLOps and infrastructure") right-aligned on the left, the first ("Modeling") on the right after a 1px Ruled Line divider. Each column has a 600 title and its first four items in Pencil Grey at 0.95rem. A "Production" box closes the diagram: 1px Detection Green border, 2px corners, a filled green square, 600 weight. It keeps this layout on narrow screens.
+A vertical schematic inside the hero, at most 23rem wide. The portrait (200px, 150px at 40rem and below) with its detector box sits on top. A 1px Pencil Grey stem runs from the box's bottom edge down to a 1px Pencil Grey rule that splits into two columns: the second skill group ("MLOps and infrastructure") right-aligned on the left, the first ("Modeling") on the right after a 1px Ruled Line divider. Each column has a 600 title and its first four items in Pencil Grey at 0.95rem; the order of items in `profile.yaml` decides which four show, so the differentiators (deployment, networking, monitoring, Docker) come first. A second stem from the centre line converges into the "Production" box that closes the diagram: 1px Detection Green border, 2px corners, a filled green square, 600 weight. At 40rem and below the two columns drop (Skills carries them), leaving portrait, one stem and Production.
 
 ### Career chart
 One row per role: the company and start year on the left, a track with one grid column per month from the earliest start to the build date on the right. Past roles are Slate Ink bars (0.5rem tall); the current role is the only Detection Green bar. A final axis row marks each year. The chart is hidden from assistive technology because the role list below it carries the same facts.
 
 ### Role list
-One native `<details>` per role (no JavaScript), spanning the section so the chevrons line up with the chart's right edge, separated by 1px Ruled Line rules. The summary row is always visible: dates (Label in Geist Mono, tabular numerals, one line: `01/2021 – 06/2025`, or `since 06/2025` / `depuis 06/2025` for the current role) in the 9.5rem column, then the title (1.15rem 600, Annotation Ink on hover) and summary (text capped at 46rem), the city (Label) flush right on the title line just before a small Pencil Grey chevron that flips when open. Highlights and stack open below, indented to the text column. Only the current role starts open. On narrow screens the dates move above the title, the city drops under the summary, and the detail loses its indent.
+One native `<details>` per role (no JavaScript), spanning the section so the chevrons line up with the chart's right edge, separated by 1px Ruled Line rules. The summary row is always visible: dates (Label in Geist Mono, tabular numerals, one line: `01/2021 – 06/2025`, or `since 06/2025` / `depuis 06/2025` for the current role) in the 9.5rem column, then the title (1.15rem 600, Annotation Ink on hover) and summary (text capped at the 38rem measure), the city (Label) flush right on the title line just before a small Pencil Grey chevron that flips when open. Highlights and stack open below, indented to the text column. The two most recent roles start open: they carry the production evidence. On narrow screens the dates move above the title, the city drops under the summary, and the detail loses its indent.
 
 ### Learning chart
-The career chart's sibling in Education · Certifications, same component and label column: one row per degree (school name, 6px Slate Ink bar from start to end), one Certifications row with a 0.9rem Slate Ink tick at each certificate's month (the tick fills its month column minus 1px, so adjacent months stay separate and same-month certificates share a tick), and the year axis from the first degree to the build date. No green: nothing here is live. Hidden from assistive technology; the cells below carry the facts.
+The career chart's sibling in Education · Certifications, same component and label column: one row per degree (school name, 6px Slate Ink bar from start to end) and the year axis from the first degree to the build date. Certifications have no row: unlabelled ticks said nothing the cells don't. No green: nothing here is live. Hidden from assistive technology; the cells below carry the facts.
 
 ### Cells
 A ruled grid: a 1px gap over Ruled Line with a 1px outer border, each cell plain paper with 1.25rem by 1.5rem padding. Used three ways:
 - **Skills:** four cells (three skill groups and Languages), group name at 1.15rem 600, items in Pencil Grey.
 - **Degrees:** two cells, years at cell-year size (Geist Mono 500, clamp 1.6 to 2rem, -0.03em, tabular numerals), degree at 1.3rem 700, school and city, focus in Label.
-- **Certifications:** directly under the degrees (the shared border merges), four columns, year at cell-year size, name at 1.15rem 600, issuer in Label.
+- **Certifications:** directly under the degrees (the shared border merges), four columns, year as a Label in Geist Mono (quieter than degree years: short courses should not outrank degrees), name at 1rem 500, issuer in Label.
 Four-column grids drop to two at 64rem and to one at 40rem; degrees go to one column at 40rem. The last certificate stretches to close its row, so no empty cell ever shows.
 
 ### Navigation
@@ -234,11 +242,12 @@ A 2px Detection Green rectangle 10px outside the portrait, with a label tab abov
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep green to links, the primary action, focus rings, live status (production, current role), and the detector box.
-- **Do** open every new home section with a large Title over a 1px ink rule, and cap its prose at 46rem.
+- **Do** keep green to links, the primary action, focus rings (Annotation Ink), live status (production, current role), and the detector box.
+- **Do** open every new home section with a large Title over a 1px ink rule, and cap its prose at the 38rem measure.
 - **Do** draw diagrams only from facts already in `profile.yaml` or a case study.
 - **Do** use Pencil Grey at 0.9rem for metadata (dates, places, stacks, captions).
-- **Do** back every screenshot or image with the Plate White plate and Ruled Line border. Diagrams are drawn directly on the paper.
+- **Do** back every screenshot or image with the Plate White plate and Ruled Line border. Diagrams are drawn directly on the paper, or, for project covers, in ink on a transparent background over the plate.
+- **Do** give every project a result line; mark it in progress until a measured result exists.
 - **Do** gate any motion behind `prefers-reduced-motion: no-preference`, and keep the detector lock as the only one.
 - **Do** define every new color for both light and dark modes.
 

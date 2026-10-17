@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="630" viewBox="0 0 980 630">
+<!-- MiniGrid cover: the curriculum. Render: see AGENTS.md. -->
+<style>
+@font-face { font-family: Geist; font-weight: 100 900; src: url(../../static/fonts/geist.woff2); }
+@font-face { font-family: "Geist Mono"; font-weight: 100 900; src: url(../../static/fonts/geist-mono.woff2); }
+text { font-family: Geist, sans-serif; fill: #111214; }
+.t { font-size: 30px; font-weight: 600; letter-spacing: -0.01em; }
+.r { font-size: 25px; font-weight: 600; }
+.s { font-size: 21px; fill: #5c5f66; }
+.n { font-family: "Geist Mono", monospace; font-size: 29px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.m { font-family: "Geist Mono", monospace; font-size: 21px; fill: #5c5f66; }
+</style>
+<rect x="40" y="150" width="180" height="180" rx="2" fill="none" stroke="#111214" stroke-width="3"/>
+<path d="M130.0 150.0V179.7M130.0 210.3V240.0" stroke="#111214" stroke-width="3"/>
+<path d="M40.0 240.0H69.7M100.3 240.0H130.0" stroke="#111214" stroke-width="3"/>
+<path d="M130.0 240.0V269.7M130.0 300.3V330.0" stroke="#111214" stroke-width="3"/>
+<path d="M130.0 240.0H159.7M190.3 240.0H220.0" stroke="#111214" stroke-width="3"/>
+<path d="M69.0 179.0L101.0 195.0L69.0 211.0Z" fill="#111214"/>
+<circle cx="175.0" cy="285.0" r="14.4" fill="#111214"/>
+<text x="40" y="376" class="t" style="font-size:27px">BaseMaze</text>
+<text x="40" y="406" class="s">2×2 · portes ouvertes</text>
+<path d="M234 240.0H272M263 233.0L272 240.0L263 247.0" fill="none" stroke="#111214" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="286" y="150" width="180" height="180" rx="2" fill="none" stroke="#111214" stroke-width="3"/>
+<path d="M376.0 150.0V179.7M376.0 210.3V240.0" stroke="#111214" stroke-width="3"/>
+<path d="M286.0 240.0H315.7M346.3 240.0H376.0" stroke="#111214" stroke-width="3"/>
+<path d="M376.0 179.7V210.3M315.7 240.0H346.3" stroke="#5c5f66" stroke-width="7"/>
+<path d="M376.0 240.0V269.7M376.0 300.3V330.0" stroke="#111214" stroke-width="3"/>
+<path d="M376.0 240.0H405.7M436.3 240.0H466.0" stroke="#111214" stroke-width="3"/>
+<path d="M376.0 269.7V300.3M405.7 240.0H436.3" stroke="#5c5f66" stroke-width="7"/>
+<path d="M315.0 179.0L347.0 195.0L315.0 211.0Z" fill="#111214"/>
+<circle cx="421.0" cy="285.0" r="14.4" fill="#111214"/>
+<text x="286" y="376" class="t" style="font-size:27px">EasyMaze</text>
+<text x="286" y="406" class="s">2×2 · portes fermées</text>
+<path d="M480 240.0H518M509 233.0L518 240.0L509 247.0" fill="none" stroke="#111214" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="532" y="150" width="180" height="180" rx="2" fill="none" stroke="#111214" stroke-width="3"/>
+<path d="M592.0 150.0V169.8M592.0 190.2V210.0" stroke="#111214" stroke-width="3"/>
+<path d="M532.0 210.0H551.8M572.2 210.0H592.0" stroke="#111214" stroke-width="3"/>
+<path d="M592.0 169.8V190.2M551.8 210.0H572.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M592.0 210.0V229.8M592.0 250.2V270.0" stroke="#111214" stroke-width="3"/>
+<path d="M592.0 210.0H611.8M632.2 210.0H652.0" stroke="#111214" stroke-width="3"/>
+<path d="M592.0 229.8V250.2M611.8 210.0H632.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M592.0 270.0V289.8M592.0 310.2V330.0" stroke="#111214" stroke-width="3"/>
+<path d="M652.0 210.0H671.8M692.2 210.0H712.0" stroke="#111214" stroke-width="3"/>
+<path d="M592.0 289.8V310.2M671.8 210.0H692.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M652.0 150.0V169.8M652.0 190.2V210.0" stroke="#111214" stroke-width="3"/>
+<path d="M532.0 270.0H551.8M572.2 270.0H592.0" stroke="#111214" stroke-width="3"/>
+<path d="M652.0 169.8V190.2M551.8 270.0H572.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M652.0 210.0V229.8M652.0 250.2V270.0" stroke="#111214" stroke-width="3"/>
+<path d="M592.0 270.0H611.8M632.2 270.0H652.0" stroke="#111214" stroke-width="3"/>
+<path d="M652.0 229.8V250.2M611.8 270.0H632.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M652.0 270.0V289.8M652.0 310.2V330.0" stroke="#111214" stroke-width="3"/>
+<path d="M652.0 270.0H671.8M692.2 270.0H712.0" stroke="#111214" stroke-width="3"/>
+<path d="M652.0 289.8V310.2M671.8 270.0H692.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M550.0 168.0L574.0 180.0L550.0 192.0Z" fill="#111214"/>
+<circle cx="682.0" cy="300.0" r="10.8" fill="#111214"/>
+<text x="532" y="376" class="t" style="font-size:27px">MediumMaze</text>
+<text x="532" y="406" class="s">3×3 · portes fermées</text>
+<path d="M726 240.0H764M755 233.0L764 240.0L755 247.0" fill="none" stroke="#111214" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="778" y="150" width="180" height="180" rx="2" fill="none" stroke="#111214" stroke-width="3"/>
+<path d="M838.0 150.0V169.8M838.0 190.2V210.0" stroke="#111214" stroke-width="3"/>
+<path d="M778.0 210.0H797.8M818.2 210.0H838.0" stroke="#111214" stroke-width="3"/>
+<path d="M838.0 169.8V190.2M797.8 210.0H818.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M838.0 210.0V229.8M838.0 250.2V270.0" stroke="#111214" stroke-width="3"/>
+<path d="M838.0 210.0H857.8M878.2 210.0H898.0" stroke="#111214" stroke-width="3"/>
+<path d="M838.0 229.8V250.2M857.8 210.0H878.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M838.0 270.0V289.8M838.0 310.2V330.0" stroke="#111214" stroke-width="3"/>
+<path d="M898.0 210.0H917.8M938.2 210.0H958.0" stroke="#111214" stroke-width="3"/>
+<path d="M838.0 289.8V310.2M917.8 210.0H938.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M898.0 150.0V169.8M898.0 190.2V210.0" stroke="#111214" stroke-width="3"/>
+<path d="M778.0 270.0H797.8M818.2 270.0H838.0" stroke="#111214" stroke-width="3"/>
+<path d="M898.0 169.8V190.2M797.8 270.0H818.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M898.0 210.0V229.8M898.0 250.2V270.0" stroke="#111214" stroke-width="3"/>
+<path d="M838.0 270.0H857.8M878.2 270.0H898.0" stroke="#111214" stroke-width="3"/>
+<path d="M898.0 229.8V250.2M857.8 270.0H878.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M898.0 270.0V289.8M898.0 310.2V330.0" stroke="#111214" stroke-width="3"/>
+<path d="M898.0 270.0H917.8M938.2 270.0H958.0" stroke="#111214" stroke-width="3"/>
+<path d="M898.0 289.8V310.2M917.8 270.0H938.2" stroke="#5c5f66" stroke-width="7"/>
+<path d="M796.0 168.0L820.0 180.0L796.0 192.0Z" fill="#111214"/>
+<circle cx="928.0" cy="300.0" r="10.8" fill="#111214"/>
+<rect x="859.0" y="171.0" width="18.0" height="18.0" fill="none" stroke="#5c5f66" stroke-width="2.5"/>
+<rect x="799.0" y="291.0" width="18.0" height="18.0" fill="none" stroke="#5c5f66" stroke-width="2.5"/>
+<rect x="919.0" y="231.0" width="18.0" height="18.0" fill="none" stroke="#5c5f66" stroke-width="2.5"/>
+<rect x="859.0" y="291.0" width="18.0" height="18.0" fill="none" stroke="#5c5f66" stroke-width="2.5"/>
+<text x="778" y="376" class="t" style="font-size:27px">HardMaze</text>
+<text x="778" y="406" class="s">3×3 · 4 distracteurs</text>
+<text x="40" y="96" class="s">Niveau suivant quand la récompense moyenne dépasse un seuil</text>
+<path d="M40 520H940" stroke="#e0e0dc" stroke-width="1.5"/>
+<text x="40" y="566" class="t" style="font-size:26px">PPO + RND · Rainbow DQN</text>
+<text x="940" y="566" class="m" text-anchor="end">entrée : vue partielle RGB 56×56</text>
+</svg>

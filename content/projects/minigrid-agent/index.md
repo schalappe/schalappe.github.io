@@ -1,11 +1,14 @@
 ---
 title: "Maze-solving agents on MiniGrid"
 description: "PPO with curiosity-driven exploration and Rainbow DQN, trained from pixels to navigate multi-room mazes of increasing difficulty."
-weight: 2
+weight: 3
 year: 2025
 repo: "https://github.com/schalappe/reinforce_minigrid"
 stack: ["TensorFlow", "Keras", "TensorFlow Probability", "MiniGrid", "Gymnasium", "Pydantic"]
+in_progress: true
+result: "Two agents and a four-level maze curriculum built; training runs not recorded yet"
 demo_caption: "Recording from the first version of the project (2023), on the MiniGrid KeyCorridor environment."
+cover_alt: "Curriculum of four MiniGrid mazes, from BaseMaze (2×2 rooms, doors open) to HardMaze (3×3 rooms, 4 distractor objects), trained with PPO + RND and Rainbow DQN."
 ---
 
 ## Problem

@@ -29,8 +29,16 @@ deploys `main` to GitHub Pages. `baseURL` comes from `hugo.toml`; never pass `--
   (`hugo.Data.profile`) and by the CV (`cv/cv.typ`). Translatable fields are `{en, fr}` maps; plain values
   are shared. Resolve them in templates with `partial "t.html" value`.
 - `content/projects/<slug>/`: one bundle per project case study: `index.md` (en), `index.fr.md` (fr),
-  `cover.*` (thumbnail and poster), optional `demo.mp4` (click-to-play) and `demo_caption`.
+  `cover.*` (card thumbnail, and video still unless a `poster.*` exists), optional `demo.mp4` (click-to-play) and `demo_caption`, a one-line
+  `result`, and `in_progress: true` until the project has measured results. `weight` sets the card order.
+- `assets/covers/<slug>.svg`, `<slug>.fr.svg`, and `<slug>-results{,.fr}.svg`: sources of the diagram covers and
+  results figures. After editing one, render it to the bundle's `cover.png`/`cover.fr.png` or
+  `results.png`/`results.fr.png` (Hugo gives the French page its `.fr` file; transparent background, Geist loaded
+  from `static/fonts/`). A `results.*` figure replaces the cover on the case study when there is no demo video:
+  `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --hide-scrollbars --allow-file-access-from-files --force-device-scale-factor=2 --window-size=980,630 --default-background-color=00000000 --screenshot="$PWD/content/projects/<slug>/cover.png" "file://$PWD/assets/covers/<slug>.svg"`
 - `i18n/{en,fr}.yaml`: interface strings.
+- Typography in content and data: curly apostrophes (’) in YAML strings and front matter (Markdown bodies get them
+  from Hugo's typographer). French text puts a narrow no-break space (U+202F) before `; : ! ?` and inside « ».
 - `static/og.jpg`: social preview image, generated with ImageMagick from `assets/images/portrait.jpg`;
   regenerate it when the portrait or role changes.
 - Never publish work metrics from BNP Paribas or Softeam projects: they rely on internal data.

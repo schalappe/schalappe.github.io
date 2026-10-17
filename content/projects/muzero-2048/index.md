@@ -1,11 +1,13 @@
 ---
 title: "Stochastic MuZero for 2048"
 description: "A reinforcement learning agent for 2048 that plans with a learned model and tree search over random tile spawns, written in JAX."
-weight: 3
+weight: 2
 year: 2026
 repo: "https://github.com/schalappe/simulate_2048"
 stack: ["JAX", "Flax", "Optax", "mctx", "NumPy"]
-demo_caption: "Recording of an earlier agent from 2023, before the MuZero rewrite."
+in_progress: true
+result: "Full self-play-to-checkpoint pipeline and about 70 unit tests; no trained agent yet"
+demo_caption: "Recording of an earlier agent from 2023, before the MuZero rewrite. The current agent has no trained results yet."
 ---
 
 ## Problem
@@ -14,7 +16,7 @@ demo_caption: "Recording of an earlier agent from 2023, before the MuZero rewrit
 
 ## Approach
 
-The current version follows "Planning in Stochastic Environments with a Learned Model" (Antonoglou et al., ICLR 2022). The agent never sees the game rules during search. It learns six functions:
+The current version follows ["Planning in Stochastic Environments with a Learned Model"](https://openreview.net/forum?id=X6D9bAHhBQ1) (Antonoglou et al., ICLR 2022). The agent never sees the game rules during search. It learns six functions:
 
 - representation: board to hidden state;
 - prediction: hidden state to policy and value;

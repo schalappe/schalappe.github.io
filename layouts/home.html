@@ -15,8 +15,8 @@
       <a class="button" href="mailto:{{ $c.email }}">{{ i18n "email_me" }}</a>
       <a class="button quiet" href="{{ $cv }}" type="application/pdf">{{ i18n "download_cv" }}</a>
       <span class="profiles">
-        <a href="{{ $c.github }}">GitHub</a>
-        <a href="{{ $c.linkedin }}">LinkedIn</a>
+        <a href="{{ $c.github }}">GitHub{{ partial "external.html" }}</a>
+        <a href="{{ $c.linkedin }}">LinkedIn{{ partial "external.html" }}</a>
       </span>
     </p>
   </div>
@@ -54,6 +54,33 @@
     <p>{{ partial "t.html" $p.about }}</p>
     <p>{{ partial "t.html" $p.interests }}</p>
   </div>
+</section>
+
+<section class="block" aria-labelledby="work">
+  <h2 id="work">{{ i18n "work" }}</h2>
+  <p class="intro">{{ i18n "work_intro" }}</p>
+  <ul class="projects">
+    {{- range (where site.RegularPages "Section" "projects").ByWeight }}
+    <li>
+      {{- with .Resources.GetMatch "cover.*" }}
+      {{- $img := .Fit "640x420 webp q80" }}
+      <img class="thumb" src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt=""
+        loading="lazy" decoding="async">
+      {{- end }}
+      <div class="project-body">
+        {{- /* The title is not a link: "Read the case study" below goes to the same page, one tab stop per card. */}}
+        <h3>{{ .Title }}</h3>
+        {{- partial "result.html" . }}
+        <p class="stack">{{ .Params.year }} · {{ delimit .Params.stack ", " }}</p>
+        <p>{{ .Description }}</p>
+        <p class="links">
+          <a href="{{ .RelPermalink }}">{{ i18n "case_study" }}{{ partial "arrow.html" }}</a>
+          <a href="{{ .Params.repo }}">{{ i18n "code" }}{{ partial "external.html" }}</a>
+        </p>
+      </div>
+    </li>
+    {{- end }}
+  </ul>
 </section>
 
 <section class="block" aria-labelledby="experience">
@@ -94,11 +121,11 @@
     </li>
   </ol>
   {{- /* Roles fold with native <details>: dates, title and summary stay visible; highlights and stack open on
-    click. Only the current role starts open. */}}
+    click. The two most recent roles start open: they carry the production work. */}}
     <ol class="roles">
       {{- range $i, $r := $p.experience }}
       <li>
-        <details{{ if eq $i 0 }} open{{ end }}>
+        <details{{ if lt $i 2 }} open{{ end }}>
           <summary>
             {{- /* MM/YYYY so every range fits one line; the current role reads "since MM/YYYY". */}}
             {{- $s := split .start "-" }}
@@ -127,39 +154,6 @@
   </ol>
 </section>
 
-<section class="block" aria-labelledby="work">
-  <h2 id="work">{{ i18n "work" }}</h2>
-  <p class="intro">{{ i18n "work_intro" }}</p>
-  <ul class="projects">
-    {{- range (where site.RegularPages "Section" "projects").ByWeight }}
-    <li>
-      {{- with .Resources.GetMatch "cover.*" }}
-      {{- $img := .Fit "640x420 webp q80" }}
-      <img class="thumb" src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt=""
-        loading="lazy" decoding="async">
-      {{- end }}
-      <div class="project-body">
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        <p class="stack">{{ .Params.year }} · {{ delimit .Params.stack ", " }}</p>
-        <p>{{ .Description }}</p>
-        <p class="links">
-          <a href="{{ .RelPermalink }}">{{ i18n "case_study" }}<svg aria-hidden="true" viewBox="0 0 16 16" width="14"
-              height="14">
-              <path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg></a>
-          <a href="{{ .Params.repo }}">{{ i18n "code" }}<svg aria-hidden="true" viewBox="0 0 16 16" width="14"
-              height="14">
-              <path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg></a>
-        </p>
-      </div>
-    </li>
-    {{- end }}
-  </ul>
-</section>
-
 <section class="block" aria-labelledby="skills">
   <h2 id="skills">{{ i18n "skills" }}</h2>
   <dl class="cells skill-cells">
@@ -178,8 +172,8 @@
 
 <section class="block" aria-labelledby="education">
   <h2 id="education">{{ i18n "education" }} · {{ i18n "certifications" }}</h2>
-  {{- /* Learning chart: same month grid as the career chart, from the first degree to the build date. Degrees are
-  bars, certifications are square marks. Decorative: the cells below carry the same facts. */}}
+  {{- /* Learning chart: same month grid as the career chart, from the first degree to the build date, one bar per
+  degree. Decorative: the cells below carry the same facts, certifications included. */}}
   {{- $lo := int (index (split (index (last 1 $p.education) 0).start "-") 0) }}
   {{- $lt := add (mul (sub now.Year $lo) 12) (int (now.Format "1")) }}
   {{- $lm := printf "--months:%d" $lt | safeCSS }}
@@ -197,17 +191,6 @@
       </div>
     </li>
     {{- end }}
-    <li>
-      <p class="who"><b>{{ i18n "certifications" }}</b></p>
-      <div class="career-track" style="{{ $lm }}">
-        {{- range $p.certifications }}
-        {{- $d := split .date "-" }}
-        {{- $s := add (mul (sub (int (index $d 0)) $lo) 12) (int (strings.TrimLeft "0" (index $d 1))) }}
-        {{- $span := printf "grid-column:%d/%d;grid-row:1" $s (add $s 1) | safeCSS }}
-        <span class="career-mark" style="{{ $span }}"></span>
-        {{- end }}
-      </div>
-    </li>
     <li class="career-axis">
       <p class="who"></p>
       <div class="career-track" style="{{ $lm }}">

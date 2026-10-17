@@ -5,6 +5,10 @@ weight: 1
 year: 2023
 repo: "https://github.com/schalappe/content-based-image-retrieval"
 stack: ["TensorFlow", "OpenCV", "scikit-learn", "Polars", "seaborn"]
+result: "Best MAP 0.73 on colour and style, with EfficientNetB7"
+cover_alt: "Retrieval pipeline: catalogue and query images go through the same feature extractor, a distance measure ranks the catalogue, and the five nearest images are returned."
+results_alt: "Table of MAP on colour and style for the 15 combinations: the three CNNs with Euclidean or Manhattan distance reach 0.68 to 0.73, AKAZE and ORB about 0.19 to 0.20, and cosine stays near zero because of a sort bug. Median query time ranges from 0.02 s (ORB) to 0.30 s (NASNetLarge)."
+results_caption: "Open the table full size by tapping it; on a phone it also scrolls sideways."
 ---
 
 ## Problem
@@ -19,7 +23,7 @@ I compared five feature extractors against three similarity measures, so 15 comb
 - ImageNet-pretrained CNNs, using the penultimate layer as the embedding: VGG16, NASNetLarge and EfficientNetB7.
 - Cosine similarity, Euclidean distance and Manhattan distance.
 
-The dataset is the Kaggle Apparel Images dataset, where each folder name gives a colour and a clothing style (for example "black dress"). I made a stratified split: 10,833 images form the searchable database and the other 5,337 are the queries. For each query, the system returns the 5 nearest images. I scored the results against the colour label, the style label, and both together, with mean average precision (MAP), mean reciprocal rank (MRR), first-rank accuracy and median query time.
+The dataset is the [Kaggle Apparel Images dataset](https://www.kaggle.com/datasets/trolukovich/apparel-images-dataset), where each folder name gives a colour and a clothing style (for example "black dress"). I made a stratified split: 10,833 images form the searchable database and the other 5,337 are the queries. For each query, the system returns the 5 nearest images. I scored the results against the colour label, the style label, and both together, with mean average precision (MAP), mean reciprocal rank (MRR), first-rank accuracy and median query time.
 
 ## What I built
 
@@ -31,7 +35,7 @@ The dataset is the Kaggle Apparel Images dataset, where each folder name gives a
 
 ## Results
 
-The full tables are in `reports/1.0-evaluation.pdf` in the repo. On the hardest task, matching both colour and style:
+The full tables are in [`reports/1.0-evaluation.pdf`](https://github.com/schalappe/content-based-image-retrieval/blob/main/reports/1.0-evaluation.pdf) in the repo. On the hardest task, matching both colour and style:
 
 - EfficientNetB7 with Euclidean distance came first: MAP 0.73, MRR 0.77, first-rank accuracy 0.67.
 - VGG16 with Euclidean distance was close behind, with a MAP of 0.72.

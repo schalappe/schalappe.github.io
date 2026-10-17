@@ -1,0 +1,6 @@
+{{- /* A project's outcome in one line, on its card and its case study: the measured result, or "In progress"
+and what exists so far. Takes the project page; front matter `result`, optional `in_progress: true`. */ -}}
+{{- with .Params.result }}
+<p class="result{{ if $.Params.in_progress }} pending{{ end }}">
+  {{- if $.Params.in_progress }}<b>{{ i18n "in_progress" }}</b> · {{ end }}{{ . }}</p>
+{{- end }}

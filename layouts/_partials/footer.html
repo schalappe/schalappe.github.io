@@ -3,9 +3,9 @@
   <p>© {{ now.Year }} {{ hugo.Data.profile.name }}</p>
   <p>
     <a href="mailto:{{ $c.email }}">{{ $c.email }}</a>
-    <a href="{{ $c.github }}">GitHub</a>
-    <a href="{{ $c.linkedin }}">LinkedIn</a>
-    <a href="{{ $c.substack }}">Substack</a>
-    <a href="{{ $c.photos }}">{{ i18n "photos" }}</a>
+    <a href="{{ $c.github }}">GitHub{{ partial "external.html" }}</a>
+    <a href="{{ $c.linkedin }}">LinkedIn{{ partial "external.html" }}</a>
+    <a href="{{ $c.substack }}">Substack{{ partial "external.html" }}</a>
+    <a href="{{ $c.photos }}">{{ i18n "photos" }}{{ partial "external.html" }}</a>
   </p>
 </footer>

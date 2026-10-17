@@ -27,6 +27,8 @@
  --on-accent: #ffffff;
  --label-ink: #0e1a06;
  --gutter: clamp(1.25rem, 5vw, 3rem);
+ /* Reading measure: about 75 characters of Geist at body size. */
+ --measure: 38rem;
  --mono: "Geist Mono", ui-monospace, monospace;
  color-scheme: light dark;
 }
@@ -131,7 +133,8 @@ a:hover {
 }
 
 :focus-visible {
- outline: 3px solid var(--accent);
+ /* Annotation Ink, not Detection Green: the ring needs 3:1 against paper in light mode. */
+ outline: 3px solid var(--accent-ink);
  outline-offset: 3px;
  border-radius: 2px;
 }
@@ -169,6 +172,9 @@ main,
 }
 
 .brand {
+ display: inline-block;
+ padding-block: 0.5rem;
+ margin-block: -0.5rem;
  color: var(--ink);
  font-weight: 700;
  font-size: 1.2rem;
@@ -186,7 +192,9 @@ main,
 .site-header nav a {
  color: var(--ink);
  text-decoration: none;
- padding-block: 0.25rem;
+ /* Taller hit area without moving the row: padding out, margins back in. */
+ padding: 0.6rem 0.3rem;
+ margin: -0.35rem -0.3rem;
 }
 
 .site-header nav a:hover {
@@ -226,11 +234,16 @@ main,
  transform: rotate(180deg);
 }
 
+/* The rule spans the content frame like every section rule, so the footer drops the shared side padding and takes
+   the frame's inner width instead. */
 .site-footer {
  display: flex;
  flex-wrap: wrap;
  justify-content: space-between;
  gap: 0.5rem 2rem;
+ width: calc(100% - 2 * var(--gutter));
+ max-width: calc(68rem - 2 * var(--gutter));
+ padding-inline: 0;
  padding-block: 2.5rem 3rem;
  border-top: 1px solid var(--line);
  color: var(--muted);
@@ -240,11 +253,28 @@ main,
 .site-footer p:last-child {
  display: flex;
  flex-wrap: wrap;
- gap: 0.25rem 1.25rem;
+ gap: 1rem 1.25rem;
 }
 
 .site-footer a {
  color: var(--muted);
+}
+
+/* Small text links get a taller hit area without moving the line: padding out, margins back in. */
+.site-footer a,
+.profiles a {
+ display: inline-block;
+ padding-block: 0.5rem;
+ margin-block: -0.5rem;
+}
+
+/* ↗ on links that leave the site. */
+.ext {
+ display: inline-block;
+ width: 0.7em;
+ height: 0.7em;
+ margin-left: 0.2em;
+ vertical-align: 0.05em;
 }
 
 /* Shared pieces */
@@ -270,6 +300,12 @@ main,
  color: var(--accent-ink);
 }
 
+/* A transparent button has nothing for brightness to lift; tint it instead. */
+.button.quiet:hover {
+ filter: none;
+ background: color-mix(in srgb, var(--accent-ink) 12%, transparent);
+}
+
 .profiles {
  display: inline-flex;
  gap: 1.25rem;
@@ -293,6 +329,41 @@ main,
 .when {
  color: var(--muted);
  font-size: 0.9rem;
+}
+
+/* A project's outcome, on its card and its case study: a filled ink square for a measured result, a hollow one
+   while in progress. Wrapped lines hang past the square. */
+.result {
+ padding-left: 1.1rem;
+ text-indent: -1.1rem;
+ font-size: 0.95rem;
+ font-weight: 600;
+ font-variant-numeric: tabular-nums;
+}
+
+.result::before {
+ content: "";
+ display: inline-block;
+ width: 0.55rem;
+ height: 0.55rem;
+ margin-right: 0.55rem;
+ border: 1.5px solid var(--ink);
+ border-radius: 1px;
+ background: var(--ink);
+}
+
+.result.pending {
+ color: var(--muted);
+ font-weight: 400;
+}
+
+.result.pending b {
+ color: var(--ink);
+ font-weight: 600;
+}
+
+.result.pending::before {
+ background: none;
 }
 
 /* Hero: name, role, headline and actions on the left; the bridge diagram on the right */
@@ -390,6 +461,7 @@ main,
 .bridge-out {
  grid-area: out;
  justify-self: center;
+ position: relative;
  display: flex;
  align-items: center;
  gap: 0.5rem;
@@ -399,6 +471,16 @@ main,
  border-radius: 2px;
  font-size: 0.95rem;
  font-weight: 600;
+}
+
+/* The two columns converge into production: a stem from the split's centre line down to the box. */
+.bridge-out::before {
+ content: "";
+ position: absolute;
+ bottom: calc(100% + 1px);
+ left: calc(50% - 0.5px);
+ height: 1.5rem;
+ border-left: 1px solid var(--muted);
 }
 
 .bridge-dot {
@@ -473,7 +555,7 @@ main,
 }
 
 .block>.intro {
- max-width: 46rem;
+ max-width: var(--measure);
  margin-bottom: 1.75rem;
 }
 
@@ -546,16 +628,6 @@ main,
  height: 6px;
 }
 
-/* A tick fills its month column minus 1px, so certificates in adjacent months stay separate at any width
-   (same-month certificates share one tick). */
-.career-mark {
- justify-self: start;
- width: calc(100% - 1px);
- min-width: 1px;
- height: 0.9rem;
- background: var(--ink);
-}
-
 /* Cells: a ruled grid (1px gap over the line colour) of plain paper cells. Two columns by default. */
 
 .cells {
@@ -579,7 +651,7 @@ main,
 }
 
 /* Two entry-title levels across the page: 1.3rem/700 for primary entries (projects, degrees),
-   1.15rem/600 for items (roles, certificates, skill groups). */
+   1.15rem/600 for items (roles, skill groups). Certificates sit one step lower (see .cert-cells h3). */
 .cells h3 {
  font-size: 1.15rem;
  font-weight: 600;
@@ -618,6 +690,20 @@ main,
 /* Certificates sit directly under the degrees; -1px merges the two outer borders into one line. */
 .cert-cells {
  margin-top: -1px;
+}
+
+/* Certificate years are a label, not a headline: short courses stay quieter than degrees. */
+.cert-cells .cell-year {
+ color: var(--muted);
+ font-size: 0.9rem;
+ font-weight: 400;
+ letter-spacing: 0;
+}
+
+/* Certificate names sit below role and degree titles: short courses stay quieter than both. */
+.cert-cells h3 {
+ font-size: 1rem;
+ font-weight: 500;
 }
 
 /* The last certificate stretches to close its row, so no empty line-coloured cell shows. */
@@ -660,6 +746,17 @@ main,
  .career-axis span:nth-child(even) {
   visibility: hidden;
  }
+
+ /* Phones: the bridge keeps the portrait, a single stem and the production box; the two columns' items live in
+   Skills, so the split would only spend a screen's third on two titles. */
+ .bridge-side {
+  display: none;
+ }
+
+ /* A smaller portrait brings the projects closer to the first screen. */
+ .portrait {
+  width: 150px;
+ }
 }
 
 /* Roles: one native <details> per role; the summary row is a 9.5rem date column, the text, and a chevron. */
@@ -672,7 +769,7 @@ main,
 /* The list spans the section so chevrons line up with the chart's right edge; text keeps the prose measure. */
 .roles summary>div,
 .role-detail>* {
- max-width: 46rem;
+ max-width: var(--measure);
 }
 
 .roles>li {
@@ -795,16 +892,6 @@ main,
  line-height: 1.15;
 }
 
-.projects h3 a {
- color: var(--ink);
- text-decoration: none;
-}
-
-.projects h3 a:hover {
- color: var(--accent-ink);
- text-decoration: underline;
-}
-
 /* Action bar: the two links split a full-width strip pinned to the card's bottom edge, so bars line up across a
    row. Negative margins cancel the card body's 1.5rem padding. */
 .projects .links {
@@ -836,9 +923,18 @@ main,
  color: var(--accent-ink);
 }
 
+/* A tint of ink shows in both modes; the label underlines like every other link on hover. */
 .projects .links>a:hover {
- background: var(--plate);
- color: var(--label-ink);
+ background: color-mix(in srgb, var(--ink) 8%, var(--paper));
+ text-decoration: underline;
+ text-decoration-thickness: 2px;
+}
+
+.projects .links svg {
+ flex-shrink: 0;
+ width: 14px;
+ height: 14px;
+ margin: 0;
 }
 
 /* Halves touch their neighbours and the next card, so the focus ring sits inside the link. */
@@ -875,7 +971,7 @@ main,
 
 /* Case study pages */
 
-/* Opening: media at full frame width, then title beside lede, then a ruled meta strip.
+/* Opening: title beside lede, a ruled meta strip, then the media at full frame width.
    Body: section heads sit in a left rail beside their text, both on a hairline. */
 .case {
  --rail: 12rem;
@@ -883,7 +979,24 @@ main,
 }
 
 .case>.media {
- margin: 1.25rem 0 2.75rem;
+ margin: 2.5rem 0 0;
+}
+
+.media>a {
+ display: block;
+}
+
+/* Phones: the results figure keeps a readable width and scrolls sideways; the link opens it full size. */
+@media (max-width: 40rem) {
+ .media.results>a {
+  overflow-x: auto;
+ }
+
+ .case>.media.results img {
+  width: 40rem;
+  max-width: none;
+  max-height: none;
+ }
 }
 
 .case>.media video,
@@ -900,6 +1013,7 @@ main,
  display: grid;
  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
  gap: 1rem 3rem;
+ margin-top: 1.25rem;
  /* Last lines of title and lede share a baseline. */
  align-items: last baseline;
 }
@@ -908,6 +1022,11 @@ main,
  font-size: clamp(2rem, 5vw, 3rem);
  font-weight: 700;
  letter-spacing: -0.02em;
+}
+
+/* Beside a two-line title, the lede steps down from the hero size so the two stay close in height. */
+.case>header .lede {
+ font-size: clamp(1.2rem, 1.9vw, 1.4rem);
 }
 
 .case .meta {
@@ -930,8 +1049,87 @@ main,
  margin-left: auto;
 }
 
+/* The outcome takes its own row under year, stack and button. */
+.case .meta .result {
+ order: 1;
+ flex-basis: 100%;
+}
+
 .back {
  font-size: 0.95rem;
+}
+
+.back a {
+ display: inline-block;
+ padding-block: 0.6rem;
+ margin-block: -0.6rem;
+}
+
+/* Page links: a ruled row per destination, label above title, arrow on the right. Used for the next project at
+   the end of a case study and for the case-study list on the 404. */
+.page-links {
+ list-style: none;
+ padding: 0;
+ border-top: 1px solid var(--line);
+}
+
+.page-link {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) auto;
+ align-items: center;
+ column-gap: 1rem;
+ padding-block: 1rem;
+ border-bottom: 1px solid var(--line);
+ color: var(--ink);
+ font-size: 1.3rem;
+ font-weight: 700;
+ letter-spacing: -0.01em;
+ line-height: 1.2;
+ text-decoration: none;
+}
+
+.page-link:hover {
+ color: var(--accent-ink);
+}
+
+.page-link svg {
+ grid-column: 2;
+ grid-row: 1 / span 2;
+}
+
+.page-link .label {
+ margin-bottom: 0.3rem;
+ color: var(--muted);
+ font-size: 0.9rem;
+ font-weight: 400;
+ letter-spacing: 0;
+}
+
+.case-end {
+ max-width: calc(var(--rail) + 3rem + var(--measure));
+ margin-top: 4rem;
+ border-top: 1px solid var(--ink);
+}
+
+.case-end>p {
+ margin-top: 1.25rem;
+ color: var(--muted);
+}
+
+.not-found {
+ max-width: calc(var(--rail) + 3rem + var(--measure));
+}
+
+.not-found>*+* {
+ margin-top: 1.5rem;
+}
+
+.not-found .page-links {
+ margin-top: 2.5rem;
+}
+
+.not-found .actions {
+ margin-top: 2rem;
 }
 
 .media video,
@@ -942,7 +1140,7 @@ main,
 
 .prose {
  display: grid;
- grid-template-columns: var(--rail) minmax(0, 68ch);
+ grid-template-columns: var(--rail) minmax(0, var(--measure));
  gap: 1rem 3rem;
  margin-top: 3rem;
 }
@@ -1017,7 +1215,7 @@ main,
 
 @media (max-width: 52rem) {
  .site-header nav {
-  gap: 0.25rem 1rem;
+  gap: 0.25rem 0.75rem;
   font-size: 1rem;
  }
 

@@ -1,8 +1,9 @@
 {{- $p := hugo.Data.profile -}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{{- /* The site's only script. The OS setting is the default; the header button stores an override. Runs before
-first paint so a saved theme never flashes. Without JS the button stays hidden and the OS setting applies. */}}
+{{- /* The site's only script. The OS setting is the default; the header button stores an override only while it
+differs from the OS, so toggling back to the OS's choice returns to following the OS. Runs before first paint so a
+saved theme never flashes. Without JS the button stays hidden and the OS setting applies. */}}
 <script>
   (function () {
     var root = document.documentElement, os = matchMedia("(prefers-color-scheme: dark)");
@@ -15,8 +16,11 @@ first paint so a saved theme never flashes. Without JS the button stays hidden a
       sync();
       os.addEventListener("change", sync);
       button.addEventListener("click", function () {
-        root.dataset.theme = isDark() ? "light" : "dark";
-        try {localStorage.setItem("theme", root.dataset.theme);} catch (e) { }
+        var dark = !isDark();
+        try {
+          if (dark === os.matches) {delete root.dataset.theme; localStorage.removeItem("theme");}
+          else {root.dataset.theme = dark ? "dark" : "light"; localStorage.setItem("theme", root.dataset.theme);}
+        } catch (e) {root.dataset.theme = dark ? "dark" : "light";}
         sync();
       });
     });
@@ -25,6 +29,8 @@ first paint so a saved theme never flashes. Without JS the button stays hidden a
 <meta name="color-scheme" content="light dark">
 {{- if .IsHome }}
 <title>{{ $p.name }}, {{ $p.role }}</title>
+{{- else if eq .Kind "404" }}
+<title>{{ i18n "not_found_title" }} | {{ $p.name }}</title>
 {{- else }}
 <title>{{ .Title }} | {{ $p.name }}</title>
 {{- end }}

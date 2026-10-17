@@ -22,7 +22,7 @@ headline:
 
 about:
   en: >-
-    I'm a machine learning engineer at BNP Paribas. Data scientists build the models; I build everything
+    At BNP Paribas, data scientists build the models; I build everything
     that takes them to production: deployment pipelines, serving, monitoring, and the infrastructure and
     network work around them. I have worked in system and network administration, software development
     and machine learning. That is why I am often the link between teams: infrastructure, data scientists,
@@ -30,16 +30,16 @@ about:
     Before BNP, I spent four and a half years at Softeam on production computer vision and tabular models
     for a public-sector client.
   fr: >-
-    Je suis Machine Learning Engineer chez BNP Paribas. Les data scientists construisent les modèles ; je
-    construis tout ce qui les mène en production : pipelines de déploiement, mise à disposition, monitoring,
-    et le travail d'infrastructure et de réseau autour. J'ai travaillé en administration systèmes et
-    réseaux, en développement logiciel et en machine learning. C'est pourquoi je suis souvent le lien entre
-    les différentes équipes : infrastructure, data scientists, développeurs. Avant BNP, j'ai passé quatre ans et demi chez Softeam sur des
+    Chez BNP Paribas, les data scientists construisent les modèles ; je
+    construis tout ce qui les mène en production : pipelines de déploiement, mise à disposition, monitoring,
+    et le travail d’infrastructure et de réseau autour. J’ai travaillé en administration systèmes et
+    réseaux, en développement logiciel et en machine learning. C’est pourquoi je suis souvent le lien entre
+    les différentes équipes : infrastructure, data scientists, développeurs. Avant BNP, j’ai passé quatre ans et demi chez Softeam sur des
     modèles de vision par ordinateur et des modèles tabulaires en production, pour un acteur public.
 
 interests:
   en: Outside work, I love history, art and heritage. I like to visit historic sites and look at what past civilizations left behind. I photograph these places. I also brew specialty coffee.
-  fr: En dehors du travail, je suis passionné d'histoire, d'art et de patrimoine. J'aime découvrir les lieux chargés d'histoire et contempler les traces que les civilisations ont laissées derrière elles. Je photographie ces lieux. Je prépare aussi du café de spécialité.
+  fr: En dehors du travail, je suis passionné d’histoire, d’art et de patrimoine. J’aime découvrir les lieux chargés d’histoire et contempler les traces que les civilisations ont laissées derrière elles. Je photographie ces lieux. Je prépare aussi du café de spécialité.
 
 experience:
   - company: BNP Paribas
@@ -48,21 +48,21 @@ experience:
     start: 2025-06
     end: null
     summary:
-      en: I take a data science team's models to production. We host every model in-house for security reasons.
-      fr: Je mets en production les modèles d'une équipe de data scientists, tous hébergés en interne pour des raisons de sécurité.
+      en: I take a data science team’s models to production. We host every model in-house for security reasons.
+      fr: Je mets en production les modèles d’une équipe de data scientists, tous hébergés en interne pour des raisons de sécurité.
     highlights:
       en:
-        - Package the team's models as APIs and batch jobs in Docker images, deployed on Domino Data Lab with GitLab CI/CD.
-        - Serve open-weight LLMs (Llama, GPT-OSS, Gemma, Mistral Medium), Whisper and Voxtral for speech-to-text, and the data scientists' BERT models.
+        - Package the team’s models as APIs and batch jobs in Docker images, deployed on Domino Data Lab with GitLab CI/CD.
+        - Serve open-weight LLMs (Llama, GPT-OSS, Gemma, Mistral Medium), Whisper and Voxtral for speech-to-text, and the data scientists’ BERT models.
         - Build pipelines that transcribe conversations, then write a summary or check control points.
         - Build RAG systems with BGE-M3 that suggest replies to customer emails, first on ChromaDB, now on an embedding store I wrote.
         - Handle the network side of deployments and keep the model APIs reachable.
         - Set up model monitoring and alerting with Arize and Kibana.
       fr:
         - Packaging des modèles en API et en batchs dans des images Docker, déployées sur Domino Data Lab avec GitLab CI/CD.
-        - Mise à disposition de LLM open-weight (Llama, GPT-OSS, Gemma, Mistral Medium), de Whisper, de Voxtral et des modèles BERT de l'équipe.
+        - Mise à disposition de LLM open-weight (Llama, GPT-OSS, Gemma, Mistral Medium), de Whisper, de Voxtral et des modèles BERT de l’équipe.
         - Pipelines de transcription de conversations qui produisent un compte rendu ou vérifient des points de contrôle.
-        - RAG de suggestion de réponses aux e-mails clients avec BGE-M3, sur ChromaDB puis sur une base d'embeddings que j'ai développée.
+        - RAG de suggestion de réponses aux e-mails clients avec BGE-M3, sur ChromaDB puis sur une base d’embeddings que j’ai développée.
         - Prise en charge du réseau dans les déploiements et de la disponibilité des API qui servent les modèles.
         - Monitoring et alertes sur les modèles avec Arize et Kibana.
     stack:
@@ -87,7 +87,7 @@ experience:
     end: 2025-06
     summary:
       en: Consultant for a major public-sector client, automating the processing of traffic violations from radar images with computer vision and tabular models.
-      fr: Consultant pour un acteur majeur du secteur public, sur l'automatisation du traitement des infractions routières à partir de clichés radar, avec des modèles de vision et des modèles tabulaires.
+      fr: Consultant pour un acteur majeur du secteur public, sur l’automatisation du traitement des infractions routières à partir de clichés radar, avec des modèles de vision et des modèles tabulaires.
     highlights:
       en:
         - Rebuilt the vehicle identification model as a mixture of specialized experts, which reduced recognition errors.
@@ -99,13 +99,13 @@ experience:
         - Designed a secure training environment with architects and the CISO, and led GDPR compliance with legal experts.
         - Mentored three junior engineers.
       fr:
-        - Refonte du modèle d'identification des véhicules en mixture of experts, qui a réduit les erreurs de reconnaissance.
-        - Conception d'un classifieur Swin Transformer qui écarte les clichés radar inexploitables avant traitement.
-        - Développement d'heuristiques de détection des zones d'infraction sur les clichés radar.
+        - Refonte du modèle d’identification des véhicules en mixture of experts, qui a réduit les erreurs de reconnaissance.
+        - Conception d’un classifieur Swin Transformer qui écarte les clichés radar inexploitables avant traitement.
+        - Développement d’heuristiques de détection des zones d’infraction sur les clichés radar.
         - Automatisation du réentraînement, de la collecte des données à la sélection des modèles (Optuna, Aim, MLflow).
-        - Amélioration de l'échantillonnage des images à labelliser, et intervalles de confiance par bootstrap sur les métriques métier.
+        - Amélioration de l’échantillonnage des images à labelliser, et intervalles de confiance par bootstrap sur les métriques métier.
         - Intégration des modèles en production avec les équipes de la chaîne de traitement (recueil des besoins, recettes).
-        - Conception d'un environnement d'entraînement sécurisé avec les architectes et le RSSI ; pilotage RGPD avec des juristes.
+        - Conception d’un environnement d’entraînement sécurisé avec les architectes et le RSSI ; pilotage RGPD avec des juristes.
         - Encadrement de trois ingénieurs juniors.
     stack:
       [
@@ -133,7 +133,7 @@ experience:
     end: 2020-09
     summary:
       en: Built computer vision and simulation tools to analyze retail performance for a shopping-center operator.
-      fr: Vision par ordinateur et simulation pour analyser la performance commerciale d'un gestionnaire de centres commerciaux.
+      fr: Vision par ordinateur et simulation pour analyser la performance commerciale d’un gestionnaire de centres commerciaux.
     highlights:
       en:
         - Benchmarked multi-object tracking models (Deep SORT, YOLO, SSD) to produce in-store retail KPIs.
@@ -141,15 +141,15 @@ experience:
         - Prototyped a multi-agent reinforcement learning simulation of customer behavior.
       fr:
         - Benchmark de modèles de suivi multi-objets (Deep SORT, YOLO, SSD) pour produire des KPI retail.
-        - Développement et déploiement d'une application de recherche de visages similaires.
+        - Développement et déploiement d’une application de recherche de visages similaires.
         - Prototype de simulation de comportements clients par apprentissage par renforcement multi-agents.
     stack: [Python, TensorFlow, PyTorch, OpenCV, Flask]
 
-  - company: Compagnie Ivoirienne d'Électricité
+  - company: Compagnie Ivoirienne d’Électricité
     role:
       en: AI Developer (internship)
       fr: Développeur IA (stage)
-    city: Abidjan, Côte d'Ivoire
+    city: Abidjan, Côte d’Ivoire
     start: 2018-04
     end: 2018-08
     highlights:
@@ -158,16 +158,16 @@ experience:
         - Built a cross-platform mobile app to manage grid incidents.
         - Built an app that reads electricity meter indexes.
       fr:
-        - Benchmark de modèles de détection d'objets (YOLO, SSD, Faster R-CNN) pour détecter les incidents sur le réseau électrique.
-        - Développement d'une application mobile multiplateforme de gestion des sinistres sur le réseau.
-        - Développement d'une application de relevé des index des compteurs.
+        - Benchmark de modèles de détection d’objets (YOLO, SSD, Faster R-CNN) pour détecter les incidents sur le réseau électrique.
+        - Développement d’une application mobile multiplateforme de gestion des sinistres sur le réseau.
+        - Développement d’une application de relevé des index des compteurs.
     stack: [Python, TensorFlow]
 
   - company: Veone
     role:
       en: IT intern
       fr: Stagiaire IT
-    city: Abidjan, Côte d'Ivoire
+    city: Abidjan, Côte d’Ivoire
     start: 2017-04
     end: 2017-09
     highlights:
@@ -183,18 +183,18 @@ education:
     start: 2018-09
     end: 2020-09
     degree:
-      en: General engineering degree (Diplôme d'ingénieur)
-      fr: Diplôme d'ingénieur généraliste
+      en: General engineering degree (Diplôme d’ingénieur)
+      fr: Diplôme d’ingénieur généraliste
     focus:
       en: Mathematics and signal processing, data science, software engineering, game theory.
       fr: Mathématiques et traitement du signal, data science, ingénierie logicielle, théorie des jeux.
 
   - school: ESATIC
-    city: Abidjan, Côte d'Ivoire
+    city: Abidjan, Côte d’Ivoire
     start: 2014-09
     end: 2017-09
     degree:
-      en: Bachelor's degree in computer networks and systems
+      en: Bachelor’s degree in computer networks and systems
       fr: Licence en systèmes et réseaux informatiques
     focus:
       en: Networks and network administration, linear algebra, signal processing, statistics.
@@ -242,34 +242,34 @@ skills:
       en:
         [
           Deployment pipelines,
+          Networking,
           Model monitoring,
-          Arize,
-          Kibana,
+          Docker,
+          Linux,
+          GitLab CI,
+          FastAPI,
+          MLflow,
           DVC,
           Domino Data Lab,
           Mistral AI Studio,
-          Docker,
-          FastAPI,
-          MLflow,
-          GitLab CI,
-          Networking,
-          Linux,
+          Arize,
+          Kibana,
         ]
       fr:
         [
           Pipelines de déploiement,
+          Réseau,
           Monitoring de modèles,
-          Arize,
-          Kibana,
+          Docker,
+          Linux,
+          GitLab CI,
+          FastAPI,
+          MLflow,
           DVC,
           Domino Data Lab,
           Mistral AI Studio,
-          Docker,
-          FastAPI,
-          MLflow,
-          GitLab CI,
-          Réseau,
-          Linux,
+          Arize,
+          Kibana,
         ]
   - name:
       en: Languages and data
@@ -319,5 +319,5 @@ certifications:
       issuer: TensorFlow Certificate Program,
       date: 2020-10,
     }
-  - { name: L'Atelier RGPD, issuer: CNIL, date: 2020-10 }
+  - { name: L’Atelier RGPD, issuer: CNIL, date: 2020-10 }
   - { name: Machine Learning, issuer: Stanford University, date: 2019-06 }

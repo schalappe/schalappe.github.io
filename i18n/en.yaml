@@ -1,15 +1,14 @@
-nav_work: Work
+nav_work: Projects
 nav_experience: Experience
 nav_writing: Writing
 nav_cv: CV
 switch_language: Français
-switch_language_hint: Lire en français
 skip: Skip to content
 email_me: Email me
 download_cv: Download CV
 portrait_alt: Portrait of Hakim Kone
 work: Projects
-work_intro: Personal projects built end to end, from the problem to the results, limits included.
+work_intro: Personal projects built end to end, from the problem to the results, limits included. My production work is confidential; it is described under Experience.
 case_study: Read the case study
 code: Code on GitHub
 experience: Experience
@@ -20,12 +19,14 @@ languages: Languages
 back_home: Back to all projects
 demo_label: Demo recording
 photos: Photography
-not_found_title: This page doesn't exist
+not_found_title: This page doesn’t exist
 not_found_text: The link may be outdated, or the address may contain a typo.
 go_home: Go to the homepage
-built_with: Built with Hugo.
 role_at: "{{ .role }} at {{ .company }}"
 certifications: Certifications
 production: Production
 dark_mode: Dark mode
 since: since
+in_progress: In progress
+next_project: Next project
+case_question: Questions about this project?
