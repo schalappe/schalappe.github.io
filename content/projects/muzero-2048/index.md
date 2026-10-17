@@ -36,10 +36,10 @@ Search runs 100 simulations per move with DeepMind's `mctx.stochastic_muzero_pol
 
 ## Results
 
-The repo does not publish a trained agent or measured scores yet. The evaluation script reports mean reward, mean maximum tile and the tile distribution, but no run is recorded in the repo. What can be checked today is the game engine, covered by tests, and the complete training pipeline, from self-play to checkpoints.
+The repo does not publish a trained agent or measured scores yet. The evaluation script reports mean reward, mean maximum tile and the tile distribution, but no run is recorded in the repo. Today, the tests cover the game engine, and the repo holds the complete training pipeline, from self-play to checkpoints.
 
 ## Limitations and next steps
 
-The chance-code target in the loss is still a placeholder: it always points to code 0 instead of encoding the next observation with the encoder. Until that is fixed, the model does not really learn the stochastic part of the game. The `--checkpoint` option of the evaluation script is not implemented, so it evaluates an untrained network.
+The chance-code target in the loss is still a placeholder: it always points to code 0 instead of encoding the next observation with the encoder. Until I fix that, the model does not learn the stochastic part of the game. The `--checkpoint` option of the evaluation script is not implemented, so it evaluates an untrained network.
 
-Next steps: wire the encoder into the loss, implement checkpoint loading in the evaluation, then run a long training on Kaggle and publish the learning curves and tile distribution.
+Next, I will wire the encoder into the loss and implement checkpoint loading in the evaluation. Then I will run a long training on Kaggle and publish the learning curves and tile distribution.

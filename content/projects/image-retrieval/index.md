@@ -19,7 +19,7 @@ I compared five feature extractors against three similarity measures, so 15 comb
 - ImageNet-pretrained CNNs, using the penultimate layer as the embedding: VGG16, NASNetLarge and EfficientNetB7.
 - Cosine similarity, Euclidean distance and Manhattan distance.
 
-The dataset is the Kaggle Apparel Images dataset, where each folder name gives a colour and a clothing style (for example "black dress"). I made a stratified split: 10,833 images form the searchable database and 5,337 images serve as queries. For each query, the system returns the 5 nearest images. I scored the results against the colour label, the style label, and both together, with mean average precision (MAP), mean reciprocal rank (MRR), first-rank accuracy and median query time.
+The dataset is the Kaggle Apparel Images dataset, where each folder name gives a colour and a clothing style (for example "black dress"). I made a stratified split: 10,833 images form the searchable database and the other 5,337 are the queries. For each query, the system returns the 5 nearest images. I scored the results against the colour label, the style label, and both together, with mean average precision (MAP), mean reciprocal rank (MRR), first-rank accuracy and median query time.
 
 ## What I built
 

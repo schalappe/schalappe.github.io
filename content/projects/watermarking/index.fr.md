@@ -30,7 +30,7 @@ Entre les deux, chaque lot subit une attaque tirée au hasard. La perte d'insert
 
 ## Résultats
 
-L'évaluation de `notebooks/0.1-result_learn.ipynb` donne un PSNR de 18,0 dB pour les images tatouées, soit une altération visible, et un BER autour de 50 % pour toutes les attaques. Ce BER est calculé sur la sortie brute, sans seuillage (voir plus bas) : il ne permet pas de dire si l'extracteur a appris la marque. La capacité de récupération reste à vérifier une fois la métrique corrigée et l'évaluation relancée.
+L'évaluation de `notebooks/0.1-result_learn.ipynb` donne un PSNR de 18,0 dB pour les images tatouées, soit une altération visible, et un BER autour de 50 % pour toutes les attaques. Ce BER utilise la sortie brute, sans seuillage (voir plus bas), donc il ne permet pas de dire si l'extracteur a appris la marque. Je dois corriger la métrique et relancer l'évaluation avant de pouvoir vérifier la récupération de la marque.
 
 Le projet fournit en revanche une chaîne complète et reproductible : données, augmentation, entraînement conjoint, recherche d'hyperparamètres et évaluation par attaque.
 

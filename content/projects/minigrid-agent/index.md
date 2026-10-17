@@ -25,16 +25,16 @@ Training moves to the next level when the mean reward passes a threshold or afte
 
 ## What I built
 
-Two agents behind a shared `BaseAgent` interface and a factory:
+I wrote two agents that share a `BaseAgent` interface and a factory:
 
 - PPO with an IMPALA-style residual CNN, GAE over 8 parallel environments, Random Network Distillation (RND) as a curiosity bonus, and hybrid exploration: decaying ε-greedy, UCB counts on actions and an entropy coefficient that adapts to a target.
 - Rainbow DQN with its six parts: dueling heads, double Q-learning, prioritised replay, 3-step returns, noisy layers and a 51-atom categorical value distribution.
 
-Around them: a YAML configuration validated with Pydantic and overridable from the CLI, a Kaggle notebook for GPU training, a script that renders a trained agent to a GIF, and keyboard control to play the mazes by hand.
+I also added a YAML configuration validated with Pydantic and overridable from the CLI, a Kaggle notebook for GPU training, a script that renders a trained agent to a GIF, and keyboard control to play the mazes by hand.
 
 ## Results
 
-The repo does not record training runs: no learning curves, logged success rates or saved models. What can be observed is the agent itself: the visualisation script loads a checkpoint and renders an evaluation episode as a GIF. I can't claim a success rate on the hard maze from the repo as it stands.
+The repo does not record training runs: no learning curves, logged success rates or saved models. The visualisation script can still load a checkpoint and render an evaluation episode as a GIF. I can't claim a success rate on the hard maze from the repo as it stands.
 
 ## Limitations and next steps
 

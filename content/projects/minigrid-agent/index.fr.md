@@ -25,16 +25,16 @@ L'entraînement passe au niveau suivant quand la récompense moyenne dépasse un
 
 ## Ce que j'ai construit
 
-Deux agents derrière une interface commune `BaseAgent` et une fabrique :
+J'ai écrit deux agents qui partagent une interface `BaseAgent` et une fabrique :
 
 - PPO avec un CNN résiduel de type IMPALA, GAE sur 8 environnements parallèles, Random Network Distillation (RND) comme bonus de curiosité, et une exploration hybride : ε-greedy décroissant, comptages UCB sur les actions et coefficient d'entropie qui s'ajuste vers une cible.
 - Rainbow DQN avec ses six composantes : têtes duel, double Q-learning, rejeu priorisé, retours sur 3 pas, couches bruitées et distribution catégorielle de la valeur sur 51 atomes.
 
-Autour : une configuration YAML validée par Pydantic et modifiable en ligne de commande, un notebook Kaggle pour l'entraînement sur GPU, un script qui génère un GIF d'un agent entraîné, et un contrôle au clavier pour parcourir les labyrinthes à la main.
+J'ai aussi ajouté une configuration YAML validée par Pydantic et modifiable en ligne de commande, un notebook Kaggle pour l'entraînement sur GPU, un script qui génère un GIF d'un agent entraîné, et un contrôle au clavier pour parcourir les labyrinthes à la main.
 
 ## Résultats
 
-Le dépôt ne conserve aucune trace d'entraînement : ni courbes d'apprentissage, ni taux de réussite, ni modèles sauvegardés. Ce qu'on peut observer, c'est l'agent lui-même : le script de visualisation charge un point de sauvegarde et produit un GIF d'un épisode d'évaluation. En l'état, le dépôt ne me permet pas d'annoncer un taux de réussite sur le labyrinthe difficile.
+Le dépôt ne conserve aucune trace d'entraînement : ni courbes d'apprentissage, ni taux de réussite, ni modèles sauvegardés. Le script de visualisation peut tout de même charger un point de sauvegarde et produire un GIF d'un épisode d'évaluation. En l'état, le dépôt ne me permet pas d'annoncer un taux de réussite sur le labyrinthe difficile.
 
 ## Limites et pistes
 

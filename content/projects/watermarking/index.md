@@ -30,9 +30,9 @@ Between the two, every training batch goes through a random attack. The embeddin
 
 ## Results
 
-The evaluation in `notebooks/0.1-result_learn.ipynb` reports a PSNR of 18.0 dB for the watermarked images, which is a visible change, and a BER around 50% under every attack. That BER is computed on the raw float output without thresholding (see below), so it can't tell whether the extractor learned the mark: recovery performance is unverified until the metric is fixed and the evaluation rerun.
+The evaluation in `notebooks/0.1-result_learn.ipynb` reports a PSNR of 18.0 dB for the watermarked images, which is a visible change, and a BER around 50% under every attack. That BER uses the raw float output without thresholding (see below), so it can't tell whether the extractor learned the mark. Mark recovery stays unverified until I fix the metric and rerun the evaluation.
 
-What the project does show is a complete, reproducible pipeline: data download, augmentation, joint training, hyperparameter search and evaluation per attack.
+The project does show a complete, reproducible pipeline: data download, augmentation, joint training, hyperparameter search and evaluation per attack.
 
 ## Limitations and next steps
 

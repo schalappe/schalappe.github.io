@@ -36,10 +36,10 @@ La recherche effectue 100 simulations par coup avec `mctx.stochastic_muzero_poli
 
 ## Résultats
 
-Le dépôt ne publie pas encore d'agent entraîné ni de score. Le script d'évaluation calcule la récompense moyenne, la tuile maximale et la répartition des tuiles, mais aucune exécution n'y est enregistrée. On peut vérifier aujourd'hui le moteur de jeu, couvert par les tests, et la chaîne d'entraînement complète, de l'auto-jeu aux sauvegardes.
+Le dépôt ne publie pas encore d'agent entraîné ni de score. Le script d'évaluation calcule la récompense moyenne, la tuile maximale et la répartition des tuiles, mais aucune exécution n'y est enregistrée. Aujourd'hui, les tests couvrent le moteur de jeu, et le dépôt contient la chaîne d'entraînement complète, de l'auto-jeu aux sauvegardes.
 
 ## Limites et pistes
 
-Dans la perte, la cible du code de hasard est provisoire : elle désigne toujours le code 0 au lieu d'encoder l'observation suivante. Tant que ce n'est pas corrigé, le modèle n'apprend pas vraiment la partie aléatoire du jeu. L'option `--checkpoint` de l'évaluation n'est pas implémentée : elle évalue un réseau non entraîné.
+Dans la perte, la cible du code de hasard est provisoire : elle désigne toujours le code 0 au lieu d'encoder l'observation suivante. Tant que je ne l'ai pas corrigée, le modèle n'apprend pas la partie aléatoire du jeu. L'option `--checkpoint` de l'évaluation n'est pas implémentée : elle évalue un réseau non entraîné.
 
-Prochaines étapes : brancher l'encodeur dans la perte, charger les sauvegardes dans l'évaluation, puis lancer un long entraînement sur Kaggle et publier les courbes d'apprentissage et la répartition des tuiles.
+Ensuite, je brancherai l'encodeur dans la perte et je chargerai les sauvegardes dans l'évaluation. Puis je lancerai un long entraînement sur Kaggle et publierai les courbes d'apprentissage et la répartition des tuiles.

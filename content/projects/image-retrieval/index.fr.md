@@ -19,7 +19,7 @@ J'ai croisé cinq extracteurs de caractéristiques avec trois mesures de similar
 - des CNN pré-entraînés sur ImageNet, dont j'utilise l'avant-dernière couche comme vecteur : VGG16, NASNetLarge et EfficientNetB7 ;
 - la similarité cosinus, la distance euclidienne et la distance de Manhattan.
 
-Les données viennent du jeu Apparel Images de Kaggle, où chaque dossier indique une couleur et un style (par exemple « robe noire »). Après un découpage stratifié, 10 833 images forment la base et 5 337 servent de requêtes. Le système renvoie les 5 images les plus proches, notées sur la couleur, le style, puis les deux, avec la précision moyenne (MAP), le rang réciproque moyen (MRR), la justesse au premier rang et le temps médian par requête.
+Les données viennent du jeu Apparel Images de Kaggle, où chaque dossier indique une couleur et un style (par exemple « robe noire »). Après un découpage stratifié, 10 833 images forment la base et les 5 337 autres sont les requêtes. Pour chaque requête, le système renvoie les 5 images les plus proches. J'ai noté les résultats sur la couleur, le style, puis les deux, avec la précision moyenne (MAP), le rang réciproque moyen (MRR), la justesse au premier rang et le temps médian par requête.
 
 ## Ce que j'ai construit
 
