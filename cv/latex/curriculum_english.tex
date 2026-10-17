@@ -1,0 +1,200 @@
+%% LaTeX CV
+\documentclass[a4paper,11pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+\usepackage{tabularx}
+\usepackage{marvosym}
+\usepackage[empty]{fullpage}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+
+\RequirePackage{fontawesome}
+\RequirePackage{xcolor}
+
+% Page layout
+\geometry{a4paper, margin=1in}
+\setlist[itemize]{leftmargin=*}
+
+% font options
+\input glyphtounicode
+\pdfgentounicode=1
+\usepackage[default]{sourcesanspro} % uses the font source sans pro
+\urlstyle{same} % changes url font from default urlfont to font being used by the document
+
+% Margin options
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\headrulewidth}{0in}
+\renewcommand{\footrulewidth}{0in}
+
+\setlength{\tabcolsep}{0in}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\topmargin}{-0.5in}
+
+\addtolength{\textwidth}{1.0in}
+\addtolength{\textheight}{1.0in}
+
+\raggedbottom{}
+\raggedright{}
+
+% Redefinition
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\ULdepth}{2pt}
+
+\definecolor{Mulberry}{HTML}{66B032}
+\definecolor{SlateGrey}{HTML}{2D3748}
+\definecolor{LightGrey}{HTML}{718096}
+\colorlet{accent}{Mulberry}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+
+% Custom section formatting
+\titleformat{\section}{\scshape\large}{}{1em}{\color{accent}}[\color{emphasis}\titlerule\vspace{3pt}]
+\titlespacing{\section}{0pt}{1.1em}{1em}
+
+% Commands Options
+\newcommand{\emailsymbol}{\faAt}
+\newcommand{\phonesymbol}{\faPhone}
+\newcommand{\homepagesymbol}{\faGlobe}
+\newcommand{\locationsymbol}{\faMapMarker}
+\newcommand{\linkedinsymbol}{\faLinkedin}
+\newcommand{\githubsymbol}{\faGithub}
+
+
+\newcommand{\printinfo}[2]{\mbox{\textcolor{accent}{\normalfont #1}\hspace{0.5em}#2\hspace{0.5em}}}
+
+\newcommand{\email}[1]{\printinfo{\emailsymbol}{#1}}
+\newcommand{\phone}[1]{\printinfo{\phonesymbol}{#1}}
+\newcommand{\homepage}[1]{\printinfo{\homepagesymbol}{#1}}
+\newcommand{\linkedin}[1]{\printinfo{\linkedinsymbol}{#1}}
+\newcommand{\github}[1]{\printinfo{\githubsymbol}{#1}}
+\newcommand{\location}[1]{\printinfo{\locationsymbol}{#1}}
+
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.3in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+\newcommand{\resumeSectionType}[3]{
+  \item\begin{tabular*}{0.96\textwidth}[t]{
+    p{0.15\linewidth}p{0.02\linewidth}p{0.81\linewidth}
+  }
+    \textbf{#1} & #2 & #3
+  \end{tabular*}\vspace{-4pt}
+}
+\newcommand{\resumeSubItem}[1]{\resumeItem{\textcolor{emphasis}{\textbullet}\hspace{0.5em}#1}}
+
+\newcommand{\resumeTrioHeading}[3]{
+  \item\small{
+    \begin{tabular*}{0.96\textwidth}[t]{
+      l@{\extracolsep{\fill}}c@{\extracolsep{\fill}}r
+    }
+      \textbf{#1} & \textit{#2} & #3
+    \end{tabular*}
+  }
+}
+
+\newcommand{\resumeQuadHeading}[4]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textcolor{black}{\textbf{#2}}  \\
+    \textcolor{accent}{\textit{\small#3}} & \textit{\small #4} \\
+  \end{tabular*}
+}
+
+\newcommand{\resumeQuadHeadingChild}[2]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{\small#1} & {\small#2} \\
+  \end{tabular*}
+}
+
+\newcommand{\resumeHeadingListStart}{
+  \begin{itemize}[leftmargin=0.15in, label={}]
+}
+\newcommand{\resumeHeadingListEnd}{\end{itemize}}
+%-------------------------------------------
+
+\begin{document}
+
+% Contact Details
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Huge\bfseries \MakeUppercase{KONE Abdallah Hakim} \vspace{2pt}} & \location{Rennes, France} \\ [1pt]
+  {\large\bfseries\color{accent} Machine Learning Engineer - Data Scientist} & \phone{\href{tel:+33667639399}{+33 (0) 6 67 63 93 99}} \\ [1pt]
+  \homepage{\href{https://info.schalappe.page}{\uline{schalappe.page}}} $|$ 
+  \github{\href{https://github.com/schalappe}{\uline{GitHub}}} $|$ 
+  \linkedin{\href{https://www.linkedin.com/in/abdallah-hakim-kone/}{\uline{LinkedIn}}} & 
+  \email{\href{mailto:konehakim@gmail.com}{\uline{konehakim@gmail.com}}} \\
+\end{tabular*}
+
+% Experience
+\section*{Professional Experience}
+\resumeHeadingListStart{}
+\resumeQuadHeading{Machine Learning Engineer / Data Scientist}{Jan. 2021 -- Present}{Softeam, Consulting and Services Company}{Rennes, France}
+  \item \textbf{Project 1}: Optimization of AI development environment for modernizing traffic violation processing system for a major public sector actor.
+  
+  \resumeItemListStart{}
+    \resumeItem{Organization and facilitation of collaborative workshops with architects and CISO to design a secure and efficient environment dedicated to AI model training}
+    \resumeItem{Management of GDPR compliance in consultation with legal experts, ensuring alignment with European standards}
+    \resumeItem{Streamlining of data collection and sampling processes: analysis of existing systems, identification of bottlenecks, and definition of targets, significantly improving data quality}
+    \resumeItem{\textit{\textbf{Result}: 75\% optimization in frequency and quality of Machine Learning model retraining}}
+    \resumeItem{\textit{\textbf{Technologies}: Python, Archimate, MongoDB, RabbitMQ, MLFlow, Aim, GitLab, Nexus, SonarQube, ...}}
+  \resumeItemListEnd{}
+  
+  \item \textbf{Project 2}: Development of AI solutions for automating traffic violation processing for a major public sector actor.
+  
+  \resumeItemListStart{}
+    \resumeItem{Development of advanced heuristics for precise detection of violation zones in radar images}   
+    \resumeItem{Reconstruction of vehicle identification model using \textbf{Mixture of Experts} technique, achieving a 20\% reduction in recognition errors}
+    \resumeItem{Design and development of a system for detecting unusable radar images based on CNN architecture (\textbf{Swin Transformers})}
+    \resumeItem{Management of model integration into the production processing chain, ensuring smooth and robust transition}
+    \resumeItem{\textit{\textbf{Result}: 18.88\% improvement in the automatic processing rate and a substantial reduction in violation identification errors}}
+    \resumeItem{\textit{\textbf{Technologies}: Python, TensorFlow, XGBoost, SHAP, FastAPI, OpenCV, Docker, JupyterLab, RabbitMQ, MongoDB, ...}}
+  \resumeItemListEnd{}
+
+  \resumeQuadHeading{Data Scientist}{Sept. 2019 -- Sept. 2020}{Orange Business Services}{Rennes, France}
+    \resumeItemListStart{}
+      \resumeItem{Development of customized data and AI solutions for analyzing and visualizing retail performance of stores for a shopping center manager}
+      \resumeItem{Presentation of Orange's innovative solutions at the Customer Innovation Center}
+      \resumeItem{\textit{\textbf{Technologies}: Python, Tensorflow, PyTorch, Flask, OpenCV, JupyterLab, ...}}
+    \resumeItemListEnd{}
+
+\resumeHeadingListEnd{}
+
+% Education
+\section*{Education}
+\resumeHeadingListStart{}
+    \resumeQuadHeading{IMT Atlantique}{Brest, France}{General Engineering Degree}{Sept. 2018 -- Sept. 2020}
+    \vspace{-2pt}
+    \textcolor{emphasis}{\small Mathematics \& Signal Processing, Data Science, Software Engineering, Game Theory, ...}
+    \vspace{2pt}
+\resumeHeadingListEnd{}
+
+\resumeHeadingListStart{}
+    \resumeQuadHeading{E.S.A.T.I.C}{Abidjan, Ivory Coast}{Bachelor's in Computer Networks \& Systems}{Sept. 2014 -- Sept. 2017}
+    \vspace{-2pt}
+    \textcolor{emphasis}{\small Networks and network administration, linear algebra, signal processing, statistics, ...}
+    \vspace{2pt}
+\resumeHeadingListEnd{}
+
+%Skills
+\section*{Skills \& Languages}
+\resumeHeadingListStart{}
+    \resumeSectionType{Skills}{}{Deep Learning/Machine Learning, Python Development, MLOps, Data Governance}
+    \resumeSectionType{Languages}{}{French (Native), English (Professional)}
+\resumeHeadingListEnd{}
+
+\end{document}
+

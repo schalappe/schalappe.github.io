@@ -1,0 +1,148 @@
+{{ define "main" }}
+{{- $p := hugo.Data.profile -}}
+{{- $c := $p.contact -}}
+{{- $current := index $p.experience 0 -}}
+{{- $cv := printf "cv/abdallah-hakim-kone-cv-%s.pdf" site.Language.Lang | relURL -}}
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>{{ $p.name }}</h1>
+    <p class="role">{{ i18n "role_at" (dict "role" $p.role "company" $current.company) }}</p>
+    <p class="lede">{{ partial "t.html" $p.headline }}</p>
+    <p class="actions">
+      <a class="button" href="mailto:{{ $c.email }}">{{ i18n "email_me" }}</a>
+      <a class="button quiet" href="{{ $cv }}" type="application/pdf">{{ i18n "download_cv" }}</a>
+      <span class="profiles">
+        <a href="{{ $c.github }}">GitHub</a>
+        <a href="{{ $c.linkedin }}">LinkedIn</a>
+      </span>
+    </p>
+  </div>
+  {{- with resources.Get "images/portrait.jpg" }}
+  {{- $sm := .Fill "320x320 webp q80 Center" }}
+  {{- $lg := .Fill "640x640 webp q80 Center" }}
+  <figure class="portrait">
+    <img src="{{ $sm.RelPermalink }}" srcset="{{ $sm.RelPermalink }} 1x, {{ $lg.RelPermalink }} 2x" width="320"
+      height="320" alt="{{ i18n `portrait_alt` }}" fetchpriority="high">
+    {{- /* Object-detection box: a nod to the computer vision work. Decorative. */}}
+    <span class="bbox" aria-hidden="true"><span class="bbox-label">ml_engineer 0.98</span></span>
+  </figure>
+  {{- end }}
+</section>
+
+<section class="block" aria-labelledby="about">
+  <h2 id="about">{{ i18n "about" }}</h2>
+  <div class="body">
+    <p>{{ partial "t.html" $p.about }}</p>
+    <p>{{ partial "t.html" $p.interests }}</p>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="experience">
+  <h2 id="experience">{{ i18n "experience" }}</h2>
+  <ol class="body timeline">
+    {{- range $p.experience }}
+    <li>
+      <p class="when">{{ partial "month.html" .start }} – {{ partial "month.html" .end }}</p>
+      <div>
+        <h3>{{ partial "t.html" .role }}, {{ .company }}</h3>
+        <p class="where">{{ .city }}</p>
+        {{- with .summary }}<p>{{ partial "t.html" . }}</p>{{ end }}
+        {{- with .highlights }}
+        <ul>
+          {{- range partial "t.html" . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        {{- end }}
+        {{- with .stack }}<p class="stack">{{ delimit . ", " }}</p>{{ end }}
+      </div>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+
+<section class="block" aria-labelledby="work">
+  <h2 id="work">{{ i18n "work" }}</h2>
+  <div class="body">
+    <p class="intro">{{ i18n "work_intro" }}</p>
+    <ul class="projects">
+      {{- range (where site.RegularPages "Section" "projects").ByWeight }}
+      <li>
+        {{- with .Resources.GetMatch "cover.*" }}
+        {{- $img := .Fit "560x360 webp q80" }}
+        <img class="thumb" src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt=""
+          loading="lazy" decoding="async">
+        {{- end }}
+        <div>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p>{{ .Description }}</p>
+          <p class="stack">{{ .Params.year }}, {{ delimit .Params.stack ", " }}</p>
+          <p class="links">
+            <a href="{{ .RelPermalink }}">{{ i18n "case_study" }}</a>
+            <a href="{{ .Params.repo }}">{{ i18n "code" }}</a>
+          </p>
+        </div>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="skills">
+  <h2 id="skills">{{ i18n "skills" }}</h2>
+  <dl class="body skills">
+    {{- range $p.skills }}
+    <div>
+      <dt>{{ partial "t.html" .name }}</dt>
+      <dd>{{ delimit (partial "t.html" .items) ", " }}</dd>
+    </div>
+    {{- end }}
+    <div>
+      <dt>{{ i18n "languages" }}</dt>
+      <dd>{{ delimit (apply $p.languages "partial" "t.html" ".") ", " }}</dd>
+    </div>
+  </dl>
+</section>
+
+<section class="block" aria-labelledby="education">
+  <h2 id="education">{{ i18n "education" }}</h2>
+  <ol class="body timeline">
+    {{- range $p.education }}
+    <li>
+      <p class="when">{{ partial "month.html" .start }} – {{ partial "month.html" .end }}</p>
+      <div>
+        <h3>{{ partial "t.html" .degree }}, {{ .school }}</h3>
+        <p class="where">{{ .city }}</p>
+        <p>{{ partial "t.html" .focus }}</p>
+      </div>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+
+<section class="block" aria-labelledby="certifications">
+  <h2 id="certifications">{{ i18n "certifications" }}</h2>
+  <ol class="body timeline">
+    {{- range hugo.Data.profile.certifications }}
+    <li>
+      <p class="when">{{ partial "month.html" .date }}</p>
+      <div><h3>{{ .name }}</h3><p class="where">{{ .issuer }}</p></div>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+
+<section class="block" aria-labelledby="writing">
+  <h2 id="writing">{{ i18n "nav_writing" }}</h2>
+  <div class="body">
+    <p>{{ i18n "writing_text" }} <a href="{{ $c.substack }}">{{ i18n "read_writing" }}</a></p>
+  </div>
+</section>
+
+<section class="block contact" aria-labelledby="contact">
+  <h2 id="contact">{{ i18n "contact" }}</h2>
+  <div class="body">
+    <p>{{ i18n "contact_text" }}</p>
+    <p class="email"><a href="mailto:{{ $c.email }}">{{ $c.email }}</a></p>
+  </div>
+</section>
+{{ end }}

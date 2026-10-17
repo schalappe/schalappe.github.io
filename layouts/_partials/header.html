@@ -1,0 +1,16 @@
+{{- $p := hugo.Data.profile -}}
+{{- $home := site.Home.RelPermalink -}}
+{{- $cv := printf "cv/abdallah-hakim-kone-cv-%s.pdf" site.Language.Lang | relURL -}}
+{{- /* Two languages: the other one is this page's translation, else the other home (e.g. on 404). */ -}}
+{{- $other := index (or .Translations site.Home.Translations) 0 -}}
+<header class="site-header">
+  <a class="brand" href="{{ $home }}">{{ $p.short_name }}</a>
+  <nav aria-label="Main">
+    <a href="{{ $home }}#experience">{{ i18n "nav_experience" }}</a>
+    <a href="{{ $home }}#work">{{ i18n "nav_work" }}</a>
+    <a href="{{ $p.contact.substack }}">{{ i18n "nav_writing" }}</a>
+    <a href="{{ $cv }}" type="application/pdf">{{ i18n "nav_cv" }}</a>
+    <a class="lang" href="{{ $other.RelPermalink }}" hreflang="{{ $other.Language.Locale }}"
+      lang="{{ $other.Language.Locale }}">{{ i18n "switch_language" }}</a>
+  </nav>
+</header>

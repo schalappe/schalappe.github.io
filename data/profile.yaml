@@ -1,0 +1,210 @@
+# Single source for the website (Hugo: site.Data.profile) and the CV (cv/cv.typ).
+# Translatable fields are maps keyed by language code: { en: ..., fr: ... }.
+# Dates are "YYYY-MM"; `end: null` means "present".
+
+name: Abdallah Hakim Kone
+short_name: Hakim Kone
+role: Machine Learning Engineer
+location: Rennes, France
+
+contact:
+  email: konehakim@gmail.com
+  phone: "+33 6 67 63 93 99" # CV only, never rendered on the website
+  website: https://info.schalappe.page
+  github: https://github.com/schalappe
+  linkedin: https://www.linkedin.com/in/abdallah-hakim-kone/
+  substack: https://schalappe.substack.com/
+  photos: https://photos.schalappe.page/
+
+headline:
+  en: I take machine learning models to production and keep them running.
+  fr: Je mets les modèles de machine learning en production et je les maintiens en service.
+
+about:
+  en: >-
+    I'm a machine learning engineer at BNP Paribas. Data scientists build the models; I build everything
+    that takes them to production: deployment pipelines, serving, monitoring, and the infrastructure and
+    network work around them. My background spans system and network administration, software development
+    and machine learning, so I often act as the link between infrastructure teams and data scientists.
+    Before BNP, I spent four and a half years at Softeam on production computer vision and tabular models
+    for a public-sector client.
+  fr: >-
+    Je suis Machine Learning Engineer chez BNP Paribas. Les data scientists construisent les modèles ; je
+    construis tout ce qui les mène en production : pipelines de déploiement, mise à disposition, monitoring,
+    et le travail d'infrastructure et de réseau autour. Mon parcours couvre l'administration systèmes et
+    réseaux, le développement logiciel et le machine learning : je fais souvent le lien entre les équipes
+    d'infrastructure et les data scientists. Avant BNP, j'ai passé quatre ans et demi chez Softeam sur des
+    modèles de vision par ordinateur et des modèles tabulaires en production, pour un acteur public.
+
+interests:
+  en: Outside work, I read a lot of history, play basketball and brew specialty coffee.
+  fr: En dehors du travail, je lis beaucoup d'histoire, je joue au basket et je prépare du café de spécialité.
+
+experience:
+  - company: BNP Paribas
+    role: Machine Learning Engineer
+    city: Nantes, France
+    start: 2025-06
+    end: null
+    summary:
+      en: MLOps for a team of data scientists, working mostly on LLMs, speech-to-text, RAG and language models such as BERT.
+      fr: MLOps pour une équipe de data scientists, principalement sur des LLM, du speech-to-text, du RAG et des modèles de langage comme BERT.
+    highlights:
+      en:
+        - Build the software layers and pipelines that take the team's models from notebook to production.
+        - Set up model monitoring and alerting (Arize, Kibana).
+        - Handle the technical side of deployment, including network, and make sure the model APIs stay reachable.
+        - Version data and models with DVC; run batch workloads on Cloud Object Storage.
+        - Act as the link between infrastructure teams and data scientists.
+      fr:
+        - Développement des couches logicielles et des pipelines qui mènent les modèles de l'équipe jusqu'en production.
+        - Mise en place du monitoring et des alertes sur les modèles (Arize, Kibana).
+        - Prise en charge des aspects techniques du déploiement, réseau compris, et de la disponibilité des API des modèles.
+        - Versionnage des données et des modèles avec DVC ; traitements batch sur Cloud Object Storage.
+        - Lien entre les équipes d'infrastructure et les data scientists.
+    stack: [Python, Transformers, Mistral AI Studio, Domino Data Lab, DVC, Arize, Kibana, pandas, NumPy]
+
+  - company: Softeam
+    role: Ingénieur Études et Développement
+    city: Rennes, France
+    start: 2021-01
+    end: 2025-06
+    summary:
+      en: Consultant for a major public-sector client, automating the processing of traffic violations from radar images with computer vision and tabular models.
+      fr: Consultant pour un acteur majeur du secteur public, sur l'automatisation du traitement des infractions routières à partir de clichés radar, avec des modèles de vision et des modèles tabulaires.
+    highlights:
+      en:
+        - Rebuilt the vehicle identification model with a mixture-of-experts approach, reducing recognition errors.
+        - Designed a Swin Transformer classifier that filters out unusable radar images before processing.
+        - Developed heuristics that locate the violation zone in radar images.
+        - Led the integration of these models into the production processing chain.
+        - Designed a secure model-training environment in workshops with architects and the CISO, and led GDPR compliance with legal experts.
+        - Streamlined data collection and sampling, making model retraining faster and more reliable.
+      fr:
+        - Reconstruction du modèle d'identification des véhicules par une approche mixture of experts, réduisant les erreurs de reconnaissance.
+        - Conception d'un classifieur Swin Transformer qui écarte les clichés radar inexploitables avant traitement.
+        - Développement d'heuristiques de détection des zones d'infraction sur les clichés radar.
+        - Pilotage de l'intégration de ces modèles dans la chaîne de traitement en production.
+        - Conception d'un environnement d'entraînement sécurisé en ateliers avec les architectes et le RSSI, et pilotage de la conformité RGPD avec des juristes.
+        - Rationalisation de la collecte et de l'échantillonnage des données, pour un réentraînement des modèles plus rapide et plus fiable.
+    stack:
+      [
+        Python,
+        TensorFlow,
+        XGBoost,
+        SHAP,
+        OpenCV,
+        FastAPI,
+        Docker,
+        RabbitMQ,
+        MongoDB,
+        MLflow,
+        GitLab,
+      ]
+
+  - company: Orange Business Services
+    role: Data Scientist
+    city: Rennes, France
+    start: 2019-09
+    end: 2020-09
+    summary:
+      en: Data and AI solutions for retail analytics, built for a shopping-center operator.
+      fr: Solutions data et IA d'analyse de la performance commerciale, pour un gestionnaire de centres commerciaux.
+    highlights:
+      en:
+        - Benchmarked multi-object tracking models (Deep SORT, YOLO, SSD) to produce in-store retail KPIs.
+        - Built and deployed a similar-face search application.
+        - Prototyped a multi-agent reinforcement learning simulation of customer behavior.
+      fr:
+        - Benchmark de modèles de suivi multi-objets (Deep SORT, YOLO, SSD) pour produire des KPI retail.
+        - Développement et déploiement d'une application de recherche de visages similaires.
+        - Prototype de simulation de comportements clients par apprentissage par renforcement multi-agents.
+    stack: [Python, TensorFlow, PyTorch, OpenCV, Flask]
+
+  - company: Compagnie Ivoirienne d'Électricité
+    role:
+      en: AI Developer (internship)
+      fr: Développeur IA (stage)
+    city: Abidjan, Côte d'Ivoire
+    start: 2018-04
+    end: 2018-08
+    highlights:
+      en:
+        - Benchmarked object detection models (YOLO, SSD, Faster R-CNN) to detect incidents on the power grid.
+        - Built a cross-platform mobile app to manage grid incidents.
+        - Built an app that reads electricity meter indexes.
+      fr:
+        - Benchmark de modèles de détection d'objets (YOLO, SSD, Faster R-CNN) pour détecter les incidents sur le réseau électrique.
+        - Développement d'une application mobile multiplateforme de gestion des sinistres sur le réseau.
+        - Développement d'une application de relevé des index des compteurs.
+    stack: [Python, TensorFlow]
+
+  - company: Veone
+    role:
+      en: IT intern
+      fr: Stagiaire IT
+    city: Abidjan, Côte d'Ivoire
+    start: 2017-04
+    end: 2017-09
+    highlights:
+      en:
+        - Deployed monitoring systems and managed services (Centreon).
+      fr:
+        - Déploiement de systèmes de supervision et de services infogérés (Centreon).
+    stack: [Linux, Bash, Python, Centreon]
+
+education:
+  - school: IMT Atlantique
+    city: Brest, France
+    start: 2018-09
+    end: 2020-09
+    degree:
+      en: General engineering degree (Diplôme d'ingénieur)
+      fr: Diplôme d'ingénieur généraliste
+    focus:
+      en: Mathematics and signal processing, data science, software engineering, game theory.
+      fr: Mathématiques et traitement du signal, data science, ingénierie logicielle, théorie des jeux.
+
+  - school: ESATIC
+    city: Abidjan, Côte d'Ivoire
+    start: 2014-09
+    end: 2017-09
+    degree:
+      en: Bachelor's degree in computer networks and systems
+      fr: Licence en systèmes et réseaux informatiques
+    focus:
+      en: Networks and network administration, linear algebra, signal processing, statistics.
+      fr: Réseaux et administration réseau, algèbre linéaire, traitement du signal, statistiques.
+
+skills:
+  - name:
+      en: Modeling
+      fr: Modélisation
+    items:
+      en: [LLMs, RAG, Speech-to-text, NLP (BERT), Computer vision, Tabular models, Reinforcement learning, Transformers, TensorFlow, PyTorch, scikit-learn, XGBoost]
+      fr: [LLM, RAG, Speech-to-text, NLP (BERT), Vision par ordinateur, Modèles tabulaires, Apprentissage par renforcement, Transformers, TensorFlow, PyTorch, scikit-learn, XGBoost]
+  - name:
+      en: MLOps and infrastructure
+      fr: MLOps et infrastructure
+    items:
+      en: [Deployment pipelines, Model monitoring, Arize, Kibana, DVC, Domino Data Lab, Mistral AI Studio, Docker, FastAPI, MLflow, GitLab CI, Networking, Linux]
+      fr: [Pipelines de déploiement, Monitoring de modèles, Arize, Kibana, DVC, Domino Data Lab, Mistral AI Studio, Docker, FastAPI, MLflow, GitLab CI, Réseau, Linux]
+  - name:
+      en: Languages and data
+      fr: Langages et données
+    items: [Python, Rust, TypeScript, pandas, Polars, NumPy, MongoDB, Elasticsearch, RabbitMQ]
+
+languages:
+  - en: French (native)
+    fr: Français (langue maternelle)
+  - en: English (professional)
+    fr: Anglais (professionnel)
+
+certifications:
+  - { name: "MLOps | Machine Learning Operations", issuer: Duke University, date: 2025-01 }
+  - { name: Machine Learning Engineering for Production (MLOps), issuer: DeepLearning.AI, date: 2023-03 }
+  - { name: Deep Learning Specialization, issuer: DeepLearning.AI, date: 2021-10 }
+  - { name: Advanced Machine Learning with TensorFlow on Google Cloud Platform, issuer: DeepLearning.AI, date: 2020-11 }
+  - { name: TensorFlow Developer Certificate, issuer: TensorFlow Certificate Program, date: 2020-10 }
+  - { name: L'Atelier RGPD, issuer: CNIL, date: 2020-10 }
+  - { name: Machine Learning, issuer: Stanford University, date: 2019-06 }

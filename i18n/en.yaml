@@ -1,0 +1,33 @@
+nav_work: Work
+nav_experience: Experience
+nav_writing: Writing
+nav_cv: CV
+switch_language: Français
+switch_language_hint: Lire en français
+skip: Skip to content
+email_me: Email me
+download_cv: Download CV
+portrait_alt: Portrait of Hakim Kone
+work: Selected work
+work_intro: Personal projects I built end to end. My production work at Softeam and BNP Paribas is confidential, so it is described under experience.
+case_study: Read the case study
+code: Code on GitHub
+experience: Experience
+present: present
+about: About
+skills: Skills
+education: Education
+languages: Languages
+contact: Contact
+contact_text: Email is the fastest way to reach me. I usually reply within a few days.
+writing_text: I publish what I learn about building ML systems on Substack.
+read_writing: Read my writing
+back_home: Back to all projects
+demo_label: Demo recording
+photos: Photography
+not_found_title: This page doesn't exist
+not_found_text: The link may be outdated, or the address may contain a typo.
+go_home: Go to the homepage
+built_with: Built with Hugo.
+role_at: "{{ .role }} at {{ .company }}"
+certifications: Certifications

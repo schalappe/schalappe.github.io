@@ -1,0 +1,46 @@
+{{- $p := hugo.Data.profile -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+{{- if .IsHome }}
+<title>{{ $p.name }}, {{ $p.role }}</title>
+{{- else }}
+<title>{{ .Title }} | {{ $p.name }}</title>
+{{- end }}
+<meta name="description" content="{{ .Description | default (partial `t.html` $p.headline) }}">
+<meta name="author" content="{{ $p.name }}">
+<link rel="canonical" href="{{ .Permalink }}">
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{- end }}
+{{- range .AllTranslations }}{{ if eq .Language.Lang hugo.Sites.Default.Language.Lang }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{- end }}{{ end }}
+<link rel="icon" href="{{ `favicon.ico` | relURL }}" sizes="any">
+<link rel="preload" href="{{ `fonts/source-sans-3-latin.woff2` | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- with resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{- end }}
+{{- partial "opengraph.html" . }}
+{{- partial "twitter_cards.html" . }}
+{{- if .IsHome }}{{/* The home has no front matter, so the embedded OG/Twitter partials find no description. */}}
+<meta property="og:description" content="{{ partial `t.html` $p.headline }}">
+<meta name="twitter:description" content="{{ partial `t.html` $p.headline }}">
+{{- end }}
+{{- if .IsHome }}
+{{- $current := index $p.experience 0 }}
+{{- $person := dict
+"@context" "https://schema.org"
+"@type" "Person"
+"name" $p.name
+"jobTitle" $p.role
+"worksFor" (dict "@type" "Organization" "name" $current.company)
+"alumniOf" (dict "@type" "CollegeOrUniversity" "name" "IMT Atlantique")
+"address" (dict "@type" "PostalAddress" "addressLocality" "Rennes" "addressCountry" "FR")
+"email" (printf "mailto:%s" $p.contact.email)
+"url" site.Home.Permalink
+"image" ("og.jpg" | absURL)
+"sameAs" (slice $p.contact.github $p.contact.linkedin $p.contact.substack)
+}}
+<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
+{{- end }}

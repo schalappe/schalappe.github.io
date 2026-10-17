@@ -1,0 +1,34 @@
+{{ define "main" }}
+<article class="case">
+  <header>
+    <p class="back"><a href="{{ site.Home.RelPermalink }}#work">{{ i18n "back_home" }}</a></p>
+    <h1>{{ .Title }}</h1>
+    <p class="lede">{{ .Description }}</p>
+    <p class="stack">{{ .Params.year }}, {{ delimit .Params.stack ", " }}</p>
+    <p class="actions"><a class="button" href="{{ .Params.repo }}">{{ i18n "code" }}</a></p>
+  </header>
+
+  {{- $cover := .Resources.GetMatch "cover.*" }}
+  {{- with .Resources.GetMatch "demo.mp4" }}
+  {{- $poster := $cover.Fit "960x720 webp q80" }}
+  <figure class="media">
+    {{- /* Click to play: nothing downloads until the visitor asks. */}}
+    <video controls preload="none" playsinline loop muted width="{{ $poster.Width }}" height="{{ $poster.Height }}"
+      poster="{{ $poster.RelPermalink }}" aria-label="{{ i18n `demo_label` }}">
+      <source src="{{ .RelPermalink }}" type="video/mp4">
+    </video>
+    {{- with $.Params.demo_caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+  {{- else }}{{ with $cover }}
+  {{- $img := .Fit "1200x900 webp q82" }}
+  <figure class="media">
+    <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}"
+      alt="{{ $.Params.cover_alt | default $.Title }}">
+  </figure>
+  {{- end }}{{ end }}
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

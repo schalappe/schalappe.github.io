@@ -1,0 +1,33 @@
+nav_work: Projets
+nav_experience: Parcours
+nav_writing: Articles
+nav_cv: CV
+switch_language: English
+switch_language_hint: Read in English
+skip: Aller au contenu
+email_me: M'écrire
+download_cv: Télécharger le CV
+portrait_alt: Portrait de Hakim Kone
+work: Projets choisis
+work_intro: Des projets personnels menés de bout en bout. Mon travail en production chez Softeam et BNP Paribas est confidentiel ; il est décrit dans le parcours.
+case_study: Lire l'étude de cas
+code: Code sur GitHub
+experience: Parcours
+present: aujourd'hui
+about: À propos
+skills: Compétences
+education: Formation
+languages: Langues
+contact: Contact
+contact_text: Le plus simple pour me joindre est l'e-mail. Je réponds en général sous quelques jours.
+writing_text: Je publie sur Substack ce que j'apprends en construisant des systèmes de ML.
+read_writing: Lire mes articles
+back_home: Retour aux projets
+demo_label: Enregistrement de démonstration
+photos: Photographie
+not_found_title: Cette page n'existe pas
+not_found_text: Le lien est peut-être périmé, ou l'adresse contient une faute de frappe.
+go_home: Aller à l'accueil
+built_with: Réalisé avec Hugo.
+role_at: "{{ .role }} chez {{ .company }}"
+certifications: Certifications
