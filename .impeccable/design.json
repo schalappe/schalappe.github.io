@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-17T13:42:44.587466+00:00",
+  "title": "Design System: Hakim Kone, ML Engineer",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Notebook Paper",
+        "canonical": "oklch(97.3% 0.007 124.4)",
+        "tonalRamp": [
+          "oklch(15% 0.007 124.4)",
+          "oklch(26% 0.007 124.4)",
+          "oklch(37% 0.007 124.4)",
+          "oklch(48% 0.007 124.4)",
+          "oklch(59% 0.007 124.4)",
+          "oklch(70% 0.007 124.4)",
+          "oklch(82% 0.007 124.4)",
+          "oklch(95% 0.007 124.4)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Slate Ink",
+        "canonical": "oklch(24.4% 0.023 251.4)",
+        "tonalRamp": [
+          "oklch(15% 0.023 251.4)",
+          "oklch(26% 0.023 251.4)",
+          "oklch(37% 0.023 251.4)",
+          "oklch(48% 0.023 251.4)",
+          "oklch(59% 0.023 251.4)",
+          "oklch(70% 0.023 251.4)",
+          "oklch(82% 0.023 251.4)",
+          "oklch(95% 0.023 251.4)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Pencil Grey",
+        "canonical": "oklch(49.5% 0.026 254.5)",
+        "tonalRamp": [
+          "oklch(15% 0.026 254.5)",
+          "oklch(26% 0.026 254.5)",
+          "oklch(37% 0.026 254.5)",
+          "oklch(48% 0.026 254.5)",
+          "oklch(59% 0.026 254.5)",
+          "oklch(70% 0.026 254.5)",
+          "oklch(82% 0.026 254.5)",
+          "oklch(95% 0.026 254.5)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Ruled Line",
+        "canonical": "oklch(89.3% 0.016 130.4)",
+        "tonalRamp": [
+          "oklch(15% 0.016 130.4)",
+          "oklch(26% 0.016 130.4)",
+          "oklch(37% 0.016 130.4)",
+          "oklch(48% 0.016 130.4)",
+          "oklch(59% 0.016 130.4)",
+          "oklch(70% 0.016 130.4)",
+          "oklch(82% 0.016 130.4)",
+          "oklch(95% 0.016 130.4)"
+        ]
+      },
+      "plate": {
+        "role": "neutral",
+        "displayName": "Plate White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(59% 0.000 89.9)",
+          "oklch(70% 0.000 89.9)",
+          "oklch(82% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "detection-green": {
+        "role": "primary",
+        "displayName": "Detection Green",
+        "canonical": "oklch(64.5% 0.169 134.9)",
+        "tonalRamp": [
+          "oklch(15% 0.160 134.9)",
+          "oklch(26% 0.160 134.9)",
+          "oklch(37% 0.160 134.9)",
+          "oklch(48% 0.160 134.9)",
+          "oklch(59% 0.160 134.9)",
+          "oklch(70% 0.160 134.9)",
+          "oklch(82% 0.160 134.9)",
+          "oklch(95% 0.160 134.9)"
+        ]
+      },
+      "annotation-ink": {
+        "role": "primary",
+        "displayName": "Annotation Ink",
+        "canonical": "oklch(46.6% 0.133 138.1)",
+        "tonalRamp": [
+          "oklch(15% 0.133 138.1)",
+          "oklch(26% 0.133 138.1)",
+          "oklch(37% 0.133 138.1)",
+          "oklch(48% 0.133 138.1)",
+          "oklch(59% 0.133 138.1)",
+          "oklch(70% 0.133 138.1)",
+          "oklch(82% 0.133 138.1)",
+          "oklch(95% 0.133 138.1)"
+        ]
+      },
+      "on-accent": {
+        "role": "neutral",
+        "displayName": "On Accent",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(59% 0.000 89.9)",
+          "oklch(70% 0.000 89.9)",
+          "oklch(82% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "label-ink": {
+        "role": "neutral",
+        "displayName": "Label Ink",
+        "canonical": "oklch(20.0% 0.041 133.9)",
+        "tonalRamp": [
+          "oklch(15% 0.041 133.9)",
+          "oklch(26% 0.041 133.9)",
+          "oklch(37% 0.041 133.9)",
+          "oklch(48% 0.041 133.9)",
+          "oklch(59% 0.041 133.9)",
+          "oklch(70% 0.041 133.9)",
+          "oklch(82% 0.041 133.9)",
+          "oklch(95% 0.041 133.9)"
+        ]
+      },
+      "paper-dark": {
+        "role": "neutral",
+        "displayName": "Notebook Paper (dark)",
+        "canonical": "oklch(19.8% 0.010 159.1)",
+        "tonalRamp": [
+          "oklch(15% 0.010 159.1)",
+          "oklch(26% 0.010 159.1)",
+          "oklch(37% 0.010 159.1)",
+          "oklch(48% 0.010 159.1)",
+          "oklch(59% 0.010 159.1)",
+          "oklch(70% 0.010 159.1)",
+          "oklch(82% 0.010 159.1)",
+          "oklch(95% 0.010 159.1)"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Slate Ink (dark)",
+        "canonical": "oklch(92.8% 0.012 133.4)",
+        "tonalRamp": [
+          "oklch(15% 0.012 133.4)",
+          "oklch(26% 0.012 133.4)",
+          "oklch(37% 0.012 133.4)",
+          "oklch(48% 0.012 133.4)",
+          "oklch(59% 0.012 133.4)",
+          "oklch(70% 0.012 133.4)",
+          "oklch(82% 0.012 133.4)",
+          "oklch(95% 0.012 133.4)"
+        ]
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Pencil Grey (dark)",
+        "canonical": "oklch(71.4% 0.017 148.3)",
+        "tonalRamp": [
+          "oklch(15% 0.017 148.3)",
+          "oklch(26% 0.017 148.3)",
+          "oklch(37% 0.017 148.3)",
+          "oklch(48% 0.017 148.3)",
+          "oklch(59% 0.017 148.3)",
+          "oklch(70% 0.017 148.3)",
+          "oklch(82% 0.017 148.3)",
+          "oklch(95% 0.017 148.3)"
+        ]
+      },
+      "line-dark": {
+        "role": "neutral",
+        "displayName": "Ruled Line (dark)",
+        "canonical": "oklch(31.0% 0.016 156.2)",
+        "tonalRamp": [
+          "oklch(15% 0.016 156.2)",
+          "oklch(26% 0.016 156.2)",
+          "oklch(37% 0.016 156.2)",
+          "oklch(48% 0.016 156.2)",
+          "oklch(59% 0.016 156.2)",
+          "oklch(70% 0.016 156.2)",
+          "oklch(82% 0.016 156.2)",
+          "oklch(95% 0.016 156.2)"
+        ]
+      },
+      "plate-dark": {
+        "role": "neutral",
+        "displayName": "Plate White (dark)",
+        "canonical": "oklch(96.4% 0.007 124.4)",
+        "tonalRamp": [
+          "oklch(15% 0.007 124.4)",
+          "oklch(26% 0.007 124.4)",
+          "oklch(37% 0.007 124.4)",
+          "oklch(48% 0.007 124.4)",
+          "oklch(59% 0.007 124.4)",
+          "oklch(70% 0.007 124.4)",
+          "oklch(82% 0.007 124.4)",
+          "oklch(95% 0.007 124.4)"
+        ]
+      },
+      "detection-green-dark": {
+        "role": "primary",
+        "displayName": "Detection Green (dark)",
+        "canonical": "oklch(76.0% 0.178 135.1)",
+        "tonalRamp": [
+          "oklch(15% 0.160 135.1)",
+          "oklch(26% 0.160 135.1)",
+          "oklch(37% 0.160 135.1)",
+          "oklch(48% 0.160 135.1)",
+          "oklch(59% 0.160 135.1)",
+          "oklch(70% 0.160 135.1)",
+          "oklch(82% 0.160 135.1)",
+          "oklch(95% 0.160 135.1)"
+        ]
+      },
+      "annotation-ink-dark": {
+        "role": "primary",
+        "displayName": "Annotation Ink (dark)",
+        "canonical": "oklch(82.4% 0.156 133.8)",
+        "tonalRamp": [
+          "oklch(15% 0.156 133.8)",
+          "oklch(26% 0.156 133.8)",
+          "oklch(37% 0.156 133.8)",
+          "oklch(48% 0.156 133.8)",
+          "oklch(59% 0.156 133.8)",
+          "oklch(70% 0.156 133.8)",
+          "oklch(82% 0.156 133.8)",
+          "oklch(95% 0.156 133.8)"
+        ]
+      },
+      "on-accent-dark": {
+        "role": "neutral",
+        "displayName": "On Accent (dark)",
+        "canonical": "oklch(19.8% 0.010 159.1)",
+        "tonalRamp": [
+          "oklch(15% 0.010 159.1)",
+          "oklch(26% 0.010 159.1)",
+          "oklch(37% 0.010 159.1)",
+          "oklch(48% 0.010 159.1)",
+          "oklch(59% 0.010 159.1)",
+          "oklch(70% 0.010 159.1)",
+          "oklch(82% 0.010 159.1)",
+          "oklch(95% 0.010 159.1)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Name in the home hero only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Case study titles."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Headline sentence under a title."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section names, prose h2, entry names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Muted metadata: dates, places, stacks, captions."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "detector-lock",
+        "value": "0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s",
+        "purpose": "Bounding box contracts onto the portrait; the only animation, reduced-motion gated."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "single-column",
+        "value": "52rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one main action per view.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Email me</a>",
+      "css": ".ds-btn{display:inline-block;padding:0.6rem 1.15rem;border:2px solid var(--accent-ink,#2e6a12);border-radius:6px;font:600 1.125rem/1.6 'Source Sans 3',system-ui,sans-serif;text-decoration:none;cursor:pointer}.ds-btn:hover{filter:brightness(1.1)}.ds-btn:focus-visible{outline:3px solid var(--accent,#5da327);outline-offset:3px}.ds-btn-primary{background:var(--accent-ink,#2e6a12);color:var(--on-accent,#fff)}"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Secondary action, e.g. Download CV.",
+      "html": "<a class=\"ds-btn ds-btn-quiet\" href=\"#\">Download CV</a>",
+      "css": ".ds-btn{display:inline-block;padding:0.6rem 1.15rem;border:2px solid var(--accent-ink,#2e6a12);border-radius:6px;font:600 1.125rem/1.6 'Source Sans 3',system-ui,sans-serif;text-decoration:none;cursor:pointer}.ds-btn:hover{filter:brightness(1.1)}.ds-btn:focus-visible{outline:3px solid var(--accent,#5da327);outline-offset:3px}.ds-btn-quiet{background:transparent;color:var(--accent-ink,#2e6a12)}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "description": "Inline link; underline thickens on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">Read the case study</a>",
+      "css": ".ds-link{color:var(--accent-ink,#2e6a12);text-decoration-thickness:1px;text-underline-offset:0.2em;font:400 1.125rem/1.6 'Source Sans 3',system-ui,sans-serif}.ds-link:hover{text-decoration-thickness:2px}.ds-link:focus-visible{outline:3px solid var(--accent,#5da327);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Site Navigation",
+      "kind": "nav",
+      "description": "Brand left, links right, language switch last in muted ink.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\">Hakim Kone</a><nav><a href=\"#\">Work</a><a href=\"#\">Experience</a><a href=\"#\">Writing</a><a href=\"#\">CV</a><a class=\"ds-lang\" href=\"#\">Français</a></nav></header>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.75rem 2rem;padding-block:1.5rem;font:400 1.125rem/1.6 'Source Sans 3',system-ui,sans-serif}.ds-brand{color:var(--ink,#18212b);font-weight:700;font-size:1.2rem;text-decoration:none}.ds-nav nav{display:flex;flex-wrap:wrap;gap:0.25rem 1.5rem}.ds-nav nav a{color:var(--ink,#18212b);text-decoration:none;padding-block:0.25rem}.ds-nav nav a:hover{color:var(--accent-ink,#2e6a12)}.ds-nav nav a.ds-lang{color:var(--muted,#586371)}"
+    },
+    {
+      "name": "Project Entry",
+      "kind": "card",
+      "refersTo": "project-thumb",
+      "description": "Thumbnail on a plate beside title, summary, and stack.",
+      "html": "<div class=\"ds-project\"><div class=\"ds-thumb\"></div><div><h3><a href=\"#\">Content-based image retrieval</a></h3><p>A benchmark of five feature extractors and three distance measures.</p><p class=\"ds-meta\">2023, TensorFlow, OpenCV</p></div></div>",
+      "css": ".ds-project{display:grid;grid-template-columns:13rem 1fr;gap:1rem 1.75rem;font:400 1.125rem/1.6 'Source Sans 3',system-ui,sans-serif;color:var(--ink,#18212b)}.ds-thumb{aspect-ratio:14/9;background:var(--plate,#fff);border:1px solid var(--line,#d8ded3);border-radius:4px}.ds-project h3{margin:0;font-size:1.2rem;font-weight:600;line-height:1.15}.ds-project h3 a{color:inherit}.ds-project p{margin:0.4rem 0 0}.ds-meta{color:var(--muted,#586371);font-size:0.95rem}"
+    },
+    {
+      "name": "Section Block",
+      "kind": "custom",
+      "description": "Label column left, content right, hairline above.",
+      "html": "<section class=\"ds-block\"><h2>Experience</h2><p>Running text sits in the content column.</p></section>",
+      "css": ".ds-block{display:grid;grid-template-columns:11rem minmax(0,46rem);gap:1rem 3rem;padding-block:3rem;border-top:1px solid var(--line,#d8ded3);font:400 1.125rem/1.6 'Source Sans 3',system-ui,sans-serif;color:var(--ink,#18212b)}.ds-block h2{margin:0;font-size:1.3rem;font-weight:600;line-height:1.15}.ds-block p{margin:0}"
+    },
+    {
+      "name": "Detector Box",
+      "kind": "custom",
+      "refersTo": "detector-label",
+      "description": "Signature bounding box with confidence label over the portrait.",
+      "html": "<div class=\"ds-det\"><div class=\"ds-det-img\"></div><span class=\"ds-bbox\"><span class=\"ds-bbox-label\">ml_engineer 0.98</span></span></div>",
+      "css": ".ds-det{position:relative;width:200px;margin:2rem 1rem 1rem}.ds-det-img{aspect-ratio:4/5;background:var(--line,#d8ded3);border-radius:2px}.ds-bbox{position:absolute;inset:-10px;border:2px solid var(--accent,#5da327)}.ds-bbox-label{position:absolute;left:-2px;bottom:100%;padding:0.05rem 0.45rem;background:var(--accent,#5da327);color:var(--label-ink,#0e1a06);font:600 0.8rem/1.6 'Source Sans 3',system-ui,sans-serif;white-space:nowrap}@media (prefers-reduced-motion:no-preference){.ds-bbox{animation:ds-lock 0.7s cubic-bezier(0.2,0.8,0.2,1) 0.3s both}@keyframes ds-lock{from{inset:-34px;opacity:0}}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Field Notebook",
+    "overview": "The site reads like an engineer's working record: off-white paper, dark ink, one typeface, and a left-hand margin where each section's name sits beside its evidence. Nothing is staged. The hierarchy comes from weight and size inside a single family, and sections are separated by hairline rules rather than cards or panels. A reader who wants depth gets long, calm prose; a reader who scans gets labels, dates, and stacks in muted ink.\n\nOne green carries every signal. It underlines links, fills the main action, rings keyboard focus, and draws the only ornament: a detection bounding box that locks onto the portrait with a confidence label (`ml_engineer 0.98`), a nod to the computer-vision work. That box is the notebook's one annotation in the margin; everything else stays plain.\n\nThe system is flat, light by default, and follows the reader's OS into a dark mode with the same structure. There is no JavaScript and only one animation.",
+    "keyCharacteristics": [
+      "Paper and ink, green only as signal.",
+      "One family (Source Sans 3) with hierarchy by weight and size.",
+      "Label column on the left, content on the right; one column on narrow screens.",
+      "Hairline rules instead of surfaces; no shadows.",
+      "One signature: the detector bounding box on the portrait."
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Green means \"this is interactive or this is the annotation\". Never use it for decoration, section tints, or headings.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Greens Rule",
+        "body": "Detection Green is for strokes and fills behind dark text; Annotation Ink is for green text and filled buttons. Never set text in Detection Green on paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight-Not-Font Rule",
+        "body": "Hierarchy is built from 400, 600, and 700 in one family. Do not introduce a second typeface, italics for emphasis, or uppercase tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Page Rule",
+        "body": "Separate content with a 1px Ruled Line or with space, never with shadows, cards, or tinted panels.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep green to links, the primary action, focus rings, and the detector box.",
+      "**Do** put new home sections in the label-column grid with a hairline top border.",
+      "**Do** use Pencil Grey at 0.95rem for metadata (dates, places, stacks, captions).",
+      "**Do** back every screenshot or diagram with the Plate White plate and Ruled Line border.",
+      "**Do** gate any motion behind `prefers-reduced-motion: no-preference`, and keep the detector lock as the only one.",
+      "**Do** define every new color for both light and dark modes."
+    ],
+    "donts": [
+      "**Don't** add shadows, cards, gradients, or tinted section backgrounds.",
+      "**Don't** add a second typeface or set text in Detection Green on paper.",
+      "**Don't** add JavaScript-driven effects; the site ships none.",
+      "**Don't** repeat the bounding-box motif elsewhere; it is the single annotation.",
+      "**Don't** round corners past 6px."
+    ]
+  }
+}
