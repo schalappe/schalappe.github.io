@@ -1,0 +1,66 @@
+{{ define "main" }}
+<article class="case">
+  <p class="back"><a href="{{ site.Home.RelPermalink }}#work">{{ i18n "back_home" }}</a></p>
+
+  <header>
+    <h1>{{ .Title }}</h1>
+    <p class="lede">{{ .Description }}</p>
+  </header>
+  <div class="meta">
+    <span class="meta-year">{{ .Params.year }}</span>
+    <span class="stack">{{ delimit .Params.stack " · " }}</span>
+    {{- partial "result.html" . }}
+    <a class="button" href="{{ .Params.repo }}">{{ i18n "code" }}{{ partial "external.html" }}</a>
+  </div>
+
+  {{- /* Media: the demo recording if there is one, else a results figure, else the cover. A `poster.*` image, when
+  present, replaces the cover as the video's still (the card keeps the cover). */}}
+  {{- $cover := .Resources.GetMatch "cover.*" }}
+  {{- with .Resources.GetMatch "demo.mp4" }}
+  {{- $poster := ($.Resources.GetMatch "poster.*" | default $cover).Fit "960x720 webp q80" }}
+  <figure class="media">
+    {{- /* Click to play: nothing downloads until the visitor asks. */}}
+    <video controls preload="none" playsinline loop muted width="{{ $poster.Width }}" height="{{ $poster.Height }}"
+      poster="{{ $poster.RelPermalink }}" aria-label="{{ i18n `demo_label` }}">
+      <source src="{{ .RelPermalink }}" type="video/mp4">
+    </video>
+    {{- /* Marks the still as a video on desktop (see .play-hint). Text only, no play glyph: a click on the video body
+    does not start it in Chrome, only the controls do. Hidden from assistive technology: the video's own label and
+    controls carry it. */}}
+    <span class="play-hint" aria-hidden="true">{{ i18n "demo_label" }}</span>
+    {{- with $.Params.demo_caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+  {{- else }}
+  {{- $media := $cover }}
+  {{- $alt := .Params.cover_alt }}
+  {{- $results := .Resources.GetMatch "results.*" }}
+  {{- with $results }}{{ $media = . }}{{ $alt = $.Params.results_alt }}{{ end }}
+  {{- with $media }}
+  {{- $img := .Fit "1200x900 webp q82" }}
+  {{- /* The image links to its full-size file, so phone readers can zoom into small labels and figures. The link is
+  named by that action; the image keeps its long description as alt text. */}}
+  <figure class="media{{ if $results }} results{{ end }}">
+    <a href="{{ .RelPermalink }}" aria-label="{{ i18n `open_full_size` }}"><img src="{{ $img.RelPermalink }}"
+        width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $alt | default $.Title }}"></a>
+    {{- with and $results $.Params.results_caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+  {{- end }}{{ end }}
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  {{- /* End of the study: the next project (the last one wraps to the first) and a way to ask about this one. */}}
+  {{- $projects := (where site.RegularPages "Section" "projects").ByWeight }}
+  {{- $next := index $projects 0 }}
+  {{- range $i, $p := $projects }}
+  {{- if eq $p.RelPermalink $.RelPermalink }}{{ $next = index $projects (mod (add $i 1) (len $projects)) }}{{ end }}
+  {{- end }}
+  <footer class="case-end">
+    <a class="page-link" href="{{ $next.RelPermalink }}"><span class="label">{{ i18n "next_project" }}</span>
+      <span>{{ $next.Title }}</span>{{ partial "arrow.html" }}</a>
+    <p>{{ i18n "case_question" }} <a href="mailto:{{ hugo.Data.profile.contact.email }}">{{
+        hugo.Data.profile.contact.email }}</a></p>
+  </footer>
+</article>
+{{ end }}

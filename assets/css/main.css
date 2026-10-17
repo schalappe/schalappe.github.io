@@ -1,1118 +1,1352 @@
-/* Skin for portfolio */
+/* Geist and Geist Mono (OFL), self-hosted variable fonts; Geist is shared with the CV (cv/fonts).
+   Mono is for data only: dates, years, chart axis, code, the detector label.
+   Both files are subset to Latin (U+0000-024F, combining marks, general punctuation, arrows, €, ™), which halves
+   their weight; a character outside that set falls back to the system font. To add one, re-subset the upstream
+   variable fonts (github.com/vercel/geist-font) with fonttools:
+   pyftsubset Geist[wght].woff2 --unicodes="U+0000-024F,U+0300-036F,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+FEFF,U+FFFD" --layout-features+=tnum,case --flavor=woff2 */
+@font-face {
+ font-family: "Geist";
+ src: url("/fonts/geist.woff2") format("woff2");
+ font-weight: 100 900;
+ font-display: swap;
+}
 
-/* Import Polices */
-@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
-
-/* -------------------------------------------------------------------------- */
-
-/* Variables */
+@font-face {
+ font-family: "Geist Mono";
+ src: url("/fonts/geist-mono.woff2") format("woff2");
+ font-weight: 100 900;
+ font-display: swap;
+}
 
 :root {
-    --header-height: 3rem;
-
-    /* color variables */
-    --hue-color: 142; /* 142 */
-    --first-color: #90ccca;
-    --first-color-second: #90ccca;
-    --title-color: hsl(var(--hue-color), 8%, 95%);
-    --text-color: hsl(var(--hue-color), 8%, 95%);
-    --input-color: hsl(var(--hue-color), 29%, 16%);
-    --body-color: #202023;
-    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
-    --scroll-thumb-color: hsl(var(--hue-color), 12%, 48%);
-    --container-color: hsl(var(--hue-color), 29%, 36%);
-    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
-    --first-color-lighter: #99ccca;
-    --text-color-lighter: #99ccca;
-
-    /* Font */
-    --body-font: 'Google Sans Code', sans-serif;
-    --header-font: 'Delius', cursive;
-
-    /* Typography */
-    --big-font-size: 2rem;
-    --h1-font-size: 1.5rem;
-    --h2-font-size: 1.25rem;
-    --h3-font-size: 1.125rem;
-    --normal-font-size: .938rem;
-    --small-font-size: .813rem;
-    --smaller-font-size: .75rem;
-
-    /* Font weight */
-    --font-medium: 500;
-    --font-semi-bold: 600;
-
-    /* Margenes bottom */
-    --mb-0-25: .25rem;
-    --mb-0-5: .5rem;
-    --mb-0-75: .75rem;
-    --mb-1: 1rem;
-    --mb-1-5: 1.5rem;
-    --mb-2: 2rem;
-    --mb-2-5: 2.5rem;
-    --mb-3: 3rem;
-
-    /* z-index */
-    --z-tooltip: 10;
-    --z-fixed: 100;
-    --z-modal: 1000;
+ --paper: #f7f7f5;
+ --ink: #111214;
+ --muted: #5c5f66;
+ --line: #e0e0dc;
+ --plate: #ffffff;
+ --accent: #5da327;
+ /* graphics: bounding box, focus ring */
+ --accent-ink: #2e6a12;
+ /* text and filled buttons */
+ --on-accent: #ffffff;
+ --label-ink: #0e1a06;
+ --gutter: clamp(1.25rem, 5vw, 3rem);
+ /* Reading measure: about 75 characters of Geist at body size. */
+ --measure: 38rem;
+ --mono: "Geist Mono", ui-monospace, monospace;
+ color-scheme: light dark;
 }
 
-/* font size for large devices */
-@media (min-width: 968px) {
-    :root {
-        --big-font-size: 3rem;
-        --h1-font-size: 2.25rem;
-        --h2-font-size: 1.5rem;
-        --h3-font-size: 1.25rem;
-        --normal-font-size: 1rem;
-        --small-font-size: .875rem;
-        --smaller-font-size: .813rem;
-    }
+/* Dark tokens: the OS setting, unless the header button stored "light"; or the stored "dark". */
+@media (prefers-color-scheme: dark) {
+ :root:not([data-theme="light"]) {
+  --paper: #0f1011;
+  --ink: #ededeb;
+  --muted: #9a9ca1;
+  --line: #27292c;
+  --plate: #f2f2f0;
+  --accent: #7cc94a;
+  --accent-ink: #9bdb6e;
+  --on-accent: #0f1011;
+ }
 }
 
-/* -------------------------------------------------------------------------- */
-
-/* Button Dark/Light */
-
-.nav__btns {
-    display: flex;
-    align-items: center;
+:root[data-theme="dark"] {
+ --paper: #0f1011;
+ --ink: #ededeb;
+ --muted: #9a9ca1;
+ --line: #27292c;
+ --plate: #f2f2f0;
+ --accent: #7cc94a;
+ --accent-ink: #9bdb6e;
+ --on-accent: #0f1011;
+ color-scheme: dark;
 }
 
-.change-theme {
-    font-size: 1.25rem;
-    color: var(--title-color);
-    margin-right: var(--mb-1);
-    cursor: pointer;
+:root[data-theme="light"] {
+ color-scheme: light;
 }
 
-.change-theme:hover {
-    color: var(--first-color);
-}
-
-/* -------------------------------------------------------------------------- */
-
-/* Base */
-
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+*,
+*::before,
+*::after {
+ box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+ -webkit-text-size-adjust: 100%;
+ scroll-padding-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+ html {
+  scroll-behavior: smooth;
+ }
 }
 
 body {
-    margin: 0 0 var(--header-height) 0;
-    font-family: var(--body-font);
-    font-size: var(--normal-font-size);
-    background-color: var(--body-color);
-    color: var(--text-color);
+ margin: 0;
+ background: var(--paper);
+ color: var(--ink);
+ font: 400 1.0625rem/1.6 "Geist", system-ui, sans-serif;
+ font-kerning: normal;
 }
 
-h1, h2, h3, h4 {
-    font-family: var(--header-font);
-    color: var(--title-color);
-    font-weight: var(--font-semi-bold);
+::selection {
+ background: var(--accent);
+ color: var(--label-ink);
 }
 
-ul {
-    list-style: none;
+.when,
+.cell-year,
+.career-axis span,
+.bbox-label,
+.prose code {
+ font-family: var(--mono);
+}
+
+img,
+video {
+ display: block;
+ max-width: 100%;
+ height: auto;
+}
+
+h1,
+h2,
+h3 {
+ line-height: 1.15;
+ margin: 0;
+}
+
+p,
+ul,
+ol,
+dl {
+ margin: 0;
 }
 
 a {
-    text-decoration: none;
+ color: var(--accent-ink);
+ text-decoration-thickness: 1px;
+ text-underline-offset: 0.2em;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+a:hover {
+ text-decoration-thickness: 2px;
 }
 
-/* -------------------------------------------------------------------------- */
-
-/* Reusable class */
-
-.section {
-    padding: 2rem 0 4rem;
+:focus-visible {
+ /* Annotation Ink, not Detection Green: the ring needs 3:1 against paper in light mode. */
+ outline: 3px solid var(--accent-ink);
+ outline-offset: 3px;
+ border-radius: 2px;
 }
 
-.section__title {
-    font-size: var(--h1-font-size);
+.skip {
+ position: absolute;
+ left: var(--gutter);
+ top: -4rem;
+ padding: 0.5rem 0.75rem;
+ background: var(--ink);
+ color: var(--paper);
 }
 
-.section__subtitle {
-    display: block;
-    font-size: var(--small-font-size);
-    margin-bottom: var(--mb-3);
+.skip:focus {
+ top: 0.75rem;
 }
 
-.section__title,
-.section__subtitle {
-    text-align: center;
+/* Page frame */
+
+.site-header,
+main,
+.site-footer {
+ max-width: 68rem;
+ margin-inline: auto;
+ padding-inline: var(--gutter);
 }
 
-/* -------------------------------------------------------------------------- */
-
-/* Layout */
-
-.container {
-    max-width: 768px;
-    margin-left: var(--mb-1-5);
-    margin-right: var(--mb-1-5);
+.site-header {
+ display: flex;
+ flex-wrap: wrap;
+ align-items: baseline;
+ justify-content: space-between;
+ gap: 0.75rem 2rem;
+ padding-block: 1.5rem;
 }
 
-.grid {
-    display: grid;
-    gap: 1.5rem;
+.brand {
+ display: inline-block;
+ padding-block: 0.5rem;
+ margin-block: -0.5rem;
+ color: var(--ink);
+ font-weight: 700;
+ font-size: 1.2rem;
+ text-decoration: none;
 }
 
-.header {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: var(--z-fixed);
-    background-color: var(--body-color);
+/* Links centered in the space between the brand and the theme switch. */
+.site-header nav {
+ margin-inline: auto;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.25rem 2.5rem;
 }
 
-/* -------------------------------------------------------------------------- */
-
-/* Nav */
-
-.nav {
-    max-width: 968px;
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.site-header nav a,
+.site-header .lang {
+ position: relative;
+ color: var(--ink);
+ text-decoration: none;
+ /* Taller hit area without moving the row: padding out, margins back in. */
+ padding: 0.6rem 0.3rem;
+ margin: -0.35rem -0.3rem;
 }
 
-.nav__logo,
-.nav__toggle {
-    color: var(--title-color);
-    font-weight: var(--font-medium);
+/* A short label (CV) still gets a 44px-wide hit area, centred on it, so the row does not move. */
+.site-header nav a::before {
+ content: "";
+ position: absolute;
+ inset-block: 0;
+ left: 50%;
+ width: max(100%, 2.75rem);
+ transform: translateX(-50%);
 }
 
-.nav__logo:hover {
-    color: var(--first-color);
+.site-header nav a:hover,
+.site-header .lang:hover {
+ color: var(--accent-ink);
 }
 
-.nav__toggle {
-    font-size: 1.1rem;
-    cursor: pointer;
+.site-header .lang {
+ color: var(--muted);
 }
 
-.nav__toggle:hover {
-    color: var(--first-color);
+/* Theme switch: icon-only, 44px hit area; the filled half turns with the state. */
+.theme {
+ display: inline-grid;
+ place-items: center;
+ align-self: center;
+ width: 2.75rem;
+ height: 2.75rem;
+ /* Negative margins keep the 44px hit area while the icon's right edge aligns with the frame. */
+ margin: -0.625rem -0.875rem -0.625rem 0;
+ padding: 0;
+ border: 0;
+ border-radius: 6px;
+ background: none;
+ color: var(--ink);
+ cursor: pointer;
 }
 
-@media (max-width: 767px) {
-    .nav__menu {
-        position: fixed;
-        bottom: -100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--body-color);
-        padding: 2rem 1.5rem 4rem;
-        box-shadow: 0px -1px 4px rgba(0, 0, 0, .15);
-        border-radius: 1.5rem 1.5rem 0 0;
-        transition: .3s;
-    }
+.theme[hidden] {
+ display: none;
 }
 
-.nav__list {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+.theme:hover {
+ color: var(--accent-ink);
 }
 
-.nav__link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: var(--small-font-size);
-    color: var(--title-color);
-    font-weight: var(--font-medium);
+.theme[aria-pressed="true"] svg {
+ transform: rotate(180deg);
 }
 
-.nav__link:hover {
-    color: var(--first-color-alt);
+/* The rule spans the content frame like every section rule, so the footer drops the shared side padding and takes
+   the frame's inner width instead. */
+.site-footer {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ gap: 0.5rem 2rem;
+ width: calc(100% - 2 * var(--gutter));
+ max-width: calc(68rem - 2 * var(--gutter));
+ padding-inline: 0;
+ padding-block: 2.5rem 3rem;
+ border-top: 1px solid var(--line);
+ color: var(--muted);
+ font-size: 0.95rem;
 }
 
-.nav__icon {
-    font-size: 1.6rem;
+.site-footer p:last-child {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 1.25rem;
 }
 
-.nav__close {
-    position: absolute;
-    right: 1.3rem;
-    bottom: .5rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--first-color);
+.site-footer a {
+ color: var(--muted);
 }
 
-.nav__close:hover {
-    color: var(--first-color-alt);
+/* Small text links get a 44px hit area without moving the line: padding out, margins back in. */
+.site-footer a,
+.profiles a {
+ display: inline-block;
+ padding-block: 0.625rem;
+ margin-block: -0.625rem;
 }
 
-/* Show menu */
-.show-menu {
-    bottom: 0;
+/* ↗ on links that leave the site. */
+.ext {
+ display: inline-block;
+ width: 0.7em;
+ height: 0.7em;
+ margin-left: 0.2em;
+ vertical-align: 0.05em;
 }
 
-/* active link */
-.active-link {
-    color: var(--first-color);
-}
-
-.scroll-header {
-    box-shadow: 0 -1px 4px rgba(0, 0, 0, .15);
-}
-
-/* -------------------------------------------------------------------------- */
-
-/* About me */
-
-.home__container {
-    gap: 1rem;
-}
-
-.home__content {
-    grid-template-columns: .5fr 3fr;
-    padding-top: 3.5rem;
-    align-items: center;
-}
-
-.home__social {
-    display: grid;
-    grid-template-columns: max-content;
-    row-gap: 1rem;
-}
-
-.home__social-icon {
-    font-size: 1.25rem;
-    color: var(--first-color);
-}
-
-.home__social-icon:hover {
-    color: var(--first-color-alt);
-}
-
-.home-img {
-    width: 200px;
-    border: 0.5rem solid var(--first-color-lighter);
-    border-radius: 50% !important;
-}
-
-.home__data {
-    grid-column: 1/3;
-}
-
-.home__title {
-    font-size: var(--big-font-size);
-}
-
-.home__subtitle {
-    font-size: var(--h3-font-size);
-    color: var(--text-color);
-    font-weight: var(--font-medium);
-    margin-bottom: var(--mb-0-75);
-}
-
-.home__description {
-    margin-bottom: var(--mb-2);
-}
-
-.home__scroll {
-    display: none;
-}
-
-.home__scroll-button {
-    color: var(--first-color);
-    transition: .3s;
-}
-
-.home__scroll-button:hover {
-    transform: translateY(.25rem);
-}
-
-.home__scroll-name {
-    font-size: var(--small-font-size);
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-    margin-right: var(--mb-0-25);
-}
-
-.home__scroll-arrow {
-    font-size: 1.25rem;
-}
-
-/* -------------------------------------------------------------------------- */
-
-/* Button */
+/* Shared pieces */
 
 .button {
-    display: inline-block;
-    background-color: var(--first-color);
-    color: #FFF;
-    padding: 1rem;
-    border-radius: .5rem;
-    font-weight: var(--font-medium);
+ display: inline-block;
+ padding: 0.6rem 1.15rem;
+ border: 2px solid var(--accent-ink);
+ border-radius: 6px;
+ background: var(--accent-ink);
+ color: var(--on-accent);
+ font-weight: 600;
+ text-decoration: none;
 }
 
 .button:hover {
-    background-color: var(--first-color-alt);
+ text-decoration: none;
+ filter: brightness(1.1);
 }
 
-.button__icon-left {
-    font-size: 1.25rem;
-    margin-right: var(--mb-0-5);
-    transition: .3s;
+.button.quiet {
+ background: transparent;
+ color: var(--accent-ink);
 }
 
-.button__icon-right {
-    font-size: 1.25rem;
-    margin-left: var(--mb-0-5);
-    transition: .3s;
+/* A transparent button has nothing for brightness to lift; tint it instead. */
+.button.quiet:hover {
+ filter: none;
+ background: color-mix(in srgb, var(--accent-ink) 12%, transparent);
 }
 
-.button--white {
-    background-color: #FFF;
-    color: var(--first-color);
+.profiles {
+ display: inline-flex;
+ gap: 1.25rem;
 }
 
-.button--white:hover {
-    background-color: #FFF;
+.actions {
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ gap: 0.75rem 1.25rem;
 }
 
-.button--flex {
-    display: inline-flex;
-    align-items: center;
+.lede {
+ font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+ line-height: 1.35;
+ max-width: 34ch;
 }
 
-.button--small {
-    padding: .75rem 1rem;
+.stack,
+.where,
+.when {
+ color: var(--muted);
+ font-size: 0.9rem;
 }
 
-.button--link {
-    padding: 0;
-    background-color: transparent;
-    color: var(--first-color);
+/* A project's outcome, on its card and its case study: a filled ink square for a measured result, a hollow one
+   while in progress. Wrapped lines hang past the square. */
+.result {
+ padding-left: 1.1rem;
+ text-indent: -1.1rem;
+ font-size: 0.95rem;
+ font-weight: 600;
+ font-variant-numeric: tabular-nums;
 }
 
-.button--link:hover {
-    background-color: transparent;
-    color: var(--first-color-alt);
+.result::before {
+ content: "";
+ display: inline-block;
+ width: 0.55rem;
+ height: 0.55rem;
+ margin-right: 0.55rem;
+ border: 1.5px solid var(--ink);
+ border-radius: 1px;
+ background: var(--ink);
 }
 
-/* -------------------------------------------------------------------------- */
-
-/* Services */
+.result.pending {
+ color: var(--muted);
+ font-weight: 400;
+}
 
-.services__container {
-    gap: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
+.result.pending b {
+ color: var(--ink);
+ font-weight: 600;
 }
 
-.services__content {
-    position: relative;
-    background-color: var(--container-color);
-    padding: 3.5rem .5rem 1.25rem 1.5rem;
-    border-radius: .25rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
-    transition: .3s;
+.result.pending::before {
+ background: none;
 }
 
-.services__content:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .15);
+/* Hero: name, role, headline and actions on the left; the bridge diagram on the right */
+
+.hero {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) minmax(0, 23rem);
+ align-items: center;
+ gap: 3rem clamp(3rem, 6vw, 5rem);
+ padding-block: clamp(3rem, 7vw, 5rem);
 }
 
-.services__icon {
-    display: block;
-    font-size: 1.5rem;
-    color: var(--first-color);
-    margin-bottom: var(--mb-1);
+.hero h1 {
+ font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+ font-weight: 700;
+ letter-spacing: -0.04em;
+ line-height: 1;
 }
 
-.services__title {
-    font-size: var(--h3-font-size);
-    margin-bottom: var(--mb-1);
-    font-weight: var(--font-medium);
+.hero .role {
+ margin-top: 0.85rem;
+ color: var(--muted);
+ font-size: 1.1rem;
+ font-weight: 600;
 }
 
-.services__button {
-    cursor: pointer;
-    font-size: var(--small-font-size);
+.hero .lede {
+ margin-top: 1.25rem;
 }
 
-.services__button:hover, .button__icon {
-    transition: translateX(.25rem);
+.hero .actions {
+ margin-top: 1.75rem;
 }
+
+/* Bridge: the positioning as a diagram. The portrait on top, a 1px stem down to a T that splits into
+   infrastructure and modeling, then the green production box. */
 
-.services__modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
-    z-index: var(--z-modal);
-    opacity: 0;
-    visibility: hidden;
-    transition: .3s;
+.bridge {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ grid-template-areas: "core core" "infra models" "out out";
+ margin: 0;
 }
 
-.services__modal-content {
-    position: relative;
-    background-color: var(--container-color);
-    padding: 1.5rem;
-    border-radius: .5rem;
+.bridge-core {
+ grid-area: core;
+ justify-self: center;
+ position: relative;
+ padding-bottom: 1.75rem;
 }
 
-.services__modal-services {
-    row-gap: 1rem;
+/* The stem starts at the detector box's bottom edge (portrait margin minus the 10px bbox inset). */
+.bridge-core::after {
+ content: "";
+ position: absolute;
+ bottom: 0;
+ left: calc(50% - 0.5px);
+ height: calc(1.75rem + 0.75rem - 10px);
+ border-left: 1px solid var(--muted);
 }
 
-.services__modal-service {
-    display: flex;
+.bridge-side {
+ padding-top: 1rem;
+ border-top: 1px solid var(--muted);
+ font-size: 0.95rem;
 }
 
-.services__modal-title {
-    font-size: var(--h3-font-size);
-    font-weight: var(--font-medium);
-    margin-bottom: var(--mb-1-5);
+.bridge-infra {
+ grid-area: infra;
+ padding-right: 1.25rem;
+ text-align: right;
 }
 
-.services__modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    color: var(--first-color);
-    cursor: pointer;
+.bridge-models {
+ grid-area: models;
+ padding-left: 1.25rem;
+ border-left: 1px solid var(--line);
 }
 
-.services__modal-icon {
-    color: var(--first-color);
-    margin-right: var(--mb-0-25);
+.bridge-title {
+ margin-bottom: 0.5rem;
+ font-weight: 600;
 }
 
-/* Active mdoal */
+.bridge-side ul {
+ list-style: none;
+ padding: 0;
+ color: var(--muted);
+}
 
-.active-modal {
-    opacity: 1;
-    visibility: visible;
+.bridge-side li+li {
+ margin-top: 0.2rem;
 }
 
-/* -------------------------------------------------------------------------- */
+.bridge-out {
+ grid-area: out;
+ justify-self: center;
+ position: relative;
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ margin-top: 1.5rem;
+ padding: 0.3rem 0.75rem;
+ border: 1px solid var(--accent);
+ border-radius: 2px;
+ font-size: 0.95rem;
+ font-weight: 600;
+}
 
-/* Skills */
+/* The two columns converge into production: a stem from the split's centre line down to the box. */
+.bridge-out::before {
+ content: "";
+ position: absolute;
+ bottom: calc(100% + 1px);
+ left: calc(50% - 0.5px);
+ height: 1.5rem;
+ border-left: 1px solid var(--muted);
+}
 
-.skills__container {
-    gap: 0;
+.bridge-dot {
+ width: 0.5rem;
+ height: 0.5rem;
+ background: var(--accent);
 }
 
-.skills__header {
-    display: flex;
-    align-items: center;
-    margin-bottom: var(--mb-2-5);
+.portrait {
+ position: relative;
+ width: 200px;
+ margin: 1.6rem 0.75rem 0.75rem;
 }
 
-.skills__icon,
-.skills__arrow {
-    font-size: 2rem;
-    color: var(--first-color);
+.portrait img {
+ border-radius: 2px;
 }
 
-.skills__icon {
-    margin-right: var(--mb-0-75);
+.bbox {
+ position: absolute;
+ inset: -10px;
+ border: 2px solid var(--accent);
 }
 
-.skills__link {
-    color: var(--first-color);
-    font-weight: var(--font-semi-bold);
+.bbox-label {
+ position: absolute;
+ left: -2px;
+ bottom: 100%;
+ padding: 0.05rem 0.45rem;
+ background: var(--accent);
+ color: var(--label-ink);
+ font-size: 0.75rem;
+ font-weight: 500;
+ white-space: nowrap;
 }
+
+/* The page's one moment of motion: the box locks onto the face like a detector. */
+@media (prefers-reduced-motion: no-preference) {
+ .bbox {
+  animation: lock 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
+ }
 
-.skills__data-list > li {
-    margin-bottom: var(--mb-0-5);
+ @keyframes lock {
+  from {
+   inset: -34px;
+   opacity: 0;
+  }
+ }
 }
 
-.skills__link:hover {
-    color: var(--first-color-alt);
+/* Sections: large title above the content */
+
+.block {
+ padding-block: clamp(3rem, 6vw, 4.5rem);
+ border-top: 1px solid var(--ink);
 }
 
-.skills__icon-list {
-    font-size: 1.5rem;
-    margin-right: var(--mb-0-5);
-    color: var(--first-color);
+.block>h2 {
+ margin-bottom: 1.75rem;
+ font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+ font-weight: 700;
+ letter-spacing: -0.025em;
+ line-height: 1.05;
 }
 
-.skills__title {
-    font-size: var(--h3-font-size);
+.body>*+* {
+ margin-top: 1rem;
 }
 
-.skills__arrow {
-    margin-left: auto;
-    transition: .4s;
+.intro {
+ color: var(--muted);
 }
 
-.skills__list {
-    row-gap: 1.5rem;
-    padding-left: 2.7rem;
+.block>.intro {
+ max-width: var(--measure);
+ margin-bottom: 1.75rem;
 }
+
+/* Career chart: one grid column per month; the current role is the only green bar. */
 
-.skills__titles {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--mb-0-5);
+.career {
+ list-style: none;
+ padding: 0;
+ margin-bottom: 2.5rem;
 }
 
-.skills__name {
-    font-size: var(--normal-font-size);
-    font-weight: var(--font-medium);
+.career>li {
+ display: grid;
+ grid-template-columns: 15rem minmax(0, 1fr);
+ gap: 0.25rem 1.5rem;
+ align-items: center;
+ padding-block: 0.4rem;
+ border-bottom: 1px solid var(--line);
 }
 
-.skills__bar,
-.skills__percentage {
-    height: 5px;
-    border-radius: .25rem;
+.career .who {
+ font-size: 0.95rem;
+ line-height: 1.3;
 }
 
-.skills__bar {
-    background-color: var(--first-color-lighter);
+.career .who b {
+ font-weight: 600;
 }
 
-.skills__percentage {
-    display: block;
-    background-color: var(--first-color);
+.career .who span {
+ color: var(--muted);
 }
 
-.skills__tensorflow {
-    width: 95%;
+.career-track {
+ display: grid;
+ grid-template-columns: repeat(var(--months), minmax(0, 1fr));
+ height: 1.25rem;
+ align-items: center;
 }
 
-.skills__pandas {
-    width: 80%;
+.career-bar {
+ height: 0.5rem;
+ background: var(--ink);
+ border-radius: 1px;
 }
 
-.skills__opencv {
-    width: 75%;
+.career-bar.now {
+ background: var(--accent);
 }
 
-.skills__close .skills__list {
-    height: 0;
-    overflow: hidden;
+.career>.career-axis {
+ border-bottom: 0;
 }
 
-.skills__open .skills__list {
-    height: max-content;
-    margin-bottom: var(--mb-2-5);
+.career-axis .career-track {
+ height: auto;
 }
 
-.skills__open .skills__arrow {
-    transform: rotate(-180deg);
+.career-axis span {
+ padding-left: 0.3rem;
+ border-left: 1px solid var(--muted);
+ color: var(--muted);
+ font-size: 0.75rem;
+ font-variant-numeric: tabular-nums;
 }
 
-.skills__icons {
-    grid-template-columns: repeat(3, 1fr);
+/* Learning chart: the career chart with thinner bars. */
+
+.learning .career-bar {
+ height: 6px;
 }
+
+/* Cells: a ruled grid (1px gap over the line colour) of plain paper cells. Two columns by default. */
 
-/* -------------------------------------------------------------------------- */
+.cells {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 1px;
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ background: var(--line);
+ border: 1px solid var(--line);
+}
 
-/* Journey */
+.cells>* {
+ padding: 1.25rem 1.5rem;
+ background: var(--paper);
+}
 
-.journey__tabs {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: var(--mb-2);
+.cells>*>*+* {
+ margin-top: 0.35rem;
 }
 
-.journey__button {
-    font-size: var(--h3-font-size);
-    font-weight: var(--font-medium);
-    cursor: pointer;
+/* Two entry-title levels across the page: 1.3rem/700 for primary entries (projects, degrees),
+   1.15rem/600 for items (roles, skill groups). Certificates sit one step lower (see .cert-cells h3). */
+.cells h3 {
+ font-size: 1.15rem;
+ font-weight: 600;
+ line-height: 1.3;
 }
 
-.journey__button:hover {
-    color: var(--first-color);
+.cells .degree h3 {
+ font-size: 1.3rem;
+ font-weight: 700;
+ letter-spacing: -0.01em;
 }
 
-.journey__icon {
-    font-size: 1.5rem;
-    margin-right: var(--mb-0-25);
+.cell-year {
+ font-size: clamp(1.6rem, 2.8vw, 2rem);
+ font-weight: 500;
+ letter-spacing: -0.03em;
+ line-height: 1;
+ font-variant-numeric: tabular-nums;
 }
 
-.journey__data {
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    column-gap: 1.5rem;
+.skill-cells,
+.cert-cells {
+ grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.journey__title {
-    font-size: var(--normal-font-size);
-    font-weight: var(--font-medium);
+.skill-cells dt {
+ font-size: 1.15rem;
+ font-weight: 600;
 }
 
-.journey__subtitle {
-    display: inline-block;
-    font-size: var(--small-font-size);
-    margin-bottom: var(--mb-1);
+.skill-cells dd {
+ margin: 0.4rem 0 0;
+ color: var(--muted);
 }
 
-.journey__calendar {
-    font-size: var(--small-font-size);
-    color: var(--text-color-lighter);
+/* Certificates sit directly under the degrees; -1px merges the two outer borders into one line. */
+.cert-cells {
+ margin-top: -1px;
 }
 
-.journey__rounder {
-    display: inline-block;
-    width: 13px;
-    height: 13px;
-    background-color: var(--first-color);
-    border-radius: 50%;
+/* Certificate years are a label, not a headline: short courses stay quieter than degrees. */
+.cert-cells .cell-year {
+ color: var(--muted);
+ font-size: 0.9rem;
+ font-weight: 400;
+ letter-spacing: 0;
 }
 
-.journey__line {
-    display: block;
-    width: 1px;
-    height: 100%;
-    background-color: var(--first-color);
-    transform: translate(6px, -7px);
+/* Certificate names sit below role and degree titles: short courses stay quieter than both. */
+.cert-cells h3 {
+ font-size: 1rem;
+ font-weight: 500;
 }
 
-.journey [data-content] {
-    display: none;
+/* The last certificate stretches to close its row, so no empty line-coloured cell shows. */
+.cert-cells>:last-child:nth-child(4n+2) {
+ grid-column: span 3;
 }
 
-.journey__active[data-content] {
-    display: block;
+.cert-cells>:last-child:nth-child(4n+3) {
+ grid-column: span 2;
 }
+
+@media (max-width: 64rem) {
+
+ .skill-cells,
+ .cert-cells {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+ }
+
+ .cert-cells>:last-child:nth-child(n) {
+  grid-column: auto;
+ }
 
-.journey__button.journey__active {
-    color: var(--first-color);
+ .cert-cells>:last-child:nth-child(odd) {
+  grid-column: span 2;
+ }
 }
 
-/* -------------------------------------------------------------------------- */
+@media (max-width: 40rem) {
 
-/* Portfolio */
+ .cells,
+ .skill-cells,
+ .cert-cells {
+  grid-template-columns: minmax(0, 1fr);
+ }
 
-.portfolio__container {
-    overflow: initial;
+ .cert-cells>:last-child:nth-child(n) {
+  grid-column: auto;
+ }
+
+ .career-axis span:nth-child(even) {
+  visibility: hidden;
+ }
+
+ /* The current year's column holds only the months elapsed: too narrow for its label on a phone. */
+ .career-axis span:last-child {
+  visibility: hidden;
+ }
+
+ /* Phones: the bridge keeps the portrait, a single stem and the production box; the two columns' items live in
+   Skills, so the split would only spend a screen's third on two titles. */
+ .bridge-side {
+  display: none;
+ }
+
+ /* A smaller portrait brings the projects closer to the first screen. */
+ .portrait {
+  width: 150px;
+ }
 }
 
-.portfolio__content {
-    padding: 0 1.5rem;
+/* Roles: one native <details> per role; the summary row is a 9.5rem date column, the text, and a chevron. */
+
+.roles {
+ list-style: none;
+ padding: 0;
+}
+
+/* The list spans the section so chevrons line up with the chart's right edge; text keeps the prose measure. */
+.roles summary>div,
+.role-detail>* {
+ max-width: var(--measure);
 }
 
-.portfolio__actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.roles>li {
+ border-top: 1px solid var(--line);
+}
 
+.roles>li:last-child {
+ border-bottom: 1px solid var(--line);
 }
 
-.portfolio__badges {
-    margin-bottom: var(--mb-0-75);
+.roles summary {
+ display: grid;
+ /* Dates | role and summary | city, flush right before the chevron | chevron. */
+ grid-template-columns: 9.5rem minmax(0, 1fr) auto 1rem;
+ gap: 0.25rem 1.5rem;
+ padding-block: 1rem;
+ cursor: pointer;
+ list-style: none;
 }
 
-.portfolio__pill {
-    display: inline-block;
-    padding: .25em .4em;
-    font-size: var(--small-font-size);
-    font-weight: var(--font-semi-bold);
-    background-color: var(--first-color-lighter);
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .5rem;
+.roles summary::-webkit-details-marker {
+ display: none;
 }
 
-.portfolio__img {
-    width: 265px;
-    border-radius: .5rem;
-    justify-self: center;
+.roles summary::after {
+ content: "";
+ width: 0.45rem;
+ height: 0.45rem;
+ margin-top: 0.5rem;
+ border-right: 1.5px solid var(--muted);
+ border-bottom: 1.5px solid var(--muted);
+ transform: rotate(45deg);
+ justify-self: end;
 }
 
-.portfolio__title {
-    font-size: var(--h3-font-size);
-    margin-bottom: var(--mb-0-5);
+.roles details[open]>summary::after {
+ margin-top: 0.75rem;
+ transform: rotate(-135deg);
 }
 
-.portfolio__description {
-    margin-bottom: var(--mb-0-75);
+.roles summary:hover h3 {
+ color: var(--accent-ink);
 }
 
-.portfolio__button:hover .button__icon-right {
-    transform: translateX(.25rem);
+.roles .when {
+ padding-top: 0.15rem;
+ font-variant-numeric: tabular-nums;
+ white-space: nowrap;
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
-    content: '';
+.roles summary>.where {
+ padding-top: 0.15rem;
+ text-align: right;
 }
 
-.swiper-portfolio-icon {
-    font-size: 2rem;
-    color: var(--first-color);
+.roles h3 {
+ font-size: 1.15rem;
+ font-weight: 600;
 }
 
-.swiper-button-prev {
-    left: -.5rem;
+.roles summary div>*+* {
+ margin-top: 0.3rem;
 }
 
-.swiper-button-next {
-    right: -.5rem;
+/* Indented to the text column: 9.5rem date column + 1.5rem gap. */
+.role-detail {
+ padding: 0 2.5rem 1.5rem 11rem;
 }
 
-.swiper-horizontal > .swiper-pagination-bullets {
-    bottom: -2.5rem;
+.role-detail>*+* {
+ margin-top: 0.6rem;
 }
 
-.swiper-pagination-bullet-active {
-    background-color: var(--first-color);
+.role-detail ul {
+ padding-left: 1.1rem;
 }
 
-.swiper-button-prev,
-.swiper-button-next,
-.swiper-pagination-bullet {
-    outline: none;
+.role-detail li+li {
+ margin-top: 0.3rem;
 }
 
-/* -------------------------------------------------------------------------- */
+/* Projects: a ruled 2×2 grid; the 1px gap shows the line colour between cells. */
 
-/* Contact Me */
+.projects {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 1px;
+ list-style: none;
+ padding: 0;
+ background: var(--line);
+ border: 1px solid var(--line);
+}
 
-.contact__container {
-    row-gap: 3rem;
+.projects>li {
+ display: flex;
+ flex-direction: column;
+ background: var(--paper);
+ container-type: inline-size;
 }
 
-.contact__information {
-    display: flex;
-    margin-bottom: var(--mb-2);
+/* The cover runs edge to edge in its cell; a hairline separates it from the text. */
+.projects .thumb {
+ padding: 1rem;
+ border: 0;
+ border-bottom: 1px solid var(--line);
+ border-radius: 0;
 }
 
-.contact__icon {
-    font-size: 2rem;
-    color: var(--first-color);
-    margin-right: var(--mb-0-75);
+.project-body {
+ display: flex;
+ flex: 1;
+ flex-direction: column;
+ gap: 0.5rem;
+ padding: 1.25rem 1.5rem 1.5rem;
 }
 
-.contact__title {
-    font-size: var(--h3-font-size);
-    font-weight: var(--font-medium);
+.projects h3 {
+ font-size: 1.3rem;
+ font-weight: 700;
+ letter-spacing: -0.015em;
+ line-height: 1.15;
 }
 
-.contact__subtitle {
-    font-size: var(--small-font-size);
-    color: var(--text-color-lighter);
+/* Action bar: the two links split a full-width strip pinned to the card's bottom edge, so bars line up across a
+   row. Negative margins cancel the card body's 1.5rem padding. */
+.projects .links {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 1px;
+ margin: auto -1.5rem -1.5rem;
+ background: var(--line);
+ border-top: 1px solid var(--line);
 }
 
-.contact__content {
-    background-color: var(--input-color);
-    border-radius: .5rem;
-    padding: .75rem 1rem .25rem;
+.project-body>p:has(+ .links) {
+ margin-bottom: 1rem;
 }
 
-.contact__label {
-    font-size: var(--smaller-font-size);
-    color: var(--title-color);
+.projects .links>a {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 0.5rem;
+ padding: 0.75rem 1.5rem;
+ background: var(--paper);
+ color: var(--ink);
+ font-weight: 600;
+ text-decoration: none;
 }
 
-.contact__input {
-    width: 100%;
-    background-color: var(--input-color);
-    color: var(--text-color);
-    font-family: var(--body-color);
-    font-size: var(--normal-font-size);
-    border: none;
-    outline: none;
-    padding: .25rem .5rem .5rem 0;
+.projects .links>a:first-child {
+ color: var(--accent-ink);
 }
 
-/* -------------------------------------------------------------------------- */
+/* A tint of ink shows in both modes; the label underlines like every other link on hover. */
+.projects .links>a:hover {
+ background: color-mix(in srgb, var(--ink) 8%, var(--paper));
+ text-decoration: underline;
+ text-decoration-thickness: 2px;
+}
 
-/* Footer */
+.projects .links svg {
+ flex-shrink: 0;
+ width: 14px;
+ height: 14px;
+ margin: 0;
+}
 
-.footer {
-    padding-top: 4rem;
+/* Halves touch their neighbours and the next card, so the focus ring sits inside the link. */
+.projects .links>a:focus-visible {
+ outline-offset: -3px;
 }
 
-.footer__link {
-    color: var(--first-color);
+@media (max-width: 40rem) {
+ .projects {
+  grid-template-columns: minmax(0, 1fr);
+ }
 }
 
-.footer__link:hover {
-    color: var(--first-color-lighter);
+/* A narrow card would wrap both labels onto two lines: stack the halves instead. */
+@container (max-width: 30rem) {
+ .projects .links {
+  grid-template-columns: minmax(0, 1fr);
+ }
 }
 
-.footer__copy {
-    font-size: var(--smaller-font-size);
-    text-align: center;
-    color: var(--text-color);
+.thumb,
+.media img,
+.media video {
+ background: var(--plate);
+ border: 1px solid var(--line);
+ border-radius: 4px;
 }
 
-/* -------------------------------------------------------------------------- */
+.thumb {
+ width: 100%;
+ aspect-ratio: 14 / 9;
+ object-fit: contain;
+ padding: 0.4rem;
+}
 
-/* Scroll Bar */
-::-webkit-scrollbar {
-    width: .60rem;
-    background-color: var(--scroll-bar-color);
-    border-radius: .5rem;
+.links {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.25rem 1.25rem;
 }
+
+/* Case study pages */
 
-::-webkit-scrollbar-thumb {
-    background-color: var(--scroll-thumb-color);
-    border-radius: .5rem;
+/* Opening: title beside lede, a ruled meta strip, then the media at full frame width.
+   Body: section heads sit in a left rail beside their text, both on a hairline. */
+.case {
+ --rail: 12rem;
+ padding-block: 2rem 4rem;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: var(--text-color-lighter);
+.case>.media {
+ margin: 2.5rem 0 0;
 }
 
+.media>a {
+ display: block;
+}
 
-/* -------------------------------------------------------------------------- */
+/* Desktop players can show a paused demo as a bare still, its controls below the first screen: a label marks it as a
+   video. Phones skip it (their players draw a play button). Where :paused is supported it hides during playback;
+   elsewhere it stays, a noun that is still true while the video plays. */
+.media {
+ position: relative;
+}
 
-/* Media Queries */
+.play-hint {
+ display: none;
+ position: absolute;
+ top: 1rem;
+ left: 1rem;
+ padding: 0.3rem 0.75rem;
+ border: 1px solid var(--line);
+ border-radius: 2px;
+ background: var(--paper);
+ color: var(--ink);
+ font-size: 0.9rem;
+ font-weight: 600;
+ pointer-events: none;
+}
 
-/* small devices */
-@media (max-width: 350px) {
-    .container {
-        margin-left: var(--mb-1);
-        margin-right: var(--mb-1);
-    }
+@media (hover: hover) and (pointer: fine) {
+ .play-hint {
+  display: block;
+ }
+}
 
-    .nav__menu {
-        padding: 2rem .25rem 4rem;
-    }
+@supports selector(:paused) {
+ .media:has(> video:not(:paused)) .play-hint {
+  display: none;
+ }
+}
 
-    .nav__list {
-        column-gap: 0;
-    }
+/* Phones: the results figure keeps a readable width and scrolls sideways; the link opens it full size. */
+@media (max-width: 40rem) {
+ .media.results>a {
+  overflow-x: auto;
+ }
 
-    .home__content {
-        grid-template-columns: .25fr 3fr;
-    }
+ .case>.media.results img {
+  width: 40rem;
+  max-width: none;
+  max-height: none;
+ }
+}
 
-    .skills__title {
-        font-size: var(--normal-font-size);
-    }
+.case>.media video,
+.case>.media img {
+ max-height: 36rem;
+}
 
-    .journey__data {
-        gap: .5rem;
-    }
+/* Same 1rem plate margin as the home thumbnails, so diagrams never touch the border. */
+.case>.media img {
+ padding: 1rem;
+}
 
-    .services__container {
-        grid-template-columns: max-content;
-        justify-content: center;
-    }
+.case>header {
+ display: grid;
+ grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+ gap: 1rem 3rem;
+ margin-top: 1.25rem;
+ /* Last lines of title and lede share a baseline. */
+ align-items: last baseline;
+}
 
-    .services__content {
-        padding-right: 3.5rem;
-    }
+.case h1 {
+ font-size: clamp(2rem, 5vw, 3rem);
+ font-weight: 700;
+ letter-spacing: -0.02em;
+}
 
-    .services__modal {
-        padding: 0 .5rem;
-    }
+/* Beside a two-line title, the lede steps down from the hero size so the two stay close in height. */
+.case>header .lede {
+ font-size: clamp(1.2rem, 1.9vw, 1.4rem);
 }
 
-/* medium devices */
-@media (min-width: 568px) {
-    .home__content {
-        grid-template-columns: max-content 1fr 1fr;
-    }
+.case .meta {
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ gap: 0.75rem 1.5rem;
+ margin-top: 2rem;
+ padding-block: 1rem;
+ border-block: 1px solid var(--line);
+}
 
-    .home__data {
-        grid-column: initial;
-    }
+.meta-year {
+ font-family: var(--mono);
+ font-size: 0.9rem;
+ font-variant-numeric: tabular-nums;
+}
 
-    .home__img {
-        order: 1;
-        justify-self: center;
-    }
+.case .meta .button {
+ margin-left: auto;
+}
 
-    .skills__container,
-    .portfolio__container,
-    .contact__container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* The outcome takes its own row under year, stack and button. */
+.case .meta .result {
+ order: 1;
+ flex-basis: 100%;
+}
 
-    .skills__content {
-        margin-right: var(--mb-1-5);
-    }
+.back {
+ font-size: 0.95rem;
+}
 
-    .journey__sections {
-        display: grid;
-        grid-template-columns: .6fr;
-        justify-content: center;
-    }
+.back a {
+ display: inline-block;
+ padding-block: 0.6rem;
+ margin-block: -0.6rem;
 }
 
-@media (min-width: 768px) {
-    .container {
-        margin-left: auto;
-        margin-right: auto;
-    }
+/* Page links: a ruled row per destination, label above title, arrow on the right. Used for the next project at
+   the end of a case study and for the case-study list on the 404. */
+.page-links {
+ list-style: none;
+ padding: 0;
+ border-top: 1px solid var(--line);
+}
 
-    body {
-        margin: 0;
-    }
+.page-link {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) auto;
+ align-items: center;
+ column-gap: 1rem;
+ padding-block: 1rem;
+ border-bottom: 1px solid var(--line);
+ color: var(--ink);
+ font-size: 1.3rem;
+ font-weight: 700;
+ letter-spacing: -0.01em;
+ line-height: 1.2;
+ text-decoration: none;
+}
 
-    .home-img {
-        width: 300px;
-    }
+.page-link:hover {
+ color: var(--accent-ink);
+}
 
-    .section {
-        padding: 8rem 0 4rem;
-    }
+.page-link svg {
+ grid-column: 2;
+ grid-row: 1 / span 2;
+}
 
-    .section__subtitle {
-        margin-bottom: 4rem;
-    }
+.page-link .label {
+ margin-bottom: 0.3rem;
+ color: var(--muted);
+ font-size: 0.9rem;
+ font-weight: 400;
+ letter-spacing: 0;
+}
 
-    .header {
-        top: 0;
-        bottom: initial;
-    }
+.case-end {
+ max-width: calc(var(--rail) + 3rem + var(--measure));
+ margin-top: 4rem;
+ border-top: 1px solid var(--ink);
+}
 
-    .header,
-    .main,
-    .footer__container {
-        padding: 0 1rem;
-    }
+.case-end>p {
+ margin-top: 1.25rem;
+ color: var(--muted);
+}
 
-    .nav {
-        height: calc(var(--header-height) + 1.5rem);
-        column-gap: 1rem;
-    }
+.not-found {
+ max-width: calc(var(--rail) + 3rem + var(--measure));
+}
 
-    .nav__icon,
-    .nav__close,
-    .nav__toggle {
-        display: none;
-    }
+.not-found>*+* {
+ margin-top: 1.5rem;
+}
 
-    .nav__list {
-        display: flex;
-        column-gap: 2rem;
-    }
+.not-found .page-links {
+ margin-top: 2.5rem;
+}
 
-    .nav__menu {
-        margin-left: auto;
-    }
+.not-found .actions {
+ margin-top: 2rem;
+}
 
-    .change-theme {
-        margin: 0;
-    }
+.media video,
+.media img {
+ width: 100%;
+ object-fit: contain;
+}
 
-    .home__container {
-        row-gap: 5rem;
-    }
+.prose {
+ display: grid;
+ grid-template-columns: var(--rail) minmax(0, var(--measure));
+ gap: 1rem 3rem;
+ margin-top: 3rem;
+}
 
-    .home__content {
-        padding-top: 5.5rem;
-        column-gap: 2rem;
-    }
+/* Sparse auto-placement puts each h2 on the row of the block that follows it. */
+.prose>* {
+ grid-column: 2;
+ margin: 0;
+}
 
-    .home__scroll {
-        display: block;
-    }
+.prose>h2 {
+ grid-column: 1;
+ padding-top: 0.6rem;
+ border-top: 1px solid var(--ink);
+ font-size: 1.05rem;
+ font-weight: 600;
+ line-height: 1.3;
+}
 
-    .home__scroll-button {
-        margin-left: 3rem;
-    }
+.prose>h2,
+.prose>h2+* {
+ margin-top: 2.25rem;
+}
 
-    .journey__tabs {
-        justify-content: center;
-    }
+.prose>h2:first-child,
+.prose>h2:first-child+* {
+ margin-top: 0;
+}
 
-    .journey__button {
-        margin: 0 var(--mb-1);
-    }
+.prose>h2+* {
+ padding-top: 0.6rem;
+ border-top: 1px solid var(--line);
+}
 
-    .journey__sections {
-        grid-template-columns: .5fr;
-    }
+@media (max-width: 52rem) {
 
-    .services__container {
-        grid-template-columns: repeat(3, 218px);
-        justify-content: center;
-    }
+ .case>header,
+ .prose {
+  grid-template-columns: minmax(0, 1fr);
+ }
 
-    .services__icon {
-        font-size: 2rem;
-    }
+ .case .meta .button {
+  margin-left: 0;
+ }
 
-    .services__content {
-        padding: 6rem 0 2rem 2.5rem;
-    }
+ .prose>*,
+ .prose>h2 {
+  grid-column: 1;
+ }
 
-    .services__modal-content {
-        width: 450px;
-    }
+ .prose>h2+*,
+ .prose>h2:first-child+* {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+ }
+}
 
-    .portfolio__img {
-        width: 320px;
-    }
+.prose ul,
+.prose ol {
+ padding-left: 1.25rem;
+}
 
-    .portfolio__content {
-        align-items: center;
-    }
+.prose code {
+ font-size: 0.85em;
+ padding: 0.05em 0.3em;
+ border-radius: 3px;
+ background: var(--line);
 }
+
+/* Narrow screens: stack everything in one column */
 
-/* large devices */
-@media (min-width: 1024px) {
-    .header,
-    .main {
-        padding: 0;
-    }
+@media (max-width: 52rem) {
+ .site-header nav {
+  gap: 0.25rem 0.75rem;
+  font-size: 1rem;
+ }
 
-    .container {
-        max-width: 900px;
-    }
+ /* Brand, language switch and theme switch share the first row; the nav takes its own full row below. */
+ .site-header {
+  column-gap: 1.25rem;
+ }
 
-    .home__social {
-        transform: translateX(-5rem);
-    }
+ .site-header .lang {
+  order: 1;
+  margin-left: auto;
+ }
 
-    .services__container {
-        grid-template-columns: repeat(3, 238px);
-    }
+ .theme {
+  order: 1;
+  margin-left: 0;
+ }
 
-    .portfolio__content {
-        column-gap: 5rem;
-    }
+ .site-header nav {
+  order: 2;
+  flex-basis: 100%;
+  justify-content: center;
+ }
 
-    .swiper-portfolio-icon {
-        font-size: 3.5rem;
-    }
+ .hero {
+  grid-template-columns: 1fr;
+ }
 
-    .swiper-button-prev {
-        left: -3.5rem;
-    }
+ .bridge {
+  justify-self: center;
+  max-width: 23rem;
+ }
 
-    .swiper-button-next {
-        right: -3.5rem;
-    }
+ .career>li {
+  grid-template-columns: minmax(0, 1fr);
+ }
 
-    .swiper-horizontal > .swiper-pagination-bullets {
-        bottom: -4.5rem;
-    }
+ .career-axis .who {
+  display: none;
+ }
 
-    .contact__form {
-        width: 460px;
-    }
+ .roles summary {
+  grid-template-columns: minmax(0, 1fr) 1rem;
+ }
+
+ /* Narrow: the city returns under the summary; the chevron stays level with the title. */
+ .roles summary>.where {
+  grid-column: 1;
+  padding-top: 0;
+  text-align: left;
+ }
+
+ .roles summary::after {
+  grid-area: 2 / 2;
+ }
+
+ .roles .when {
+  grid-column: 1 / -1;
+ }
+
+ .role-detail {
+  padding-inline: 0;
+ }
+}
 
-    .contact__inputs {
-        grid-template-columns: repeat(2, 1fr);
-    }
+figcaption {
+ margin-top: 0.6rem;
+ color: var(--muted);
+ font-size: 0.95rem;
 }

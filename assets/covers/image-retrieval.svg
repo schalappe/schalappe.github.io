@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="630" viewBox="0 0 980 630">
+<!-- Cover source. Render: see AGENTS.md (covers). Ink on transparent; the site's plate shows through. -->
+<style>
+@font-face { font-family: Geist; font-weight: 100 900; src: url(../../static/fonts/geist.woff2); }
+@font-face { font-family: "Geist Mono"; font-weight: 100 900; src: url(../../static/fonts/geist-mono.woff2); }
+text { font-family: Geist, sans-serif; fill: #111214; }
+.t { font-size: 30px; font-weight: 600; letter-spacing: -0.01em; }
+.s { font-size: 22px; fill: #5c5f66; }
+.m { font-family: "Geist Mono", monospace; font-size: 21px; fill: #5c5f66; }
+.box { fill: none; stroke: #111214; stroke-width: 2.5; }
+.ln { fill: none; stroke: #111214; stroke-width: 2.5; stroke-linecap: round; }
+.dash { fill: none; stroke: #5c5f66; stroke-width: 2; stroke-dasharray: 6 6; }
+</style>
+<defs>
+<marker id="a" viewBox="0 0 14 14" refX="12" refY="7" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto">
+<path d="M3 2l9 5-9 5" fill="none" stroke="#111214" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<g transform="translate(0 -14)">
+<rect x="40" y="131" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.08" stroke="#111214" stroke-width="2"/>
+<rect x="82" y="131" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.36" stroke="#111214" stroke-width="2"/>
+<rect x="124" y="131" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.18" stroke="#111214" stroke-width="2"/>
+<rect x="40" y="173" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.5" stroke="#111214" stroke-width="2"/>
+<rect x="82" y="173" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.12" stroke="#111214" stroke-width="2"/>
+<rect x="124" y="173" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.28" stroke="#111214" stroke-width="2"/>
+<rect x="40" y="215" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.22" stroke="#111214" stroke-width="2"/>
+<rect x="82" y="215" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.62" stroke="#111214" stroke-width="2"/>
+<rect x="124" y="215" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.1" stroke="#111214" stroke-width="2"/>
+<text x="99" y="290" class="t" text-anchor="middle">Catalogue</text>
+<text x="99" y="320" class="m" text-anchor="middle">10,833 images</text>
+<rect x="64" y="395" width="70" height="70" rx="2" fill="#111214" fill-opacity="0.36" stroke="#111214" stroke-width="2.5"/>
+<text x="99" y="506" class="t" text-anchor="middle">Query</text>
+<text x="99" y="536" class="m" text-anchor="middle">5,337 queries</text>
+<path class="ln" d="M166 190L207 190" marker-end="url(#a)"/>
+<path class="ln" d="M142 430L207 430" marker-end="url(#a)"/>
+<rect class="box" x="215" y="130" width="190" height="375" rx="4"/>
+<text x="310" y="178" class="t" text-anchor="middle">Feature</text>
+<text x="310" y="212" class="t" text-anchor="middle">extractor</text>
+<path d="M235 236H385" stroke="#5c5f66" stroke-width="1"/>
+<text x="310" y="284" class="s" text-anchor="middle">AKAZE</text>
+<text x="310" y="326" class="s" text-anchor="middle">ORB</text>
+<text x="310" y="368" class="s" text-anchor="middle">VGG16</text>
+<text x="310" y="410" class="s" text-anchor="middle">NASNetLarge</text>
+<text x="310" y="452" class="s" text-anchor="middle">EfficientNetB7</text>
+<text x="457" y="150" class="t" text-anchor="start">Index</text>
+<rect x="457" y="168" width="13" height="12" fill="#111214" fill-opacity="0.7"/>
+<rect x="472" y="168" width="13" height="12" fill="#111214" fill-opacity="0.2"/>
+<rect x="487" y="168" width="13" height="12" fill="#111214" fill-opacity="0.5"/>
+<rect x="502" y="168" width="13" height="12" fill="#111214" fill-opacity="0.9"/>
+<rect x="517" y="168" width="13" height="12" fill="#111214" fill-opacity="0.3"/>
+<rect x="532" y="168" width="13" height="12" fill="#111214" fill-opacity="0.6"/>
+<rect x="547" y="168" width="13" height="12" fill="#111214" fill-opacity="0.15"/>
+<rect x="562" y="168" width="13" height="12" fill="#111214" fill-opacity="0.8"/>
+<rect x="577" y="168" width="13" height="12" fill="#111214" fill-opacity="0.4"/>
+<rect x="592" y="168" width="13" height="12" fill="#111214" fill-opacity="0.55"/>
+<rect x="607" y="168" width="13" height="12" fill="#111214" fill-opacity="0.25"/>
+<rect x="622" y="168" width="13" height="12" fill="#111214" fill-opacity="0.7"/>
+<rect x="457" y="189" width="13" height="12" fill="#111214" fill-opacity="0.3"/>
+<rect x="472" y="189" width="13" height="12" fill="#111214" fill-opacity="0.8"/>
+<rect x="487" y="189" width="13" height="12" fill="#111214" fill-opacity="0.45"/>
+<rect x="502" y="189" width="13" height="12" fill="#111214" fill-opacity="0.2"/>
+<rect x="517" y="189" width="13" height="12" fill="#111214" fill-opacity="0.65"/>
+<rect x="532" y="189" width="13" height="12" fill="#111214" fill-opacity="0.9"/>
+<rect x="547" y="189" width="13" height="12" fill="#111214" fill-opacity="0.35"/>
+<rect x="562" y="189" width="13" height="12" fill="#111214" fill-opacity="0.5"/>
+<rect x="577" y="189" width="13" height="12" fill="#111214" fill-opacity="0.75"/>
+<rect x="592" y="189" width="13" height="12" fill="#111214" fill-opacity="0.2"/>
+<rect x="607" y="189" width="13" height="12" fill="#111214" fill-opacity="0.6"/>
+<rect x="622" y="189" width="13" height="12" fill="#111214" fill-opacity="0.4"/>
+<rect x="457" y="210" width="13" height="12" fill="#111214" fill-opacity="0.55"/>
+<rect x="472" y="210" width="13" height="12" fill="#111214" fill-opacity="0.35"/>
+<rect x="487" y="210" width="13" height="12" fill="#111214" fill-opacity="0.85"/>
+<rect x="502" y="210" width="13" height="12" fill="#111214" fill-opacity="0.6"/>
+<rect x="517" y="210" width="13" height="12" fill="#111214" fill-opacity="0.2"/>
+<rect x="532" y="210" width="13" height="12" fill="#111214" fill-opacity="0.4"/>
+<rect x="547" y="210" width="13" height="12" fill="#111214" fill-opacity="0.7"/>
+<rect x="562" y="210" width="13" height="12" fill="#111214" fill-opacity="0.3"/>
+<rect x="577" y="210" width="13" height="12" fill="#111214" fill-opacity="0.9"/>
+<rect x="592" y="210" width="13" height="12" fill="#111214" fill-opacity="0.45"/>
+<rect x="607" y="210" width="13" height="12" fill="#111214" fill-opacity="0.65"/>
+<rect x="622" y="210" width="13" height="12" fill="#111214" fill-opacity="0.25"/>
+<rect x="457" y="231" width="13" height="12" fill="#111214" fill-opacity="0.9"/>
+<rect x="472" y="231" width="13" height="12" fill="#111214" fill-opacity="0.5"/>
+<rect x="487" y="231" width="13" height="12" fill="#111214" fill-opacity="0.25"/>
+<rect x="502" y="231" width="13" height="12" fill="#111214" fill-opacity="0.7"/>
+<rect x="517" y="231" width="13" height="12" fill="#111214" fill-opacity="0.45"/>
+<rect x="532" y="231" width="13" height="12" fill="#111214" fill-opacity="0.3"/>
+<rect x="547" y="231" width="13" height="12" fill="#111214" fill-opacity="0.8"/>
+<rect x="562" y="231" width="13" height="12" fill="#111214" fill-opacity="0.6"/>
+<rect x="577" y="231" width="13" height="12" fill="#111214" fill-opacity="0.2"/>
+<rect x="592" y="231" width="13" height="12" fill="#111214" fill-opacity="0.75"/>
+<rect x="607" y="231" width="13" height="12" fill="#111214" fill-opacity="0.35"/>
+<rect x="622" y="231" width="13" height="12" fill="#111214" fill-opacity="0.55"/>
+<path class="ln" d="M413 205L449 205" marker-end="url(#a)"/>
+<path class="ln" d="M547 251L547 337" marker-end="url(#a)"/>
+<rect class="box" x="457" y="345" width="180" height="160" rx="4"/>
+<text x="547" y="385" class="t" text-anchor="middle">Distance</text>
+<path d="M477 403H617" stroke="#5c5f66" stroke-width="1"/>
+<text x="547" y="433" class="s" text-anchor="middle">cosine</text>
+<text x="547" y="461" class="s" text-anchor="middle">Euclidean</text>
+<text x="547" y="489" class="s" text-anchor="middle">Manhattan</text>
+<path class="ln" d="M413 430L449 430" marker-end="url(#a)"/>
+<path class="ln" d="M645 430L681 430" marker-end="url(#a)"/>
+<text x="689" y="388" class="t" text-anchor="start">Top 5</text>
+<rect x="689" y="408" width="44" height="44" rx="2" fill="#111214" fill-opacity="0.36" stroke="#111214" stroke-width="2"/>
+<text x="711" y="486" class="m" text-anchor="middle">1</text>
+<rect x="743" y="408" width="44" height="44" rx="2" fill="#111214" fill-opacity="0.33" stroke="#111214" stroke-width="2"/>
+<text x="765" y="486" class="m" text-anchor="middle">2</text>
+<rect x="797" y="408" width="44" height="44" rx="2" fill="#111214" fill-opacity="0.4" stroke="#111214" stroke-width="2"/>
+<text x="819" y="486" class="m" text-anchor="middle">3</text>
+<rect x="851" y="408" width="44" height="44" rx="2" fill="#111214" fill-opacity="0.28" stroke="#111214" stroke-width="2"/>
+<text x="873" y="486" class="m" text-anchor="middle">4</text>
+<rect x="905" y="408" width="44" height="44" rx="2" fill="#111214" fill-opacity="0.46" stroke="#111214" stroke-width="2"/>
+<text x="927" y="486" class="m" text-anchor="middle">5</text>
+</g>
+</svg>

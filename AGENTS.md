@@ -1,83 +1,57 @@
-# CLAUDE.md
+# AGENTS.md
 
-## Project Overview
+## Project
 
-Personal portfolio and blog website for Abdallah Hakim Kone, an AI engineer. Built with Hugo static site generator using the PaperMod theme. The site combines a custom portfolio homepage with a PaperMod-powered blog section.
+Bilingual (English default at `/`, French at `/fr/`) portfolio of Abdallah Hakim Kone, ML engineer.
+Audience: employers. Hugo with a small custom theme, no theme dependency, and one inline script (the theme switch in
+`layouts/_partials/head.html`); everything else works without JavaScript. Writing lives on
+Substack; there is no local blog.
 
 ## Commands
 
 ```bash
-# Development server with drafts (http://localhost:1313)
-hugo server -D
+# CV PDFs (Typst), needed before `hugo server` so the CV links resolve
+for lang in en fr; do
+  typst compile --root . --font-path cv/fonts --input lang=$lang cv/cv.typ static/cv/abdallah-hakim-kone-cv-$lang.pdf
+done
 
-# Production build (outputs to public/)
-hugo
-
-# Create new blog post
-hugo new blog/post-name.md
+hugo server          # http://localhost:1313
+hugo --gc --minify   # production build into public/
 ```
 
-**Requires:** Hugo v0.146.0+
+Requires Hugo ≥ 0.158 (CI pins 0.166.0) and Typst 0.15. CI (`.github/workflows/hugo.yml`) builds on every PR and
+deploys `main` to GitHub Pages. `baseURL` comes from `hugo.toml`; never pass `--baseURL` in CI (it produced
+`http://` canonicals before).
 
-## Deployment
+## Where content lives
 
-The site deploys automatically via GitHub Actions on push to `main` branch. See `.github/workflows/hugo.yml`.
+- `data/profile.yaml`: single source for profile, experience, education, skills. Read by Hugo
+  (`hugo.Data.profile`) and by the CV (`cv/cv.typ`). Translatable fields are `{en, fr}` maps; plain values
+  are shared. Resolve them in templates with `partial "t.html" value`.
+- `content/projects/<slug>/`: one bundle per project case study: `index.md` (en), `index.fr.md` (fr),
+  `cover.*` (card thumbnail, and video still unless a `poster.*` exists), optional `demo.mp4` (click-to-play) and `demo_caption`, a one-line
+  `result`, and `in_progress: true` until the project has measured results. `weight` sets the card order.
+- `assets/covers/<slug>.svg`, `<slug>.fr.svg`, and `<slug>-results{,.fr}.svg`: sources of the diagram covers and
+  results figures. After editing one, render it to the bundle's `cover.png`/`cover.fr.png` or
+  `results.png`/`results.fr.png` (Hugo gives the French page its `.fr` file; transparent background, Geist loaded
+  from `static/fonts/`). A `results.*` figure replaces the cover on the case study when there is no demo video:
+  `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --hide-scrollbars --allow-file-access-from-files --force-device-scale-factor=2 --window-size=980,630 --default-background-color=00000000 --screenshot="$PWD/content/projects/<slug>/cover.png" "file://$PWD/assets/covers/<slug>.svg"`
+- `i18n/{en,fr}.yaml`: interface strings.
+- Typography in content and data: curly apostrophes (’) in YAML strings and front matter (Markdown bodies get them
+  from Hugo's typographer). French text puts a narrow no-break space (U+202F) before `; : ! ?` and inside « ».
+- `static/og.jpg`: social preview image, generated with ImageMagick from `assets/images/portrait.jpg`;
+  regenerate it when the portrait or role changes.
+- Never publish work metrics from BNP Paribas or Softeam projects: they rely on internal data.
 
-## Architecture
+## Layouts
 
-### Two-Layout System
+`layouts/baseof.html` wraps every page; `home.html` is the portfolio, `page.html` a case study, `404.html`.
+Partials in `layouts/_partials/`. Styles in `assets/css/main.css` (tokens at the top, light/dark from
+`prefers-color-scheme`). Fonts: Geist (site and CV) and Geist Mono (site, data only), self-hosted in `static/fonts/`
+and `cv/fonts/`.
 
-The site uses a dual-layout architecture:
+## Gotcha
 
-1. **Custom Portfolio Layout** (`layouts/_default/home.html`)
-   - Standalone HTML document (does NOT use baseof.html)
-   - Renders homepage sections via partials in `layouts/partials/home/`
-   - Data-driven from `data/schalappe.json`
-
-2. **PaperMod Blog Layout** (`layouts/_default/baseof.html`)
-   - Used by all non-home pages (blog posts, archives, tags)
-   - Extends PaperMod theme with custom partials in `layouts/partials/blog/`
-
-### Data Flow
-
-Profile content is centralized in `data/schalappe.json`:
-
-- Profile info, social links
-- Skills (languages, tools) with Iconify icon IDs
-- Work experience and education
-- Featured projects
-
-Templates access this data via `site.Data.schalappe`.
-
-### Key Directories
-
-```text
-├── hugo.toml              # Site config, menu structure
-├── data/schalappe.json    # All portfolio content
-├── layouts/
-│   ├── _default/
-│   │   ├── home.html      # Portfolio homepage (standalone)
-│   │   ├── baseof.html    # Blog base template
-│   │   ├── single.html    # Blog post template
-│   │   └── list.html      # Blog listing template
-│   └── partials/
-│       ├── home/          # Homepage sections (about, journey, skill, projects)
-│       └── blog/          # PaperMod overrides
-├── assets/
-│   ├── css/main.css       # Portfolio styles
-│   ├── css/blog_custom.css # Blog customizations
-│   ├── js/main.js         # Interactive features (menu, tabs, carousel)
-│   └── vendor/            # Swiper, FontAwesome, Iconify
-├── content/blog/          # Blog posts (markdown)
-├── static/                # Static files (favicon, CNAME)
-└── themes/PaperMod/       # Theme (git submodule)
-```
-
-### Interactive Features (main.js)
-
-- Mobile menu toggle
-- Dark/light theme toggle (persisted to localStorage)
-- Experience/Education tab switching
-- Skills accordion expansion
-- Swiper.js project carousel
-- Scroll-based navigation highlighting
+An editor formatter rewrites `.html` templates on save and inserts a space inside Go template strings in
+attributes (`{{ i18n "x" }}` → `{{ i18n " x" }}`). Inside HTML attributes, use backtick strings
+(`{{ i18n `x` }}`) or assign a variable first.

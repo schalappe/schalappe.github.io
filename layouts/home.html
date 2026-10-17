@@ -1,0 +1,233 @@
+{{ define "main" }}
+{{- $p := hugo.Data.profile -}}
+{{- $c := $p.contact -}}
+{{- $current := index $p.experience 0 -}}
+{{- $cv := printf "cv/abdallah-hakim-kone-cv-%s.pdf" site.Language.Lang | relURL -}}
+{{- $modeling := index $p.skills 0 -}}
+{{- $ops := index $p.skills 1 -}}
+
+<section class="hero">
+  <div>
+    <h1>{{ $p.name }}</h1>
+    <p class="role">{{ i18n "role_at" (dict "role" $p.role "company" $current.company) }}</p>
+    <p class="lede">{{ partial "t.html" $p.headline }}</p>
+    <p class="actions">
+      <a class="button" href="mailto:{{ $c.email }}">{{ i18n "email_me" }}</a>
+      <a class="button quiet" href="{{ $cv }}" type="application/pdf">{{ i18n "download_cv" }}</a>
+      <span class="profiles">
+        <a href="{{ $c.github }}">GitHub{{ partial "external.html" }}</a>
+        <a href="{{ $c.linkedin }}">LinkedIn{{ partial "external.html" }}</a>
+      </span>
+    </p>
+  </div>
+
+  {{- /* The positioning as a diagram: me on top, infrastructure and modeling below, one green box for
+  production. Items come from the first two skill groups in profile.yaml. */}}
+  <figure class="bridge">
+    <div class="bridge-core">
+      {{- with resources.Get "images/portrait.jpg" }}
+      {{- $sm := .Fill "320x320 webp q80 Center" }}
+      {{- $lg := .Fill "640x640 webp q80 Center" }}
+      <div class="portrait">
+        <img src="{{ $sm.RelPermalink }}" srcset="{{ $sm.RelPermalink }} 1x, {{ $lg.RelPermalink }} 2x" width="320"
+          height="320" alt="{{ i18n `portrait_alt` }}" fetchpriority="high">
+        {{- /* Object-detection box: a nod to the computer vision work. Decorative. */}}
+        <span class="bbox" aria-hidden="true"><span class="bbox-label">ml_engineer 0.98</span></span>
+      </div>
+      {{- end }}
+    </div>
+    <div class="bridge-side bridge-infra">
+      <p class="bridge-title">{{ partial "t.html" $ops.name }}</p>
+      <ul>{{ range first 4 (partial "t.html" $ops.items) }}<li>{{ . }}</li>{{ end }}</ul>
+    </div>
+    <div class="bridge-side bridge-models">
+      <p class="bridge-title">{{ partial "t.html" $modeling.name }}</p>
+      <ul>{{ range first 4 (partial "t.html" $modeling.items) }}<li>{{ . }}</li>{{ end }}</ul>
+    </div>
+    <p class="bridge-out"><span class="bridge-dot" aria-hidden="true"></span>{{ i18n "production" }}</p>
+  </figure>
+</section>
+
+<section class="block" aria-labelledby="about">
+  <h2 id="about">{{ i18n "about" }}</h2>
+  <div class="body">
+    <p>{{ partial "t.html" $p.about }}</p>
+    <p>{{ partial "t.html" $p.interests }}</p>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="work">
+  <h2 id="work">{{ i18n "work" }}</h2>
+  <p class="intro">{{ i18n "work_intro" }}</p>
+  <ul class="projects">
+    {{- range (where site.RegularPages "Section" "projects").ByWeight }}
+    <li>
+      {{- with .Resources.GetMatch "cover.*" }}
+      {{- $img := .Fit "640x420 webp q80" }}
+      <img class="thumb" src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt=""
+        loading="lazy" decoding="async">
+      {{- end }}
+      <div class="project-body">
+        {{- /* The title is not a link: "Read the case study" below goes to the same page, one tab stop per card. */}}
+        <h3>{{ .Title }}</h3>
+        {{- partial "result.html" . }}
+        <p class="stack">{{ .Params.year }} · {{ delimit .Params.stack ", " }}</p>
+        <p>{{ .Description }}</p>
+        {{- /* Each link names its project, so a screen reader's link list tells the four cards apart; the label starts
+        with the visible text so voice control still matches it. */}}
+        <p class="links">
+          <a href="{{ .RelPermalink }}" aria-label="{{ printf `%s, %s` (i18n `case_study`) .Title }}">{{ i18n
+            "case_study" }}{{ partial "arrow.html" }}</a>
+          <a href="{{ .Params.repo }}" aria-label="{{ printf `%s, %s` (i18n `code`) .Title }}">{{ i18n "code" }}{{
+            partial "external.html" }}</a>
+        </p>
+      </div>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+
+<section class="block" aria-labelledby="experience">
+  <h2 id="experience">{{ i18n "experience" }}</h2>
+  {{- /* Career chart: one column per month from the earliest start to the build date (the site is static, so
+  the current role grows on each deploy). Decorative: the role list below carries the same facts. */}}
+  {{- $origin := int (index (split (index (last 1 $p.experience) 0).start "-") 0) }}
+  {{- $total := add (mul (sub now.Year $origin) 12) (int (now.Format "1")) }}
+  {{- $months := printf "--months:%d" $total | safeCSS }}
+  <ol class="career" aria-hidden="true">
+    {{- range $p.experience }}
+    {{- $st := split .start "-" }}
+    {{- $s := add (mul (sub (int (index $st 0)) $origin) 12) (int (strings.TrimLeft "0" (index $st 1))) }}
+    {{- $e := $total }}
+    {{- with .end }}
+    {{- $en := split . "-" }}
+    {{- $e = add (mul (sub (int (index $en 0)) $origin) 12) (int (strings.TrimLeft "0" (index $en 1))) }}
+    {{- end }}
+    {{- $span := printf "grid-column:%d/%d" $s (add $e 1) | safeCSS }}
+    <li>
+      <p class="who"><b>{{ .company }}</b> <span>{{ index $st 0 }}</span></p>
+      <div class="career-track" style="{{ $months }}">
+        <span class="career-bar{{ if not .end }} now{{ end }}" style="{{ $span }}"></span>
+      </div>
+    </li>
+    {{- end }}
+    <li class="career-axis">
+      <p class="who"></p>
+      <div class="career-track" style="{{ $months }}">
+        {{- range $y := seq $origin now.Year }}
+        {{- $a := add (mul (sub $y $origin) 12) 1 }}
+        {{- $b := add $a 12 }}
+        {{- if gt $b (add $total 1) }}{{ $b = add $total 1 }}{{ end }}
+        {{- $span := printf "grid-column:%d/%d" $a $b | safeCSS }}
+        <span style="{{ $span }}">{{ $y }}</span>
+        {{- end }}
+      </div>
+    </li>
+  </ol>
+  {{- /* Roles fold with native <details>: dates, title and summary stay visible; highlights and stack open on
+    click. The two most recent roles start open: they carry the production work. */}}
+    <ol class="roles">
+      {{- range $i, $r := $p.experience }}
+      <li>
+        <details{{ if lt $i 2 }} open{{ end }}>
+          {{- /* Named by the title alone: the summary sentence and city would otherwise make a 200-character button
+          name. */}}
+          <summary aria-labelledby="role-{{ $i }}">
+            {{- /* MM/YYYY so every range fits one line; the current role reads "since MM/YYYY". */}}
+            {{- $s := split .start "-" }}
+            <span class="when">
+              {{- with .end }}{{ $e := split . "-" }}{{ index $s 1 }}/{{ index $s 0 }} – {{ index $e 1 }}/{{ index $e 0
+              }}
+              {{- else }}{{ i18n "since" }} {{ index $s 1 }}/{{ index $s 0 }}{{ end -}}
+            </span>
+            <div>
+              <h3 id="role-{{ $i }}">{{ partial "t.html" .role }}, {{ .company }}</h3>
+              {{- with .summary }}<p>{{ partial "t.html" . }}</p>{{ end }}
+            </div>
+            <p class="where">{{ .city }}</p>
+          </summary>
+          <div class="role-detail">
+            {{- with .highlights }}
+            <ul>
+              {{- range partial "t.html" . }}<li>{{ . }}</li>{{ end }}
+            </ul>
+            {{- end }}
+            {{- with .stack }}<p class="stack">{{ delimit . ", " }}</p>{{ end }}
+          </div>
+  </details>
+  </li>
+  {{- end }}
+  </ol>
+</section>
+
+<section class="block" aria-labelledby="skills">
+  <h2 id="skills">{{ i18n "skills" }}</h2>
+  <dl class="cells skill-cells">
+    {{- range $p.skills }}
+    <div>
+      <dt>{{ partial "t.html" .name }}</dt>
+      <dd>{{ delimit (partial "t.html" .items) ", " }}</dd>
+    </div>
+    {{- end }}
+    <div>
+      <dt>{{ i18n "languages" }}</dt>
+      <dd>{{ delimit (apply $p.languages "partial" "t.html" ".") ", " }}</dd>
+    </div>
+  </dl>
+</section>
+
+<section class="block" aria-labelledby="education">
+  <h2 id="education">{{ i18n "education" }} · {{ i18n "certifications" }}</h2>
+  {{- /* Learning chart: same month grid as the career chart, from the first degree to the build date, one bar per
+  degree. Decorative: the cells below carry the same facts, certifications included. */}}
+  {{- $lo := int (index (split (index (last 1 $p.education) 0).start "-") 0) }}
+  {{- $lt := add (mul (sub now.Year $lo) 12) (int (now.Format "1")) }}
+  {{- $lm := printf "--months:%d" $lt | safeCSS }}
+  <ol class="career learning" aria-hidden="true">
+    {{- range $p.education }}
+    {{- $st := split .start "-" }}
+    {{- $en := split .end "-" }}
+    {{- $s := add (mul (sub (int (index $st 0)) $lo) 12) (int (strings.TrimLeft "0" (index $st 1))) }}
+    {{- $e := add (mul (sub (int (index $en 0)) $lo) 12) (int (strings.TrimLeft "0" (index $en 1))) }}
+    {{- $span := printf "grid-column:%d/%d" $s (add $e 1) | safeCSS }}
+    <li>
+      <p class="who"><b>{{ .school }}</b></p>
+      <div class="career-track" style="{{ $lm }}">
+        <span class="career-bar" style="{{ $span }}"></span>
+      </div>
+    </li>
+    {{- end }}
+    <li class="career-axis">
+      <p class="who"></p>
+      <div class="career-track" style="{{ $lm }}">
+        {{- range $y := seq $lo now.Year }}
+        {{- $a := add (mul (sub $y $lo) 12) 1 }}
+        {{- $b := add $a 12 }}
+        {{- if gt $b (add $lt 1) }}{{ $b = add $lt 1 }}{{ end }}
+        {{- $span := printf "grid-column:%d/%d" $a $b | safeCSS }}
+        <span style="{{ $span }}">{{ $y }}</span>
+        {{- end }}
+      </div>
+    </li>
+  </ol>
+  <ol class="cells">
+    {{- range $p.education }}
+    <li class="degree">
+      <p class="cell-year">{{ index (split .start "-") 0 }}–{{ index (split .end "-") 0 }}</p>
+      <h3>{{ partial "t.html" .degree }}</h3>
+      <p>{{ .school }}, {{ .city }}</p>
+      <p class="where">{{ partial "t.html" .focus }}</p>
+    </li>
+    {{- end }}
+  </ol>
+  <ol class="cells cert-cells">
+    {{- range $p.certifications }}
+    <li>
+      <p class="cell-year">{{ index (split .date "-") 0 }}</p>
+      <h3>{{ .name }}</h3>
+      <p class="where">{{ .issuer }}</p>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+{{ end }}

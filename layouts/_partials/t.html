@@ -1,0 +1,4 @@
+{{- /* Resolve a data/profile.yaml value: {en, fr} maps pick the current language, plain values pass through. */ -}}
+{{- $v := . -}}
+{{- if reflect.IsMap $v }}{{ $v = index $v site.Language.Lang }}{{ end -}}
+{{- return $v -}}
