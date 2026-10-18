@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="630" viewBox="0 0 980 630">
-<!-- Results figure for the case study. Values: reports/1.0-evaluation.pdf, section 3.2.3 (colour and style). Render: see AGENTS.md. -->
+<!-- Results figure for the case study. Values: notebooks/1.0-evaluation.ipynb, label relevance table (colour and style). Render: see AGENTS.md. -->
 <style>
 @font-face { font-family: Geist; font-weight: 100 900; src: url(../../static/fonts/geist.woff2); }
 @font-face { font-family: "Geist Mono"; font-weight: 100 900; src: url(../../static/fonts/geist-mono.woff2); }
@@ -11,51 +11,75 @@ text { font-family: Geist, sans-serif; fill: #111214; }
 .m { font-family: "Geist Mono", monospace; font-size: 21px; fill: #5c5f66; }
 </style>
 <text x="40" y="66" class="t" style="font-size:32px">MAP on colour and style</text>
-<text x="40" y="100" class="s">15 combinations · 5,337 queries · 5 nearest images</text>
-<text x="337.0" y="148" class="s" text-anchor="middle">Euclidean</text>
-<text x="497.0" y="148" class="s" text-anchor="middle">Manhattan</text>
-<text x="720" y="148" class="s" text-anchor="end">Time / query</text>
-<text x="865.0" y="148" class="s" text-anchor="middle">cosine*</text>
-<text x="40" y="211.0" class="r">AKAZE</text>
-<rect x="262" y="164" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.23"/>
-<text x="337.0" y="212.0" class="n" text-anchor="middle" style="fill:#111214">0.19</text>
-<rect x="422" y="164" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.24"/>
-<text x="497.0" y="212.0" class="n" text-anchor="middle" style="fill:#111214">0.20</text>
-<text x="720" y="210.0" class="m" text-anchor="end">0.03 s</text>
-<rect x="791" y="165" width="148" height="74" rx="2" fill="none" stroke="#5c5f66" stroke-width="2" stroke-dasharray="6 6"/>
-<text x="865.0" y="212.0" class="n" text-anchor="middle" style="fill:#5c5f66">0.04</text>
-<text x="40" y="295.0" class="r">ORB</text>
-<rect x="262" y="248" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.23"/>
-<text x="337.0" y="296.0" class="n" text-anchor="middle" style="fill:#111214">0.19</text>
-<rect x="422" y="248" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.24"/>
-<text x="497.0" y="296.0" class="n" text-anchor="middle" style="fill:#111214">0.20</text>
-<text x="720" y="294.0" class="m" text-anchor="end">0.02 s</text>
-<rect x="791" y="249" width="148" height="74" rx="2" fill="none" stroke="#5c5f66" stroke-width="2" stroke-dasharray="6 6"/>
-<text x="865.0" y="296.0" class="n" text-anchor="middle" style="fill:#5c5f66">0.04</text>
-<text x="40" y="379.0" class="r">VGG16</text>
-<rect x="262" y="332" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.71"/>
-<text x="337.0" y="380.0" class="n" text-anchor="middle" style="fill:#ffffff">0.72</text>
-<rect x="422" y="332" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.71"/>
-<text x="497.0" y="380.0" class="n" text-anchor="middle" style="fill:#ffffff">0.72</text>
-<text x="720" y="378.0" class="m" text-anchor="end">0.10 s</text>
-<rect x="791" y="333" width="148" height="74" rx="2" fill="none" stroke="#5c5f66" stroke-width="2" stroke-dasharray="6 6"/>
-<text x="865.0" y="380.0" class="n" text-anchor="middle" style="fill:#5c5f66">0.00</text>
-<text x="40" y="463.0" class="r">NASNetLarge</text>
-<rect x="262" y="416" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.68"/>
-<text x="337.0" y="464.0" class="n" text-anchor="middle" style="fill:#ffffff">0.69</text>
-<rect x="422" y="416" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.68"/>
-<text x="497.0" y="464.0" class="n" text-anchor="middle" style="fill:#ffffff">0.68</text>
-<text x="720" y="462.0" class="m" text-anchor="end">0.30 s</text>
-<rect x="791" y="417" width="148" height="74" rx="2" fill="none" stroke="#5c5f66" stroke-width="2" stroke-dasharray="6 6"/>
-<text x="865.0" y="464.0" class="n" text-anchor="middle" style="fill:#5c5f66">0.00</text>
-<text x="40" y="547.0" class="r">EfficientNetB7</text>
-<rect x="262" y="500" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.72"/>
-<text x="337.0" y="548.0" class="n" text-anchor="middle" style="fill:#ffffff">0.73</text>
-<rect x="422" y="500" width="150" height="76" rx="2" fill="#111214" fill-opacity="0.71"/>
-<text x="497.0" y="548.0" class="n" text-anchor="middle" style="fill:#ffffff">0.73</text>
-<text x="720" y="546.0" class="m" text-anchor="end">0.23 s</text>
-<rect x="791" y="501" width="148" height="74" rx="2" fill="none" stroke="#5c5f66" stroke-width="2" stroke-dasharray="6 6"/>
-<text x="865.0" y="548.0" class="n" text-anchor="middle" style="fill:#5c5f66">0.01</text>
-<rect x="257" y="495" width="160" height="86" rx="4" fill="none" stroke="#111214" stroke-width="3"/>
-<text x="40" y="606" class="s">* Sort bug: returns the least similar images first. See Limitations.</text>
+<text x="40" y="100" class="s">24 combinations · 3,758 queries · 5 nearest images</text>
+<text x="337" y="148" class="s" text-anchor="middle">cosine</text>
+<text x="497" y="148" class="s" text-anchor="middle">Euclidean</text>
+<text x="657" y="148" class="s" text-anchor="middle">Manhattan</text>
+<text x="940" y="148" class="s" text-anchor="end">Time / query</text>
+<text x="40" y="196" class="r">AKAZE</text>
+<rect x="262" y="162" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.16"/>
+<text x="337" y="195" class="n" text-anchor="middle" style="fill:#111214;font-size:25px">0.16</text>
+<rect x="422" y="162" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.13"/>
+<text x="497" y="195" class="n" text-anchor="middle" style="fill:#111214;font-size:25px">0.13</text>
+<rect x="582" y="162" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.17"/>
+<text x="657" y="195" class="n" text-anchor="middle" style="fill:#111214;font-size:25px">0.17</text>
+<text x="940" y="193" class="m" text-anchor="end">22 ms</text>
+<text x="40" y="248" class="r">ORB</text>
+<rect x="262" y="214" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.14"/>
+<text x="337" y="247" class="n" text-anchor="middle" style="fill:#111214;font-size:25px">0.14</text>
+<rect x="422" y="214" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.11"/>
+<text x="497" y="247" class="n" text-anchor="middle" style="fill:#111214;font-size:25px">0.11</text>
+<rect x="582" y="214" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.15"/>
+<text x="657" y="247" class="n" text-anchor="middle" style="fill:#111214;font-size:25px">0.15</text>
+<text x="940" y="245" class="m" text-anchor="end">5 ms</text>
+<text x="40" y="300" class="r">VGG16</text>
+<rect x="262" y="266" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.61"/>
+<text x="337" y="299" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.61</text>
+<rect x="422" y="266" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.58"/>
+<text x="497" y="299" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.58</text>
+<rect x="582" y="266" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.58"/>
+<text x="657" y="299" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.58</text>
+<text x="940" y="297" class="m" text-anchor="end">53 ms</text>
+<text x="40" y="352" class="r">NASNetLarge</text>
+<rect x="262" y="318" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.51"/>
+<text x="337" y="351" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.51</text>
+<rect x="422" y="318" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.51"/>
+<text x="497" y="351" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.51</text>
+<rect x="582" y="318" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.51"/>
+<text x="657" y="351" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.51</text>
+<text x="940" y="349" class="m" text-anchor="end">134 ms</text>
+<text x="40" y="404" class="r">EfficientNetB7</text>
+<rect x="262" y="370" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.55"/>
+<text x="337" y="403" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.55</text>
+<rect x="422" y="370" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.54"/>
+<text x="497" y="403" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.54</text>
+<rect x="582" y="370" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.54"/>
+<text x="657" y="403" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.54</text>
+<text x="940" y="401" class="m" text-anchor="end">207 ms</text>
+<text x="40" y="456" class="r">ConvNeXt-Tiny</text>
+<rect x="262" y="422" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.62"/>
+<text x="337" y="455" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.62</text>
+<rect x="422" y="422" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.61"/>
+<text x="497" y="455" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.61</text>
+<rect x="582" y="422" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.61"/>
+<text x="657" y="455" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.61</text>
+<text x="940" y="453" class="m" text-anchor="end">16 ms</text>
+<text x="40" y="508" class="r">DINOv2</text>
+<rect x="262" y="474" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.45"/>
+<text x="337" y="507" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.45</text>
+<rect x="422" y="474" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.45"/>
+<text x="497" y="507" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.45</text>
+<rect x="582" y="474" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.45"/>
+<text x="657" y="507" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.45</text>
+<text x="940" y="505" class="m" text-anchor="end">130 ms</text>
+<text x="40" y="560" class="r">SigLIP 2</text>
+<rect x="262" y="526" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.67"/>
+<text x="337" y="559" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.67</text>
+<rect x="422" y="526" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.67"/>
+<text x="497" y="559" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.67</text>
+<rect x="582" y="526" width="150" height="46" rx="2" fill="#111214" fill-opacity="0.63"/>
+<text x="657" y="559" class="n" text-anchor="middle" style="fill:#ffffff;font-size:25px">0.63</text>
+<text x="940" y="557" class="m" text-anchor="end">25 ms</text>
+<rect x="257" y="521" width="160" height="56" rx="4" fill="none" stroke="#111214" stroke-width="3"/>
+<text x="40" y="606" class="s">Time: extraction and exact search, Apple M1 Pro.</text>
 </svg>
