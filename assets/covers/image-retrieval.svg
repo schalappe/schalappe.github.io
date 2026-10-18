@@ -27,21 +27,24 @@ text { font-family: Geist, sans-serif; fill: #111214; }
 <rect x="82" y="215" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.62" stroke="#111214" stroke-width="2"/>
 <rect x="124" y="215" width="34" height="34" rx="2" fill="#111214" fill-opacity="0.1" stroke="#111214" stroke-width="2"/>
 <text x="99" y="290" class="t" text-anchor="middle">Catalogue</text>
-<text x="99" y="320" class="m" text-anchor="middle">10,833 images</text>
+<text x="99" y="320" class="m" text-anchor="middle">7,627 images</text>
 <rect x="64" y="395" width="70" height="70" rx="2" fill="#111214" fill-opacity="0.36" stroke="#111214" stroke-width="2.5"/>
 <text x="99" y="506" class="t" text-anchor="middle">Query</text>
-<text x="99" y="536" class="m" text-anchor="middle">5,337 queries</text>
+<text x="99" y="536" class="m" text-anchor="middle">3,758 queries</text>
 <path class="ln" d="M166 190L207 190" marker-end="url(#a)"/>
 <path class="ln" d="M142 430L207 430" marker-end="url(#a)"/>
 <rect class="box" x="215" y="130" width="190" height="375" rx="4"/>
 <text x="310" y="178" class="t" text-anchor="middle">Feature</text>
 <text x="310" y="212" class="t" text-anchor="middle">extractor</text>
 <path d="M235 236H385" stroke="#5c5f66" stroke-width="1"/>
-<text x="310" y="284" class="s" text-anchor="middle">AKAZE</text>
-<text x="310" y="326" class="s" text-anchor="middle">ORB</text>
-<text x="310" y="368" class="s" text-anchor="middle">VGG16</text>
-<text x="310" y="410" class="s" text-anchor="middle">NASNetLarge</text>
-<text x="310" y="452" class="s" text-anchor="middle">EfficientNetB7</text>
+<text x="310" y="262" class="s" text-anchor="middle" style="font-size:20px">AKAZE</text>
+<text x="310" y="292" class="s" text-anchor="middle" style="font-size:20px">ORB</text>
+<text x="310" y="322" class="s" text-anchor="middle" style="font-size:20px">VGG16</text>
+<text x="310" y="352" class="s" text-anchor="middle" style="font-size:20px">NASNetLarge</text>
+<text x="310" y="382" class="s" text-anchor="middle" style="font-size:20px">EfficientNetB7</text>
+<text x="310" y="412" class="s" text-anchor="middle" style="font-size:20px">ConvNeXt-Tiny</text>
+<text x="310" y="442" class="s" text-anchor="middle" style="font-size:20px">DINOv2</text>
+<text x="310" y="472" class="s" text-anchor="middle" style="font-size:20px">SigLIP 2</text>
 <text x="457" y="150" class="t" text-anchor="start">Index</text>
 <rect x="457" y="168" width="13" height="12" fill="#111214" fill-opacity="0.7"/>
 <rect x="472" y="168" width="13" height="12" fill="#111214" fill-opacity="0.2"/>
